@@ -1,0 +1,41 @@
+Sublimerge has just been upgraded to version 2.7.1. 
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+1. Fixed scrolling to first diff block
+   When diff block was longer than single screen, the view was automatically scrolled to the
+   middle or bottom of the block. Now it is scrolled to the beginning.
+
+2. Custom Comparisons
+   - Added more detailed docs in "Custom Comparisons - Default" file
+
+   - Added two new custom comparisons for Git users:
+     - "Show Unpushed Changes..."
+     - "Show Changes Between Current and Remote..."
+
+   - Added new step directive - `capture` which allows to run a command via `execute` directive
+     and capture the output to a defined variable. See "Custom Comparisons - Default" for more
+     information.
+
+   - Fixed proper handling file names with spaces
+   
+   - No more need to copy "Custom Comparisons - Default" to "Custom Comparisons - User". Your
+     own commands can be defined in "Custom Comparisons - User" in key "custom_comparisons_user"
+     instead "custom_comparisons" so they will not override the default ones.
+     
+     Example:
+
+     "custom_comparisons_user": [
+        //your definitions here
+     ]
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)

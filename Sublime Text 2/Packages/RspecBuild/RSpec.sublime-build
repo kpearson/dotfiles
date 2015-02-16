@@ -1,0 +1,6 @@
+{
+  "shell" : "true",
+  "target": "run_spec",
+  "cmd": ["bundle", "exec", "rspec", "$file"],
+  "selector": "source.ruby.rspec"
+}

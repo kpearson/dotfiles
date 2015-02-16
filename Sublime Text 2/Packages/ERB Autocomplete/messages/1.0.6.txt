@@ -1,0 +1,30 @@
+ERBAutocomplete 1.0.6
+-------------
+
+Enhancements:
+- Add user custom completions. 
+
+Custom completion settings
+============
+Setting Config ***ERBAutocomplete.sublime-settings***. You can follow the step.
+
+```json
+{
+    "customCompletions":
+    [
+        "custom.tag.sublime-settings"
+    ]
+}
+```
+in the customCompletions section add your custom completions.
+
+the custom completion format:
+```json
+{
+    "completions":
+    [
+        // custom helper
+        ["new_link_to\t create auto detect active link\terb", "<%= new_link_to(\"${1:text}\", \"${2:url}\" ${3:, ${4::options}}) %>$0"]
+    ]
+}
+```

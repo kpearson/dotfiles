@@ -1,0 +1,25 @@
+Sublimerge has just been upgraded to version 2.7.6. 
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+1. Guessing shell fallback encoding
+   Previous version introduced a new setting - `shell_fallback_encoding` which is used
+   when could not properly run shell commands because of encoding problems. Now before
+   this setting is used, Sublimerge automatically tries to guess correct encoding if
+   default one fails.
+
+2. Better Edit Mode Enter/Leave
+   When entering/leaving Edit Mode there is no more view "jump"
+
+3. Registration problem in ST3
+   Fixed registration problem in ST3 on some computers
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)

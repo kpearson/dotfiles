@@ -1,0 +1,5 @@
+ERBAutocomplete 1.0.8
+-------------
+
+Enhancements:
+- Add sublime text main menu.

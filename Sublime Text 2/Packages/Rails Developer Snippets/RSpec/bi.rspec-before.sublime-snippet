@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[before { $1 } ]]></content>
+	<tabTrigger>bi</tabTrigger>
+	<string>source.ruby.rspec</string>
+	<description>RSpec Before Inline</description>
+</snippet>

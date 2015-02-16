@@ -1,0 +1,101 @@
+[
+    { "caption": "-" },
+    {
+        "caption": "Sublimerge",
+        "children": [{
+            "command": "sublimerge_go_up"
+        }, {
+            "command": "sublimerge_go_down"
+        }, {
+            "caption": "-"
+        }, {
+            "command": "sublimerge_toggle_setting",
+            "args": {"setting": "three_way_navigate_all"},
+            "checkbox": true
+        }, {
+            "caption": "-"
+        }, {
+            "command": "sublimerge_merge_left"
+        }, {
+            "command": "sublimerge_merge_right"
+        }, {
+            "caption": "-"
+        }, {
+            "command": "sublimerge_merge_left",
+            "args": {"merge_all": true}
+        }, {
+            "command": "sublimerge_merge_right",
+            "args": {"merge_all": true}
+        }, {
+            "caption": "-"
+        }, {
+            "command": "sublimerge_toggle_edit"
+        }, {
+            "caption": "-"
+        }, {
+            "command": "sublimerge_compare_to_view",
+            "args": { "group": -1, "index": -1 }
+        }, {
+            "command": "sublimerge_compare_to_revision",
+            "args": { "group": -1, "index": -1 }
+        }, {
+            "command": "sublimerge_compare_to_snapshot",
+            "args": { "group": -1, "index": -1 }
+        }, {
+            "command": "sublimerge_compare_to_clipboard",
+            "args": { "group": -1, "index": -1 }
+        }, {
+            "command": "sublimerge_compare_to_view_selections",
+            "args": { "group": -1, "index": -1 }
+        }, {
+            "command": "sublimerge_compare_revision_to_revision",
+            "args": { "group": -1, "index": -1 }
+        }, {
+            "command": "sublimerge_compare_selections",
+            "args": { "group": -1, "index": -1 }
+        }, {
+            "command": "sublimerge_show_changes_in_revision",
+            "args": { "group": -1, "index": -1 }
+        }, {
+            "caption": "-"
+        }, {
+            "command": "sublimerge_show_unsaved_changes",
+            "args": { "group": -1, "index": -1 }
+        }, {
+            "caption": "-"
+        }, {
+            "command": "sublimerge_toggle_setting",
+            "args": {"setting": "ignore_crlf"},
+            "checkbox": true
+        }, {
+            "command": "sublimerge_toggle_setting",
+            "args": {"setting": "ignore_whitespace"},
+            "checkbox": true
+        }, {
+            "command": "sublimerge_toggle_setting",
+            "args": {"setting": "separate_missing_blocks"},
+            "checkbox": true
+        }, {
+            "command": "sublimerge_toggle_setting",
+            "args": {"setting": "intraline_analysis"},
+            "checkbox": true
+        }, {
+            "caption": "-"
+        }, {
+            "command": "sublimerge_swap_view",
+            "checkbox": true
+        }, {
+            "command": "sublimerge_take_snapshot",
+            "args": { "group": -1, "index": -1 }
+        }, {
+            "command": "sublimerge_replace_snapshot",
+            "args": { "group": -1, "index": -1 }
+        }, {
+            "command": "sublimerge_remove_snapshot",
+            "args": { "group": -1, "index": -1 }
+        }, {
+            "command": "sublimerge_restore_snapshot",
+            "args": { "group": -1, "index": -1 }
+        }]
+    }
+]

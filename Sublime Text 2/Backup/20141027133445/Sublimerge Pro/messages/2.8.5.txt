@@ -1,0 +1,19 @@
+Sublimerge has just been upgraded to version 2.8.5
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+Bug Fixes:
+  - Workaround for ST's bug causing freeze of one of the views in diff window. When an unsaved 
+    file was compared with clipboard or snapshot, the view containing that file was frozen.
+    In that state it was not displaying differences and was unscrollable.
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)

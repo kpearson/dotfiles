@@ -1,0 +1,22 @@
+Sublimerge has just been upgraded to version 2.8.7
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+Enhancements:
+  - Enhanced loading errors reporter
+  - Error handling for:
+    - missing zlib while extracting required package files (ST3)
+    - unknown filesystem encoding while extracting required package files (ST3)
+    - better handling loading exceptions to make error reports more detailed
+
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)

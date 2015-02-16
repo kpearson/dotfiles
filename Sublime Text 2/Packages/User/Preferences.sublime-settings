@@ -1,0 +1,51 @@
+{
+	"auto_complete_commit_on_tab": true,
+	"bold_folder_labels": true,
+	"caret_style": "phase",
+	"color_scheme": "Packages/Monokai Gray/MonokaiGray.tmTheme",
+	"detect_slow_plugins": false,
+	"ensure_single_trailing_newline": true,
+	"font_face": "Inconsolata",
+	"font_size": 14.0,
+	"fonts_list":
+	[
+		"Monofur",
+		"Andale Mono",
+		"Consolas",
+		"Courier",
+		"Courier New",
+		"Envy Code R",
+		"Inconsolata",
+		"Lucida Console",
+		"Menlo",
+		"Meslo LG S",
+		"Meslo LG M",
+		"Meslo LG L",
+		"Monaco",
+		"ProFontX",
+		"Source Code Pro",
+		"Ubuntu Mono"
+	],
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignore_whitespace_on_current_line": false,
+	"ignore_whitespace_only_lines": false,
+	"ignored_packages":
+	[
+		"SublimeGit",
+		"Sublimerge Pro",
+		"Delphi Style Bookmarks",
+		"Sublime Bookmarks"
+	],
+	"line_padding_bottom": 0,
+	"line_padding_top": 0,
+	"remove_trailing_white_space": true,
+	"remove_trailing_whitespace_on_save": true,
+	"rulers":
+	[
+		80,
+		120
+	],
+	"tab_size": 2,
+	"wide_caret": true
+}

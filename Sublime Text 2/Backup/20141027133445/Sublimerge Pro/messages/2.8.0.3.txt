@@ -1,0 +1,36 @@
+Sublimerge has just been upgraded to version 2.8.0.3
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!                                                                                         !!
+!!         NOTE: THIS IS A BETA VERSION. PLEASE REPORT ANY BUGS YOU MAY ENCOUNTER.         !!
+!!                                                                                         !!
+!!  Great amount of code have been rewritten to make it possible to implement 3-way diff.  !!
+!!  If you found a bug in any new or previous features, please report it immediately       !!
+!!  to support@sublimerge.com. Thanks! :)                                                  !!
+!!                                                                                         !!
+!!  If you're a licensed user, your license will work with this version automatically.     !!
+!!                                                                                         !!
+!!  For usage instructions or how to switch back to official release, please visit         !!
+!!  http://www.sublimerge.com/beta.html                                                    !!
+!!                                                                                         !!
+!!  DON'T FORGET TO RESTART SUBLIME TEXT AFTER READING THIS MESSAGE :)                     !!
+!!                                                                                         !!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+What's new?
+===========
+
+1. Fix for bug when pre-merged file content was empty
+   In three-way diff, when pre-merged output was empty, Sublimerge was throwing errors in console
+   and crashing. Further operations in diff view were not possible.
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)

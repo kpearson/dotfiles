@@ -1,0 +1,91 @@
+Sublimerge has just been upgraded to version 2.9.0
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+!!!!! IMPORTANT !!! IMPORTANT !!! IMPORTANT !!! IMPORTANT !!! IMPORTANT !!! IMPORTANT !!! IMPORTANT !!! IMPORTANT !!!!!
+!!!                                                                                                                 !!!
+!!!    THIS RELEASE CHANGES DEFAULT KEY BINDINGS. THIS CHANGE IS ADDRESSED TO ALL USERS EXPERIENCING                !!!
+!!!    PROBLEMS WITH  CONFLICTING KEYBOARD SHORTCUTS ON THEIR KEYBOARD LAYOUT. IT ALSO MAKES SUBLIMERGE             !!!
+!!!    EVEN EASIER IN USE.                                                                                          !!!
+!!!                                                                                                                 !!!
+!!!    I'm aware that it may be inconvenient for you, but I believe you will like the new keyboard shortcuts        !!!
+!!!    even more. You can also switch back to the previous ones by custimizing your `Key Bindings - User`           !!!
+!!!    settings file.                                                                                               !!!
+!!!                                                                                                                 !!!
+!!!    IF YOU ALREADY CUSTOMIZED SOME OF THEM, THEY WILL STILL WORK.                                                !!!
+!!!                                                                                                                 !!!
+!!!                                                                                                                 !!!
+!!!    THE NEW KEYBOARD SHORTCUTS ARE:                                                                              !!!
+!!!                                                                                                                 !!!
+!!!    In file view:                                                                                                !!!
+!!!                                                                                                                 !!!
+!!!        [ctrl]+[alt]+[d]              - display Quick Panel with Sublimerge commands available for current view  !!!
+!!!                                                                                                                 !!!
+!!!    In diff view:                                                                                                !!!
+!!!                                                                                                                 !!!
+!!!        [/]                           - display Differences Navigator                                            !!!
+!!!        [down]                        - select the next difference (only single selection is possible)           !!!
+!!!        [up]                          - select the previous difference (only single selection is possible)       !!!
+!!!        [left]                        - merge selected change(s) from right to left                              !!!
+!!!        [right]                       - merge selected change(s) from left to right                              !!!
+!!!        [shift]+[left]                - merge all changes from right to left                                     !!!
+!!!        [shift]+[right]               - merge all changes from left to right                                     !!!
+!!!        [ctrl]+[enter]                - toggle edit mode (currently in 2-way diff view only)                     !!!
+!!!        [ctrl]+[alt]+[left click]     - select/deselect change block (multiple selection is possible)            !!!
+!!!        [ctrl]+[shift]+[left click]   - merge selected changes from left to right                                !!!
+!!!        [ctrl]+[shift]+[right click]  - merge selected changes from right to left                                !!!
+!!!                                                                                                                 !!!
+!!!    In directories diff view:                                                                                    !!!
+!!!                                                                                                                 !!!
+!!!        [enter]                       - enter subdirectory (if differs) or diff selected text file               !!!
+!!!        [down]                        - select next file/directory                                               !!!
+!!!        [up]                          - select previous file/directory or navigate one level up                  !!!
+!!!        [ctrl]+[alt]+[left click]     - select/deselect change block (multiple selection is possible)            !!!
+!!!        [right]                       - apply selected change from left to right                                 !!!
+!!!        [left]                        - apply all changes from left to right                                     !!!
+!!!        [shift]+[left]                - apply selected change from right to left                                 !!!
+!!!        [shift]+[right]               - apply all changes from right to left                                     !!!
+!!!                                                                                                                 !!!
+!!!!! IMPORTANT !!! IMPORTANT !!! IMPORTANT !!! IMPORTANT !!! IMPORTANT !!! IMPORTANT !!! IMPORTANT !!! IMPORTANT !!!!!
+
+
+What's new?
+===========
+
+Bug fixes:
+  - Fix for navigation problems after merge in three-way diff view.
+    There was a bug that made it impossible to navigate through changes after all conflicts have been resolved.
+
+  - Properly disable 'Go to Next Change' and 'Go to Previous Change'.
+    When diff view is in Edit Mode these commands have nothing to do and are now disabled.
+
+  - Fixed "OSError: [WinError 6] The handle is invalid" exception.
+    On some Windows boxes above exception has been thrown while running subprocess for VCS commands.
+
+
+Enhancements:
+  - Context key bindings
+    Simplified keyboard shortcuts to make Sublimerge usage even easier and more friendly.
+
+  - Optimized file save
+    All change blocks are now removed faster in order to save the output file.
+
+  - Enhanced scroll sync
+    Removed possible sync delay while scrolling the view by navigating through changes by keyboard. Also changed
+    positioning algorithm to show the maximum content of a change if it exceeds viewport height.
+
+  - Command Palette enhancements
+    Added 'Sublimerge' and 'Sublimerge: Differences Navigator' commands to Sublime's Command Palette
+
+
+New features:
+  - New setting: view / highlight_line
+    You can use 'highlight_line' setting to highlight active corresponding lines in diff panels.
+    By default set to 'true'.
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)

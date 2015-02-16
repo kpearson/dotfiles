@@ -1,0 +1,29 @@
+Sublimerge has just been upgraded to version 2.10.2
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+Bug fixes:
+  - Mouse Mouse Bindings
+    The default mouse bindings are now optional because they were conflicting with Sublime's
+    multiple selections. Please open Sublimerge's 'Mouse Bindings - Default' for more information.
+
+  - Summary Panel
+    - the panel now shows up when `go_to_next_after_merge` setting is on
+    - the panel properly reacts to Swap View command
+
+  - Editing
+    - now Sublimerge's view does not automatically translate tabs to spaces and preserves original
+      indentation
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)
+
+http://www.sublimerge.com/

@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[it { ${1:should} belong_to(:${2:object}) } ]]></content>
+	<tabTrigger>bt</tabTrigger>
+	<string>source.ruby.rspec</string>
+	<description>RSpec "shoulda" belong_to</description>
+</snippet>

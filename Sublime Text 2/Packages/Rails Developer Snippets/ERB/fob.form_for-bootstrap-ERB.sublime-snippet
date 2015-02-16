@@ -1,0 +1,25 @@
+<snippet>
+	<content><![CDATA[<%= form_for ${1:@object}, html: { class: "form-horizontal" } do |${2:f}| %>
+	<%= render 'layouts/error_messages', ${2:f}: ${2:f}.object %>
+
+	<div class="control-group">
+		<%= ${2:f}.label :${3:attribute}, class: "control-label" %>
+		<div class="controls">
+			<%= ${2:f}.text_field :${3:attribute} %>
+		</div>
+	</div>
+
+	$4
+
+	<div class="control-group">
+		<div class="controls">
+			<%= ${2:f}.submit class: "btn btn-primary" %>
+		</div>
+	</div>
+		
+<% end %>
+]]></content>
+	<tabTrigger>fob</tabTrigger>
+	<scope>text.html.ruby</scope>
+	<description>form_for with twitter bootstrap</description>
+</snippet>

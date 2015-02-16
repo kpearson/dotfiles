@@ -1,0 +1,6 @@
+ERBAutocomplete 1.0.4
+-------------
+
+Enhancements:
+- Focus ERB Syntax scope.
+- Enhance popup of completion accuracy

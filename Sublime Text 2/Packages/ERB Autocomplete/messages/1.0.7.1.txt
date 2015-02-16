@@ -1,0 +1,5 @@
+ERBAutocomplete 1.0.7.1
+-------------
+
+Enhancements:
+- Add keymap bind that unmark comment add inline code.

@@ -1,0 +1,37 @@
+Sublimerge has just been upgraded to version 2.4.0. 
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+1. Differences Navigator
+   While being in diff view, press [ctrl]+[alt]+[d] once again to display a Quick Panel with list 
+   of differences. Press [enter] on selected item to go to selected difference in view.
+
+2. Custom Comparisons for SVN users
+   Implemented custom comparison "Show Uncommited Changes..." for SVN users.
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)
+
+
+Solving most common problems
+============================
+
+Sublimerge doesn't work. Console reports: "ImportError: No module named 'sublimerge'"
+
+If you installed Sublimerge using Package Control, please make sure that you use its final version. 
+Alpha does not install Sublimerge properly. You can also try Manual Installation (please view 
+sublimerge.com/installation.html for more details)
+
+
+More information
+================
+
+For more information, troubleshooting, customizing settings and more, please visit www.sublimerge.com

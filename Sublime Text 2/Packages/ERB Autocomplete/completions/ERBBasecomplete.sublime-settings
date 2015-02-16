@@ -1,0 +1,67 @@
+{
+    "scope": "text.html.erb",
+
+    "completions":
+    [
+        // base tag
+        ["erb\tcommon tag\terb", "<% $1 %>$0"],
+        ["echo\tprint\terb", "<%= $1 %>$0"],
+        ["pc\t註解程式\terb", "<%# $1 %>$0"],
+        // condition
+        ["if\tonly if\terb", "<% if $1 %>$0" ],
+        ["elseif\tonly elseif\terb", "<% elsif ${1:true} %>"],
+        ["else\tonly else\terb", "<% else %>"],
+        ["end\tonly end\terb", "<% end %>"],
+        // javascripts
+        ["livereload_js\tinclude livereload js\terb", "<%= livereload_js %>"],
+        // method
+        ["rand\trand a number\terb", "<%= rand(${1:number}) %>$0"],
+        // lorem
+        ["lorem_image\tcreate a rand image \terb", "<img src=\"<%= lorem_image(\"${1:image_size}\") %>\" />$0"],
+        ["lorem_words\tcreat rand words\terb", "<%= lorem_words(${1:1}) %>$0"],
+        ["lorem_paragraphs\tcreate a paragraph\terb", "<%= lorem_paragraphs(${1:1}) %>$0"],
+        ["lorem_sentences\tcreate a sentence\terb", "<%= lorem_sentences(${1:1}) %>$0"],
+        ["lorem_date\tcreate date\terb", "<%= lorem_date(\"${1:%Y-%m-%d}\" ${2:,${3:2011...2013}})$0 %>"],
+        ["lorem_name\tcreate a name\terb", "<%= lorem_name %>"],
+        ["lorem_first_name\tcreate first name\terb", "<%= lorem_first_name %>"],
+        ["lorem_last_name\tcreate last name\terb", "<%= lorem_last_name %>"],
+        ["lorem_email\tcreate email\terb", "<%= lorem_email %>"],
+        // lorem zh_tw
+        ["zh_lorem_words\t產生假中文字\terb", "<%= zh_lorem_words(${1:1}) %>$0"],
+        ["zh_lorem_sentences\t產生假中文句子\terb", "<%= zh_lorem_sentences(${1:1}) %>$0"],
+        ["zh_lorem_paragraph\t產生假中文段落\terb", "<%= zh_lorem_paragraphs(${1:1}}) %>$0"],
+        ["zh_lorem_name\t產生假中文姓名\terb", "<%= zh_lorem_name %>"],
+        ["zh_lorem_name_pinyin\t產生假中文姓名拼音\terb", "<%= zh_lorem_name_pinyin %>"],
+        ["zh_lorem_first_name\t產生假中文名字\terb", "<%= zh_lorem_first_name %>"],
+        ["zh_lorem_first_name_pinyin\t產生假中文名字拼音\terb", "<%= zh_lorem_first_name_pinyin %>"],
+        ["zh_lorem_last_name\t產生假中文姓氏\terb", "<%= zh_lorem_last_name %>"],
+        ["zh_lorem_last_name_pinyin\t產生假中文姓氏拼音\terb", "<%= zh_lorem_last_name_pinyin %>"],
+        ["zh_lorem_email\t產生假中文Email\terb", "<%= zh_lorem_email %>"],
+        // lorem jp
+        ["jp_lorem_words\t產生假日文字\terb", "<%= jp_lorem_words(${1:1}) %>$0"],
+        ["jp_lorem_sentences\t產生假日文句子\terb", "<%= jp_lorem_sentences(${1:1}) %>$0"],
+        ["jp_lorem_paragraphs\t產生假日文段落\terb", "<%= jp_lorem_paragraphs(${1:1}}) %>$0"],
+        ["jp_lorem_name\t產生假日文姓名\terb", "<%= jp_lorem_name %>"],
+        ["jp_lorem_name_en\t產生假日文姓名拼音\terb", "<%= jp_lorem_name_en %>"],
+        ["jp_lorem_first_name\t產生假日文名字\terb", "<%= jp_lorem_first_name %>"],
+        ["jp_lorem_first_name_en\t產生假日文名字拼音\terb", "<%= jp_lorem_first_name_en %>"],
+        ["jp_lorem_last_name\t產生假日文姓氏\terb", "<%= jp_lorem_last_name %>"],
+        ["jp_lorem_last_name_en\t產生假日文姓氏拼音\terb", "<%= jp_lorem_last_name_en %>"],
+        ["jp_lorem_email\t產生假日文Email\terb", "<%= jp_lorem_email %>"],
+        // layout, partial view
+        ["yield\tinsert content view\tlayout\terb", "<%= yield %>$0"],
+        ["partial\tinclude partial view\terb", "<%= render :partial => \"$1\" %>$0"],
+        // tag helpers
+        ["link_to\tcreate a link\terb", "<%= link_to(\"${1:text}\", \"${2:url}\" ${3:, ${4::options}}) %>$0"],
+        ["mail_to\tcreate a mail link\terb", "<%= mail_to(\"${1:email}\", \"${2:text}\") %>$0"],
+        ["content_tag\tcreate html\terb", "<%= content_tag(${1::tag}, \"${2:text}\" ${3, ${4::options}}) %>$0"],
+        ["tag\tcreate single html tag\terb", "<%= tag(${1:tag})$0 %>"],
+        ["image_tag\tcreate a image\terb", "<%= image_tag(\"${1:src\" ${3, ${4::options}}) %>$0"],
+        ["javascript_tag\tcreate javascript block\terb", "<%= javascript_tag \"${1:script}\" %>$0"],
+        ["javascript_include_tag\tinclude javascript src\terb", "<%= javascript_include_tag \"${1:src}\" %>$0"],
+        ["stylesheet_link_tag\tinclude style src\terb", "<%= stylesheet_link_tag \"${1:src}\" %>$0"],
+        // escape helpers
+        ["html_escape", "<%= html_escape(${1:string}) %>$0"],
+        ["json_escape", "<%= json_escape(${1:string}) %>$0"]
+    ]
+}

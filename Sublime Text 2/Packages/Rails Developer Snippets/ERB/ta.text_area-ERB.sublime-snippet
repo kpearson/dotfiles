@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[<%= ${1:f}.label :${2:attribute} %><br />
+<%= ${1:f}.text_area :${2:attribute} %>
+]]></content>
+	<tabTrigger>ta</tabTrigger>
+	<scope>text.html.ruby</scope>
+	<description>ERB text area</description>
+</snippet>

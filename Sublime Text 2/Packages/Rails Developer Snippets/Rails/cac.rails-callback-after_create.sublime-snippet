@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[after_create :${1:method}]]></content>
+	<tabTrigger>cac</tabTrigger>
+	<scope>source.ruby.rails</scope>
+	<description>Ruby after_create callback</description>
+</snippet>

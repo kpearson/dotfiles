@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[validates :${1:attribute}${2:, presence: true}${3:, uniqueness: { case_sensitive: false \}}${4:, length: {maximum: 50\}}${5:, format: { with: ConstantData::VALID_EMAIL_REGEX \}}${6:, if: :method_name?}
+
+]]></content>
+	<tabTrigger>val</tabTrigger>
+	<scope>source.ruby.rails</scope>
+	<description>Ruby validates</description>
+</snippet>

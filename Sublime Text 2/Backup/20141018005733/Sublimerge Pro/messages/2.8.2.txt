@@ -1,0 +1,25 @@
+Sublimerge has just been upgraded to version 2.8.2
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+1. Fixed commands `Compare to Other Branch...`, `Compare to Named Branch...`
+   These Custom Comparison commands were failing when branch name contained slash.
+
+2. Fixed displaying `CR` or `LF` in ST3</title>
+   Fixed issue in Sublime Text 3 that caused displaying `CR` or `LF` characters in some cases.
+   
+3. Fixed 3-way auto-merge algorithm
+   There was a bug that caused a line, immediately following an empty block, to be gone in 
+   pre-merged output. This happened only when empty block was selected to be a part of 
+   pre-merged output and it was the last change block.
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)

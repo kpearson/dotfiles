@@ -1,0 +1,78 @@
+Sublimerge has just been upgraded to version 2.8.0.4
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!                                                                                         !!
+!!         NOTE: THIS IS A BETA VERSION. PLEASE REPORT ANY BUGS YOU MAY ENCOUNTER.         !!
+!!                                                                                         !!
+!!  Great amount of code have been rewritten to make it possible to implement 3-way diff.  !!
+!!  If you found a bug in any new or previous features, please report it immediately       !!
+!!  to support@sublimerge.com. Thanks! :)                                                  !!
+!!                                                                                         !!
+!!  If you're a licensed user, your license will work with this version automatically.     !!
+!!                                                                                         !!
+!!  For usage instructions or how to switch back to official release, please visit         !!
+!!  http://www.sublimerge.com/beta.html                                                    !!
+!!                                                                                         !!
+!!  DON'T FORGET TO RESTART SUBLIME TEXT AFTER READING THIS MESSAGE :)                     !!
+!!                                                                                         !!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+What's new?
+===========
+
+1. Restored support for comparing dirty views
+   2.7.x series is supporting dirty views, but this was removed in 2.8.x during code
+   refactoring. This release restores this feature.
+
+2. Fixed default settings for `dir_compare_ignore_files`
+   Since this setting is case-sensitive, `thumbs.db` has been renamed to `Thumbs.db`.
+
+3. Added command `Show Unsaved Changes`
+   This command appears if view is saved to disk (has file name attached) and is in dirty state.
+   It is accessible from main Sublimerge menu (ctrl + alt + d), view's tab context menu, view's
+   context menu.
+
+4. Fixed `Compare Selected Files` side bar command
+   During implementation `Compare Selected Directories` the command for files stopped working.
+
+5. Temporary workaround for `GitGutter`, `VcsGutter` and `Modific` plugins conflict.
+   In some cases these plugins could not be paused in diff view correctly. It was resulting
+   in displaying their own gutter icons when a versioned file was compared. The workaround is
+   to remove their icons from the gutter when comparison is done.
+
+6. Renamed settings `hide_*` to `toggle_*`
+   The new prefix describes better how these settings work. If you have them in your
+   `Settings - User` settings, please rename them. Otherwise they will use defaults.
+
+   This is because, unfortunately, it is impossible to programmatically get initial state
+   of the elements they change, so i.e. when Side Bar was hidden and `hide_sidebar` was `true`,
+   it caused Side Bar to show instead to leave hidden.
+
+7. Added setting `toggle_minimap`
+   If you normally use Mini Map, but don't want it to be displayed in diff view, you can
+   switch this to `true` to hide it.
+
+8. Added `full_screen` parameter for `sublimerge_diff_views` command.
+   Now when running Sublimerge from command line, you may specify whether to run the window
+   in full screen mode. The following values are accepted:
+
+   - false - run in normal window (the default)
+   - true - run in full screen mode
+   - null - apply default value from settings (`full_screen`)
+
+   Command example:
+
+   subl -n --wait "<LEFT>" "<RIGHT>" --command "sublimerge_diff_views {\"full_screen\": true}"
+
+ 9. Added `Modific` plugin to the list of paused in diff view
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)

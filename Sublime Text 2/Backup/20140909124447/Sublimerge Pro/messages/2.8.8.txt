@@ -1,0 +1,30 @@
+Sublimerge has just been upgraded to version 2.8.8
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+Bug Fixes:
+  - Fixed occasional exception when a file was opening.
+
+Enhancements:
+  - Added support for SublimeGerrit plugin. Doesn't allow to run any Sublimerge
+    command when the view is owned by SublimeGerrit.
+
+    If you're using Gerrit Code Review, you should definitely check this out:
+    http://www.sublimegerrit.com/ :-)
+
+  - Added possibility for other plugins to decide whether Sublimerge commands
+    should be active for given view.
+
+  - Added mechanism to ensure that after diff view is closed, the previously focused
+    view will get the focus back.
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)

@@ -1,0 +1,23 @@
+Sublimerge has just been upgraded to version 2.10.1
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+Bug fixes:
+  - Fixed bad icons in Summary Panel
+    In swapped diff view the icons were displayed in wrong order.
+
+  - ST2: Fix for hanging ST
+    There was a bug that was causing ST to hang while dragging selected text.
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)
+
+http://www.sublimerge.com/

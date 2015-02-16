@@ -1,0 +1,19 @@
+Sublimerge has just been upgraded to version 2.7.2. 
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+THIS IS A FIX RELEASE FOR 2.7.1
+
+1. Fix for not showing "Compare to Clipboard" command
+   In some cases the command was not displayed when it should be.
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)

@@ -1,0 +1,161 @@
+" ________________Vundle________________
+set nocompatible                           " be iMproved, required
+  filetype off                               " Vundle required
+
+" set the runtime path to include Vundle and initialize
+  set rtp+=~/.vim/bundle/Vundle.vim
+  call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+" call vundle#begin('~/some/path/here')
+
+" ___Vundle managed plugins___
+  Plugin 'gmarik/Vundle.vim'                 " let Vundle manage Vundle, required
+  Plugin 'tpope/vim-fugitive'                " git integration
+  Plugin 'tpope/vim-surround'                " surround with tag
+  Plugin 'tpope/vim-rails'                   " Rails
+  Plugin 'tpope/vim-bundler'                 " Bundler
+  Plugin 'tpope/vim-rake'                    " Rake
+  Plugin 'tpope/vim-repeat'                  " <.> Reapeat
+  Plugin 'tpope/vim-sleuth'                  " Indent
+  Plugin 'tpope/vim-liquid'                  " shopify liquid templating
+  Plugin 'christoomey/vim-tmux-navigator'    " navagate between tmux and vim
+  Plugin 'christoomey/vim-tmux-runner'       " send commands from vim to tmux
+  Plugin 'bling/vim-airline'                 " status/tabline
+  Plugin 'Shougo/neocomplcache.vim'
+  Plugin 'vim-rspec'                         " Rspec
+  Plugin 'tslime.vim'
+  Plugin 'junegunn/fzf'                      " Fuzzy finder
+  Plugin 'scrooloose/nerdtree'               " NerdTree
+  Plugin 'scrooloose/nerdcommenter'          " comment toggle
+  Plugin 'flazz/vim-colorschemes'            " pritty colors
+  Plugin 'rking/ag.vim'                      " the silver searcher
+  Plugin 'airblade/vim-gitgutter'            " Git Gutter
+  Plugin 'Valloric/YouCompleteMe'            " Completion
+
+" All Plugins must be added above this line
+  call vundle#end()                          " Vundle required
+  filetype plugin indent on                  " Vundle required
+" To ignore plugin indent changes, instead use:
+  filetype plugin on
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" _____________ END Vundle _______________
+" Put non-Plugin stuff after this line
+
+" ___________ Tmux Integration ___________
+" resize panes to respond to Tmux
+  autocmd VimResized * :wincmd =
+
+" zoom vim pane, <C-w>= to re-balance
+  "nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+  "nnoremap <leader>= :wincmd =<cr>
+
+" auto resize panes
+  set winwidth=84
+  set winheight=5
+  set winminheight=5
+  set winheight=999
+
+" mapping leader key
+  let mapleader = "\<Space>"
+  nnoremap <Leader>w :w<CR>
+
+  set showcmd                                  " Show the current command context in the lower right
+
+"  ________ Search Configuration _________
+  set incsearch                                " Highlight while searching
+  set hlsearch                                 " Persistent search highlight
+  nmap <leader>h :nohlsearch<cr>               " Turn off search highlight
+  set ignorecase                               " Case insensitive pattern matching
+  set smartcase                                " Overide ignorecase if pattern contains upcase
+
+" __________ Color and Syntax ____________
+" the falloing block doesent semto be working
+  highlight clear SignColumn
+  highlight VertSplit    ctermbg=236
+  highlight ColorColumn  ctermbg=237
+  highlight LineNr       ctermbg=236 ctermfg=240
+  highlight CursorLineNr ctermbg=236 ctermfg=240
+  highlight CursorLine   ctermbg=236
+  highlight StatusLineNC ctermbg=238 ctermfg=0
+  highlight StatusLine   ctermbg=240 ctermfg=12
+  highlight IncSearch    ctermbg=3   ctermfg=1
+  highlight Search       ctermbg=1   ctermfg=3
+  highlight Visual       ctermbg=3   ctermfg=0
+  highlight Pmenu        ctermbg=240 ctermfg=12
+  highlight PmenuSel     ctermbg=3   ctermfg=1
+  highlight SpellBad     ctermbg=0   ctermfg=1
+
+  let &t_Co=256                             " set vim to support 256 color terminal
+" syntax on
+  syntax enable
+  colorscheme tomorrow-Night                " Color Theme
+" _______ Strip Trailling Whitespace _______
+  function! <SID>StripTrailingWhitespaces()
+" Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+" Do the business:
+    %s/\s\+$//e
+" Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+  endfunction
+
+" _____________ Nerd Tree ________________
+  autocmd vimenter * NERDTree                " Set NerdTree to open by default
+" set NredTree to close when last pane closes
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+  map <C-n> :NERDTreeToggle<CR>              " map NerdTree Toggle
+  let g:NERDTreeWinSize = 30
+
+" _____________ Key Mapping ______________
+" move between panes with CTRL and direction keys
+  map <C-j> <C-W>j
+  map <C-k> <C-W>k
+  map <C-h> <C-W>h
+  map <C-l> <C-W>l
+
+  imap jk <Esc>
+  imap kj <Esc>
+
+" _____________ White Space _______________
+" ___ Highlight trailing spaces in red ____
+  highlight ExtraWhitespace ctermbg=1 guibg=green
+  match ExtraWhitespace /\s\+$/
+  autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+  autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+  autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+  autocmd BufWinLeave * call clearmatches()
+
+  autocmd BufWritePre * :%s/\s\+$//e         " revove all trailing white space on save or :w
+
+" ____________ Tab as 2 spaces ___________
+  set tabstop=2 shiftwidth=2
+  set expandtab                              " spaces as tabs
+
+" ___________ Cursor & Line Numbers ________
+  set cursorline                             " highlights line cursor in on
+  set number                                 " provides absolute numbers in the left gutter
+  set relativenumber                         " overides number except on current line
+  set completefunc=syntaxcomplete#Complete   " i_CTRL-X_CTRL-U
+
+" __________ Disable Swap files ___________
+  set nobackup                               " no backup files
+  set nowritebackup                          " don't backup file while editing
+  set noswapfile                             " don't create swapfiles for new
+" ___ buffers ___
+" set updatecount=0                           " Don't try to write swapfiles
+" after some number of updates
+" set backupskip=/tmp/*,/private/tmp/*"       " can edit crontab files
+
+  augroup mkd
+    autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
+  augroup END

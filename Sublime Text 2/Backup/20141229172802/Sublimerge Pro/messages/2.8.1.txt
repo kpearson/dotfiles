@@ -1,0 +1,132 @@
+Sublimerge has just been upgraded to version 2.8.1
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+1. 3-way diff for conflicts resolution
+   Sublimerge can be used as a merge tool for Git/SVN/Mercurial and others. Please visit
+   http://www.sublimerge.com/usage.html for more information about VCS-integration.
+
+2. Renamed commands
+   All occurences of 'Difference' have been replaced with 'Change', i.e. 'Go to Previous Change'
+
+3. New commands:
+   - `Go to Next Conflict`
+   - `Go to Previous Conflict`
+
+4. Directories comparison
+   This version introduces directories comparison where you can compare two selected
+   directories. A special view (something like a two-pane commander) will show up.
+   You can navigate through directories, diff and merge text files, copy different
+   or remove/copy files.
+
+   To use this feature:
+
+   1. Select (exactly) two directories in Side Bar
+   2. From context menu select: Sublimerge -> Compare Selected Directories
+
+   Default key bindings works for navigation in this view:
+
+   - [ctrl]+[alt]+[d] - enter subdirectory (if differs) or diff selected text file
+   - [ctrl]+[alt]+[+] - select next file/directory
+   - [ctrl]+[alt]+[-] - select previous file/directory or navigate one level up
+   - [ctrl]+[alt]+[.] - apply selected change from left to right
+   - [ctrl]+[alt]+[/]+[.] - apply all changes from left to right
+   - [ctrl]+[alt]+[,] - apply selected change from right to left
+   - [ctrl]+[alt]+[/]+[,] - apply all changes from right to left
+
+   Please note that directories are marked as different if they (or their any descendant)
+   contains a change.
+
+5. Performance improvements
+   Diff blocks are now displayed a little bit faster.
+
+6. Improved scroll synchronization
+   Now the diff view's panels are synchronized almost immediately. However, depending on your
+   computer, they may lag sometimes.
+
+7. Handling multiple instances
+   Sublimerge can now run many parallel instances of diff windows.
+
+8. Added command `Show Unsaved Changes`
+   This command appears if view is saved to disk (has file name attached) and is in dirty state.
+   It is accessible from main Sublimerge menu (ctrl + alt + d), view's tab context menu, view's
+   context menu.
+
+9. Renamed settings `hide_*` to `toggle_*`
+   The new prefix describes better how these settings work. If you have them in your
+   `Settings - User` settings, please rename them. Otherwise they will use defaults.
+
+   This is because, unfortunately, it is impossible to programmatically get initial state
+   of the elements they change, so i.e. when Side Bar was hidden and `hide_sidebar` was `true`,
+   it caused Side Bar to show instead to leave hidden.
+
+10. New settings:
+   - `diff_block_conflict`         - color used to draw conflicting regions
+
+   - `three_way_navigate_all`      - defines how to navigate through changes in 3-way diff view. When
+                                     set to `false` navigation is performed on conflicts only (this is
+                                     the default). It can be changed for current diff session from
+                                     Context menu too.
+
+   - `three_way_layout`            - defines layout type for three-way diff view
+
+   - `three_way_merged_height`     - percentage height of merged pane when `three_way_layout` = 1
+
+   - `go_to_next_after_merge`      - defines whether should view automatically go to the next change
+                                     after merging previous one.
+
+   - `git_global_args`             - additional arguments used for all git commands except `git log`
+                                     and `git show`.
+
+   - `svn_global_args`             - the same as above, but for `svn` command
+
+   - `hg_global_args`              - the same as above, but for `hg` command
+
+   - `scroll_sync_interval`        - previously `scroll_sync_defer`. Defines how often, in milliseconds,
+                                     diff panels should be synchronized. Defaults to 1, but change it to
+                                     a greater value if you experience performance/stability problems.
+
+   - `toggle_minimap`              - if you normally use Mini Map, but don't want it to be displayed in
+                                     diff view, you can switch this to `true` to hide it.
+
+   - `vcs_discovery_order`         - defines the order in which version control systems should be discovered
+                                     for VCS-related commands. This is helpful when your project is versioned
+                                     under multiple VCS setup. Set your primary on the first position so that
+                                     it will be always used no matter if another one is found.
+
+   - `dir_compare_ignore_dirs`     - List of directories' names which should be ignored while doing comparison.
+                                     They will be also ignored while copying.
+
+   - `dir_compare_ignore_files`    - List of files' names which should be ignored while doing comparison.
+                                     They will be also ignored while copying.
+
+   - `dir_merge_remove_unmatched`  - Normally Sublimerge will copy all changed or added files from source to
+                                     target directory. When this setting is true, it will also delete all
+                                     files that exists in target, but not in source. Use with caution!
+
+   - `dir_compare_date_format`     - Date and time format to be used to display last modification date of
+                                     file or directory.
+
+   - `dir_compare_navigate_all`    - Whether to navigate through all items in directories diff view. If set to
+                                     false, navigation is possible on modified items only.
+
+
+11. New Custom Comparisons variables:
+   - {git} - shorthand for `{config:git_executable_path} {config:git_global_args}`
+   - {svn} - shorthand for `{config:svn_executable_path} {config:svn_global_args}`
+   - {hg} - shorthand for `{config:hg_executable_path} {config:hg_global_args}`
+
+12. Custom Comparisons: ability to run more steps after `compare` step.
+   Now the `compare` step is not the final one. You can now define more steps which will be executed after
+   the diff view is closed.
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)

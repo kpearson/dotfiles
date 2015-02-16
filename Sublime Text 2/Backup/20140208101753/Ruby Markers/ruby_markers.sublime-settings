@@ -1,0 +1,19 @@
+{
+    // Specifies the location of the xmpfilter executable
+    // posix for Linux & OSX; win for windows
+    "xmpfilter_bin_posix": "xmpfilter",
+    "xmpfilter_bin_win": "xmpfilter.bat",
+
+    // Set to true to use rbenv-managed Ruby version if present (Linux & OSX only)
+    "check_for_rbenv": false,
+
+    // Specifies the default rbenv location
+    // For OSX Homebrew installations this should be /usr/local/var/rbenv
+    "rbenv_path": "~/.rbenv/bin/rbenv",
+    
+    // Set to true to use rvm-managed Ruby version if present (Linux & OSX only)
+    "check_for_rvm": false,
+
+    // Set to true to strip stdout comments (# >> ) before updating the buffer
+    "strip_stdout": false
+}

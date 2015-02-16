@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[class ${1:User} < ActiveRecord::Base
+
+	$2
+
+	private
+		$3
+end
+]]></content>
+	<tabTrigger>armod</tabTrigger>
+	<scope>source.ruby.rails</scope>
+	<description>Rails Active Record Model</description>
+</snippet>

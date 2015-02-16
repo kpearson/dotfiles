@@ -1,0 +1,5 @@
+ERBAutocomplete 1.1
+-------------
+
+Enhancements:
+- Support ST2

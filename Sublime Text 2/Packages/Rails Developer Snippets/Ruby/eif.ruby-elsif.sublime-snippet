@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[elsif ${1:true}]]></content>
+	<tabTrigger>eif</tabTrigger>
+	<scope>source.ruby</scope>
+	<description>Ruby elsif</description>
+</snippet>

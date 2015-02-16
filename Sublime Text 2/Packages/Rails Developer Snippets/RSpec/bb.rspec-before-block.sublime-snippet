@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[before do
+	$1
+end
+]]></content>
+	<tabTrigger>bb</tabTrigger>
+	<string>source.ruby.rspec</string>
+	<description>RSpec Before Block</description>
+</snippet>

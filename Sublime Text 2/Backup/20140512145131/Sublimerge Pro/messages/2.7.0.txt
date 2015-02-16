@@ -1,0 +1,49 @@
+Sublimerge has just been upgraded to version 2.7.0. 
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+1. Added "Compare to Clipboard" command
+   Now it is possible to compare a view to clipboard contents. This command appears in the
+   following menus:
+   - After pressing [ctrl]+[alt]+[d]
+   - Command Palette
+   - Tab context menu
+   - Editor context menu
+
+2. Sorted commands
+   Now all commands appearing in menus are presented in sorted order
+
+3. Added new "custom_comparisons_in_separate_menu" setting
+   This setting controls how to display custom comparisons list after pressing [ctrl]+[alt]+[d].
+   When set to false (default), all available custom comparisons are displayed within main menu.
+   When set to true, they are separated and displayed after selecting "Custom Comparison..."
+   command.
+
+4. Added "Buy a License" command
+   For unregistered users, the command appears in main Quick Panel ([ctrl]+[alt]+[d])
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)
+
+
+Solving most common problems
+============================
+
+Sublimerge doesn't work. Console reports: "ImportError: No module named 'sublimerge'"
+
+If you installed Sublimerge using Package Control, please make sure that you use its final version. 
+Alpha does not install Sublimerge properly. You can also try Manual Installation (please view 
+sublimerge.com/installation.html for more details)
+
+
+More information
+================
+
+For more information, troubleshooting, customizing settings and more, please visit www.sublimerge.com

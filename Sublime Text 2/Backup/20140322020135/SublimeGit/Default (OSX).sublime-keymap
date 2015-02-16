@@ -1,0 +1,26 @@
+[
+    /*** GIT STATUS ***/
+
+    // Refresh
+    { "keys": ["super+r"], "command": "git_status_refresh",
+        "context": [{ "key": "selector", "operator": "equal", "operand": "text.git-status" }]
+    },
+
+    // overwrite some stuff
+    { "keys": ["super+s"], "command": "noop", "context": [{ "key": "selector", "operator": "equal", "operand": "text.git-status"}]},
+    { "keys": ["super+z"], "command": "noop", "context": [{ "key": "selector", "operator": "equal", "operand": "text.git-status"}]},
+    { "keys": ["super+y"], "command": "noop", "context": [{ "key": "selector", "operator": "equal", "operand": "text.git-status"}]},
+
+    /*** END GIT STATUS ***/
+
+    /** GIT COMMIT **/
+
+    // Intercept save
+    { "keys": ["super+s"], "command": "git_commit_save",
+        "context": [
+            { "key": "selector", "operator": "equal", "operand": "text.git-commit"}
+        ]
+    }
+
+    /** END GIT COMMIT **/
+]

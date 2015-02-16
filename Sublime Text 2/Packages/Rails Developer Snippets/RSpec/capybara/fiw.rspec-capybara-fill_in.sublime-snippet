@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[fill_in "${1:Field}",	with: "${2:sometext}" ]]></content>
+	<tabTrigger>fiw</tabTrigger>
+	<string>source.ruby.rspec</string>
+	<description>RSpec Capybara fill_in with</description>
+</snippet>

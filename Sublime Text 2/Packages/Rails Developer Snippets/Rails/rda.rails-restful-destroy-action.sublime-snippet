@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[def destroy
+	@${1:object} = ${2:Object}.find(${3:params[:id]})
+	if @${1:object}.destroy
+		flash[:success] = '${2:Object} was successfully deleted.'
+		redirect_to ${1:object}s_url
+	else
+		flash[:error] = 'Something went wrong'
+		redirect_to ${1:object}s_url
+	end
+end
+]]></content>
+	<tabTrigger>rda</tabTrigger>
+	<scope>source.ruby.rails</scope>
+	<description>Rails Restful Destroy Action</description>
+</snippet>

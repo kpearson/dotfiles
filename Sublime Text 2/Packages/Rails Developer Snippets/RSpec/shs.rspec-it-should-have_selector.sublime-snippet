@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[it { ${1:should} have_selector('${2:selector}'${3:, text: 'text'}) } ]]></content>
+	<tabTrigger>shs</tabTrigger>
+	<string>source.ruby.rspec</string>
+	<description>RSpec Should Have Selector</description>
+</snippet>

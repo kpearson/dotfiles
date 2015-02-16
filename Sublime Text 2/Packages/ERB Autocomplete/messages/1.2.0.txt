@@ -1,0 +1,6 @@
+ERB Autocomplete 1.2.0
+-------------
+
+Enhancements:
+- Easy to created layout file.
+- Manage view and layout mapping.

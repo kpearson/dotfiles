@@ -1,0 +1,58 @@
+Sublimerge has just been upgraded to version 2.7.5. 
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+1. Performance improvements
+   More threads under the hood! Now all built-in VCS commands use separate thread to run 
+   Git/Mercurial/SVN commands in background. Thread status is also visible to show you that
+   it is working.
+
+2. Added setting `shell_fallback_encoding`
+   When you experience problems with non-standard ascii characters encoding while trying to
+   use VCS commands, you may need to use this setting. Sublimerge will automatically tell you
+   when you should change it.
+
+3. Diff view panels order changed
+   Newer changes are now presented on the right-hand side. This is more natural and compatible
+   with other diff tools. Old behavior may be restored by setting `start_swapped = true` in 
+   settings.
+
+4. Fixed merge left/right commands in swapped view.
+
+5. Fixed pausing conflicting plugins
+   Sometimes, when Sublimerge was in diff view, conflicting plugins were not paused. For
+   example GitGutter/VcsGutter could sometimes draw their gutter icons when they should not.
+   * Conflicting plugins are only paused in diff view *
+
+6. Display Snapshot title in tab
+   When comparing to Snapshot, its title is displayed on the tab in diff view.
+
+7. Display line numbers in tab
+   When comparing selections, selected line numbers are displayed on the tabs in diff view.
+
+8. New Custom Comparisons features
+   The `source` directive now accepts additonal optional arguments:
+       - <boolean> `alpha` - when set to true, items are sorted alphabetically.
+   	 - <boolean> `reverse` - when set to true, items are sorted in reversed order.
+   	 - <none> `none` - retuns only items which value is not listed in it.
+   	 - <only> `only` - returns only items which value is listed in it.
+
+   See "Custom Comparisons - Default" file for syntax.
+
+9. Changes in "Compare to View..." command
+   [user request feature] When there is only one comparable file for current view, the command 
+   changes its name to "Compare to <file name>". When selected, automatically runs diff without 
+   displaying one-item list.
+
+10. Better use of temporary files under Windows
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)

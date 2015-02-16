@@ -1,0 +1,5 @@
+ERBAutocomplete 1.0.5
+-------------
+
+Enhancements:
+- Add detect '<' word to auto adjust syntax.

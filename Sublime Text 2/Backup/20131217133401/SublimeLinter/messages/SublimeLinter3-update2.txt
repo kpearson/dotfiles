@@ -1,0 +1,27 @@
+=====================
+SublimeLinter for ST3
+Fundraising update
+October 31, 2013
+=====================
+
+Through October 30, we have raised $2885 (after fees) from 226 donations. Thank you for your support!
+Development has started, and I’m very excited about this new version! But there is still a lot of work
+to do, and I’m getting cool new ideas every day.
+
+So if you are one of the thousands of happy SublimeLinter users who has not donated yet, it isn’t too late
+to contribute. Please consider making a small donation to fund ongoing development and to compensate
+Ryan Hileman for the great work on which SublimeLinter3 is based.
+
+Open source software is not free! It is we the developers who usually end up paying for it.
+To donate and find out more about what you can expect from SublimeLinter3, go here:
+
+https://github.com/SublimeLinter/SublimeLinter3#sublimelinter3
+
+If you are interested in helping with development, please leave a message here:
+
+https://github.com/SublimeLinter/SublimeLinter3/issues/3
+
+Thanks again for your support,
+
+- Aparajita Fishman
+  SublimeLinter maintainer

@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[<%= form_for ${1:@object} do |${2:f}| %>
+	<%= render 'layouts/error_messages', f: f.object %>
+		
+	<!-- form_for @object, html: { multipart: true }, do |f| -->
+	<!-- form_for @object, html: { class: "classname" }, do |f| -->
+
+	$3
+<% end %>
+  ]]></content>
+	<tabTrigger>fo</tabTrigger>
+	<scope>text.html.ruby</scope>
+	<description>form_for</description>
+</snippet>

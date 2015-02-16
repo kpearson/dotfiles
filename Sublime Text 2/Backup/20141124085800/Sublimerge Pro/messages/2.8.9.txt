@@ -1,0 +1,27 @@
+Sublimerge has just been upgraded to version 2.8.9
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+Bug Fixes:
+  - Fixed bug with displaying 'No Command Available' menu entry in diff view.
+
+Enhancements:
+  - New setting `diff_block_selected_draw_filled` to control how to draw selected blocks.
+    Defaults to `true`.
+
+  - New setting `intraline_analysis_full_text` to control how to search for intraline changes.
+    Defaults to `false`.
+
+  - Check if file is writable
+    If compared file is not writable on the disk, the panel is opened in read-only mode.
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)

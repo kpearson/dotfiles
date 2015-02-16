@@ -1,0 +1,37 @@
+Sublimerge has just been upgraded to version 2.10.0
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+Bug fixes:
+  - Fixed command: Go To Next Change
+    When 'auto_select_first' setting was on, there was a bug that caused this command to work
+    only after second run for the first time.
+
+  - ST3: fixed "NameError: global name 'unicode' is not defined"
+    There was a bug in ST3 that caused [ctrl] + [alt] + [d] command to crash when user-defined
+    custom comparison was using the "platform" directive.
+
+
+Enhancements:
+  - Vintageous support
+
+
+New features:
+  - Summary Panel
+    Now the selected change (or active line) is displayed in the bottom panel of 2-way or 3-way
+    diff. By default it is turned on. You can turn it off via 'summary_panel' setting or diff
+    context menu. Notice: This feature may slow down Sublimerge under ST2.
+
+  - New command: Compare Foremost Views
+    Command to compare active views of two Focus Groups.
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)

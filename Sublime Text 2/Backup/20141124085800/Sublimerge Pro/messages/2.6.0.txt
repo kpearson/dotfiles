@@ -1,0 +1,53 @@
+Sublimerge has just been upgraded to version 2.6.0. 
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+1. Mercurial support
+   Just like for Git and SVN, the following commands are now available for files versioned under 
+   Mercurial:
+
+   - Compare To Revision...
+   - Compare Revision To Revision...
+   - Show Changes Introduced in Revision...
+
+   Additionally the following Custom Comparisons are defined (you can add your own too):
+
+   - Show Uncommited Changes...
+   - Compare to Named Branch...
+
+   New settings for Mercurial:
+
+   - hg_executable_path
+   - hg_log_args
+   - hg_cat_args
+
+2. Better error reporting from CLI commands
+   Now, for informational purposes, when some CLI command returns with exit code different than 0, 
+   then user gets a message alert with command's exit code and output.
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)
+
+
+Solving most common problems
+============================
+
+Sublimerge doesn't work. Console reports: "ImportError: No module named 'sublimerge'"
+
+If you installed Sublimerge using Package Control, please make sure that you use its final version. 
+Alpha does not install Sublimerge properly. You can also try Manual Installation (please view 
+sublimerge.com/installation.html for more details)
+
+
+More information
+================
+
+For more information, troubleshooting, customizing settings and more, please visit www.sublimerge.com

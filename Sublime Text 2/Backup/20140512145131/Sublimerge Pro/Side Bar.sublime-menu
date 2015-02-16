@@ -1,0 +1,19 @@
+[
+    { "caption": "-" },
+    {
+        "caption": "Sublimerge",
+        "children": [{
+            "command": "sublimerge_compare_selected_files",
+            "args": {"files": [], "paths": []}
+        }, {
+            "command": "sublimerge_compare_to_revision",
+            "args": {"files": [], "paths": []}
+        }, {
+            "command": "sublimerge_compare_revision_to_revision",
+            "args": {"files": [], "paths": []}
+        }, {
+            "command": "sublimerge_show_changes_in_revision",
+            "args": {"files": [], "paths": []}
+        }]
+    }
+]

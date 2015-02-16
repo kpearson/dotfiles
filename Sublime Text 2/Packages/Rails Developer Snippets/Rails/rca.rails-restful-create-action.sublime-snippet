@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[def create
+	@${1:object} = ${2:Object}.new(params[:${1:object}])
+	if @${1:object}.save
+	  flash[:success] = "${2:Object} successfully created"
+	  redirect_to @${1:object}
+	else
+	  flash[:error] = "Something went wrong"
+	  render 'new'
+	end
+end
+]]></content>
+	<tabTrigger>rca</tabTrigger>
+	<scope>source.ruby.rails</scope>
+	<description>Rails Restful Create Action</description>
+</snippet>

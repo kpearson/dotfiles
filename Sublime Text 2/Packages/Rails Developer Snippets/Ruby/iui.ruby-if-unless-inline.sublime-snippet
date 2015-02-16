@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[${1:do_something} ${2:type_if_or_unless} ${3:condition}]]></content>
+	<tabTrigger>iui</tabTrigger>
+	<scope>source.ruby</scope>
+	<description>Ruby if unless inline</description>
+</snippet>

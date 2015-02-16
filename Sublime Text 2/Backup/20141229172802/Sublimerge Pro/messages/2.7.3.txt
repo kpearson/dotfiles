@@ -1,0 +1,98 @@
+Sublimerge has just been upgraded to version 2.7.3. 
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+1. Fix for not working Mercurial features on some systems
+
+   Depending on Mercurial configuration, commands "Compare to Revision..." and "Compare Revision
+   to Revision..." could not work properly when default log output style was set to different
+   value than "default".
+
+   Since this version, log output style is forced to 'default' by additional '--style default'
+   hg_log_args setting.
+
+
+2. Changed ctrl+alt+enter binding to ctrl+alt+i
+
+   It was conflicting with default Sublime's key binding.
+
+
+3. '(read-only)' tab title suffix
+
+   Previously it worked only for built-in VCS-related commands. Now it is appended to all tabs
+   in diff view that holds read-only files.
+
+
+4. Informational tabs' titles
+
+   When using VCS-related commands (built-in Custom Comparisons as well), tabs now display more
+   detailed information about compared files.
+
+
+5. Using real temporary files
+   
+   VCS-related commands now use temporary files that are stored in your system's temporary
+   directory.
+
+
+6. Custom Comparisons enhancements
+
+   New directives:
+
+   `log`              - prints debugging information into Sublime's console
+
+   `define`           - allows to define variables to use them later. All default custom comparisons
+                        has been rewritten to use new directive.
+              
+   `history_panel`    - displays Quick Panel with list of commits for given file. When commit is
+                        selected, then its number is populated to a variable for further use.
+
+   `sublime_command`  - allows to run built-in (or plugin-provided) command, optionally with list
+                        of arguments.
+
+
+    Comparison properties:
+
+    `requires`        - now declaration can be skipped. When skipped defaults to null, what means
+                        that does not require any of VCS.
+
+    `platform`        - property which defines on which platform given comparison can be run. May be 
+                        a string with the following values: 'osx', 'windows', 'linux', null or an array
+                        containing multiple values, i.e. ['osx', 'linux']. When skipped defaults to 
+                        null, what means that can be run on any platform.
+
+
+    Directives changes:
+
+    `left`, `right`   - optional argument `title` added. Allows to change tab title for compared files.
+                        (see `Custom Comparisons - Default` for example usage)
+
+
+    Variables:
+
+    {sublimerge:temp_dir} - new variable, pointing to system's temporary directory path.
+
+
+    Variables modifiers:
+
+    Now you can pass modifiers to variables. The following ones are defined: `basename`, `dirname`, `ext`.
+    Usage:
+
+    {variable|basename} - if `variable` contains path, will return only basename
+    {variable|dirname} - if `variable` contains path, will return only directory path
+    {variable|ext} - if `variable` contains path, will return only file's extension
+
+
+    For more information on how to use new Custom Comparisons features, please take a look at working
+    examples in `Preferences -> Package Settings -> Sublimerge -> Custom Comparisons - User`
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)

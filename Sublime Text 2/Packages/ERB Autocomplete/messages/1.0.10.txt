@@ -1,0 +1,5 @@
+ERBAutocomplete 1.0.10
+-------------
+
+Enhancements:
+- Fix `custom tag` detect special key will delete too many words.

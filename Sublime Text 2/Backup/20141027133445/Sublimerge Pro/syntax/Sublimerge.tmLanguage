@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>name</key>
+    <string>Sublimerge</string>
+    <key>scopeName</key>
+    <string>text.sublimerge</string>
+    <key>uuid</key>
+    <string>91837ad1-9817-4a56-a837-a9182da8as1f</string>
+    <key>fileTypes</key>
+    <array>
+        <string>sublimerge</string>
+    </array>
+    <key>patterns</key>
+    <array>
+      <dict>
+        <key>match</key>
+        <string>^.*Last\sModified\s*$</string>
+        <key>captures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>constant.other</string>
+          </dict>
+        </dict>
+      </dict>
+
+      <dict>
+        <key>match</key>
+        <string>^((( . )([^/\\]+[/\\]))|(( . )(.*)))\s+(\d+)  (.*)$</string>
+        <key>captures</key>
+        <dict>
+
+            <key>2</key> <!-- directory icon -->
+            <dict>
+                <key>name</key>
+                <string>support.type.directory-icon.sublimerge</string>
+            </dict>
+
+            <key>4</key> <!-- dir name -->
+            <dict>
+                <key>name</key>
+                <string>support.type.directory-name.sublimerge</string>
+            </dict>
+
+            <key>5</key> <!-- file name -->
+            <dict>
+                <key>name</key>
+                <string></string>
+            </dict>
+
+            <key>6</key> <!-- file icon -->
+            <dict>
+                <key>name</key>
+                <string>entity.other.file-icon.sublimerge</string>
+            </dict>
+
+            <key>7</key> <!-- file name -->
+            <dict>
+                <key>name</key>
+                <string>entity.other.file-name.sublimerge</string>
+            </dict>
+
+            <key>8</key> <!-- file size -->
+            <dict>
+                <key>name</key>
+                <string>comment.line.leaf-size.sublimerge</string>
+            </dict>
+
+            <key>9</key> <!-- file date -->
+            <dict>
+                <key>name</key>
+                <string>comment.line.leaf-date.sublimerge</string>
+            </dict>
+        </dict>
+      </dict>
+    </array>
+</dict>
+</plist>

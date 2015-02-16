@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[it { ${1:should} validate_presence_of(:${2:attribute}) }]]></content>
+	<tabTrigger>vpo</tabTrigger>
+	<string>source.ruby.rspec</string>
+	<description>RSpec "shoulda" validate_presence_of</description>
+</snippet>

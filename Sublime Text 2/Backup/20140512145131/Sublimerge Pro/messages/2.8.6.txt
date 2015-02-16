@@ -1,0 +1,33 @@
+Sublimerge has just been upgraded to version 2.8.6
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+Bug Fixes:
+  - Fix for occasional bug that could break directories comparison view.
+
+Enhancements:
+  - Ability to run 3-way diff from Custom Comparison.
+    Added missing support for 3-way diff in Custom Comparison's `compare` directive.
+
+  - Added error reporter
+    Some users still experience loading issues. The most common reason is that they
+    use old Package Control. This enhancement introduces error reporter for loading
+    process which instructs how to resolve this problem. If the problem persists,
+    user can send an error report just by clicking one button.
+
+  - New setting: `ignore_case`
+    By default set to false. Defines how to deal with case differences. When set to
+    `true` (the default), diff algorithm becomes case-insensitive. Can be changed in
+    diff view from context menu. Defaults to `false`.
+
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)

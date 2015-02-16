@@ -1,0 +1,47 @@
+Sublimerge has just been upgraded to version 2.5.0. 
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+1. Fixed bug with snapshots_on_load = true
+   There was a bug that prevented creating automatic snapshots when file was opened.
+
+2. Added new setting: diff_block_draw_outlined
+   When set to false, difference blocks are drawn filled rather than outlined.
+
+   Note: when you change this setting, you may want to change also diff_block_intraline
+   to a value other than in diff_block_changed. Otherwise intraline changes will not be
+   visible.
+
+3. Added new setting: scroll_sync_defer
+   When set to 0, scroll is synchronized after the scrolled view stops scrolling. When 
+   set to greater value defines how often (in milliseconds) scroll should be synchronized.
+
+4. Added --no-decorate git log option to defaults.
+   This should fix some users' issues with comparing working copy to revision from Git.
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)
+
+
+Solving most common problems
+============================
+
+Sublimerge doesn't work. Console reports: "ImportError: No module named 'sublimerge'"
+
+If you installed Sublimerge using Package Control, please make sure that you use its final version. 
+Alpha does not install Sublimerge properly. You can also try Manual Installation (please view 
+sublimerge.com/installation.html for more details)
+
+
+More information
+================
+
+For more information, troubleshooting, customizing settings and more, please visit www.sublimerge.com

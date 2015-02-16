@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[context "${1:a context}" do
+	$2
+end
+]]></content>
+	<tabTrigger>cont</tabTrigger>
+	<string>source.ruby.rspec</string>
+	<description>RSpec Context Block</description>
+</snippet>

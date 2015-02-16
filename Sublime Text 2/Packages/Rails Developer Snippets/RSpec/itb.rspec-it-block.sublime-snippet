@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[it "${1:description}" do
+	$2
+end
+]]></content>
+	<tabTrigger>itb</tabTrigger>
+	<string>source.ruby.rspec</string>
+	<description>RSpec It Block</description>
+</snippet>

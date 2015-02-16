@@ -1,0 +1,1 @@
+{"description": "Syntax detector for Sublime Text", "url": "https://github.com/facelessuser/ApplySyntax", "platforms": ["*"], "version": "1.2.0", "sublime_text": "<3000", "dependencies": []}

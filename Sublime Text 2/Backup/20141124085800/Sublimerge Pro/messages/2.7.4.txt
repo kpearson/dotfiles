@@ -1,0 +1,15 @@
+Sublimerge has just been upgraded to version 2.7.3. 
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+1. Fixes with proper handling tmp files under some window boxes
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)

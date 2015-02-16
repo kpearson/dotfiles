@@ -1,0 +1,96 @@
+[
+  {
+    "caption": "Sublimerge: Compare to View...",
+    "command": "sublimerge_compare_to_view"
+  },
+  {
+    "caption": "Sublimerge: Compare to Revision...",
+    "command": "sublimerge_compare_to_revision"
+  },
+  {
+    "caption": "Sublimerge: Compare Revision to Revision...",
+    "command": "sublimerge_compare_revision_to_revision"
+  },
+  {
+    "caption": "Sublimerge: Show Changes Introduced in Revision...",
+    "command": "sublimerge_show_changes_in_revision"
+  },
+  {
+    "caption": "Sublimerge: Show Unsaved Changes",
+    "command": "sublimerge_show_unsaved_changes"
+  },
+  {
+    "caption": "Sublimerge: Compare Selections...",
+    "command": "sublimerge_compare_selections"
+  },
+  {
+      "caption": "Sublimerge: Compare Selection in Views...",
+      "command": "sublimerge_compare_to_view_selections"
+  },
+  {
+      "caption": "Sublimerge: Compare to Snapshot",
+      "command": "sublimerge_compare_to_snapshot"
+  },
+  {
+      "caption": "Sublimerge: Custom Comparison...",
+      "command": "sublimerge_custom_comparison"
+  },
+  {
+      "caption": "Sublimerge: Compare to Clipboard",
+      "command": "sublimerge_compare_to_clipboard"
+  },
+  {
+    "caption": "Sublimerge: Swap View",
+    "command": "sublimerge_swap_view"
+  },
+  {
+    "caption": "Sublimerge: Go to Previous Change",
+    "command": "sublimerge_go_up"
+  },
+  {
+    "caption": "Sublimerge: Go to Next Change",
+    "command": "sublimerge_go_down"
+  },
+  {
+    "caption": "Sublimerge: Merge Change From Right to Left",
+    "command": "sublimerge_merge_left"
+  },
+  {
+    "caption": "Sublimerge: Merge Change From Left to Right",
+    "command": "sublimerge_merge_right"
+  },
+  {
+    "caption": "Sublimerge: Merge All From Right to Left",
+    "command": "sublimerge_merge_left",
+    "args": {"merge_all": true}
+  },
+  {
+    "caption": "Sublimerge: Merge All From Left to Right",
+    "command": "sublimerge_merge_right",
+    "args": {"merge_all": true}
+  },
+  {
+    "caption": "Sublimerge: Enter Edit Mode",
+    "command": "sublimerge_begin_edit"
+  },
+  {
+    "caption": "Sublimerge: Leave Edit Mode",
+    "command": "sublimerge_end_edit"
+  },
+  {
+    "caption": "Sublimerge: Take Snapshot",
+    "command": "sublimerge_take_snapshot"
+  },
+  {
+    "caption": "Sublimerge: Revert to Snapshot",
+    "command": "sublimerge_restore_snapshot"
+  },
+  {
+    "caption": "Sublimerge: Replace Snapshot",
+    "command": "sublimerge_replace_snapshot"
+  },
+  {
+    "caption": "Sublimerge: Remove Snapshot",
+    "command": "sublimerge_remove_snapshot"
+  }
+]

@@ -1,0 +1,37 @@
+[
+	{
+		"args":
+		{
+			"characters": "att"
+		},
+		"command": "insert"
+	},
+	{
+		"args":
+		{
+			"characters": "r_ac"
+		},
+		"command": "insert"
+	},
+	{
+		"args":
+		{
+			"characters": "cess"
+		},
+		"command": "insert"
+	},
+	{
+		"args":
+		{
+			"characters": "or"
+		},
+		"command": "insert"
+	},
+	{
+		"args":
+		{
+			"characters": " :"
+		},
+		"command": "insert"
+	}
+]

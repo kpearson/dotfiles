@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[before_save :${1:method}]]></content>
+	<tabTrigger>cbs</tabTrigger>
+	<scope>source.ruby.rails</scope>
+	<description>Ruby before_save callback</description>
+</snippet>

@@ -1,0 +1,10 @@
+<snippet>
+    <content><![CDATA[
+<% content_for :$1 do %>
+    $2
+<% end %>$0
+]]></content>
+    <tabTrigger>content_for</tabTrigger>
+    <scope>text.html.erb</scope>
+    <description>content for / end erb</description>
+</snippet>

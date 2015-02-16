@@ -1,0 +1,10 @@
+<snippet>
+    <content><![CDATA[
+<% $1.times do %>
+    $2
+<% end %>$0
+]]></content>
+    <tabTrigger>times</tabTrigger>
+    <scope>text.html.erb</scope>
+    <description>repeate times / end erb</description>
+</snippet>

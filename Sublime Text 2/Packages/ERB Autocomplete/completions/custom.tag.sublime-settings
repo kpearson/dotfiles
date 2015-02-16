@@ -1,0 +1,7 @@
+{
+    "completions":
+    [
+        // custom helper
+        ["new_link_to\t create auto detect active link\terb", "<%= new_link_to(\"${1:text}\", \"${2:url}\" ${3:, ${4::options}}) %>$0"]
+    ]
+}

@@ -1,0 +1,22 @@
+Sublimerge has just been upgraded to version 2.8.3
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+What's new?
+===========
+
+1. Fixed 3-way auto-merge algorithm
+   There was a bug that could sometimes lead to duplicate lines in automatically
+   merged content.
+
+2. Nicer directories' diff view
+   The view has now dedicated syntax highlighting so that is much more colorful 
+   and readable. It should automatically adjust to user's color scheme.
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)

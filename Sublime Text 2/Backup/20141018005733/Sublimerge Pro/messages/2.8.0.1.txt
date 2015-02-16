@@ -1,0 +1,93 @@
+Sublimerge has just been upgraded to version 2.8.0.1
+
+It is highly recommended to restart Sublime Text before use.
+------------------------------------------------------------
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!                                                                                         !!
+!!         NOTE: THIS IS A BETA VERSION. PLEASE REPORT ANY BUGS YOU MAY ENCOUNTER.         !!
+!!                                                                                         !!
+!!  Great amount of code have been rewritten to make it possible to implement 3-way diff.  !!
+!!  If you found a bug in any new or previous features, please report it immediately       !!
+!!  to support@sublimerge.com. Thanks! :)                                                  !!
+!!                                                                                         !!
+!!  If you're a licensed user, your license will work with this version automatically.     !!
+!!                                                                                         !!
+!!  For usage instructions or how to switch back to official release, please visit         !!
+!!  http://www.sublimerge.com/beta.html                                                    !!
+!!                                                                                         !!
+!!  DON'T FORGET TO RESTART SUBLIME TEXT AFTER READING THIS MESSAGE :)                     !!
+!!                                                                                         !!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+What's new?
+===========
+
+1. 3-way diff for conflicts resolution
+   Sublimerge can be used as a merge tool for Git/SVN/Mercurial and others. THIS IS EXPERIMENTAL
+   FEATURE SO BE AWARE THAT IT MAY NOT WORK PERFECTLY.
+
+2. Renamed commands
+   All occurences of 'Difference' have been replaced with 'Change', i.e. 'Go to Previous Change'
+
+3. New commands:
+   - `Go to Next Conflict`
+   - `Go to Previous Conflict`
+
+4. Performance improvements
+   Diff blocks are now displayed a little bit faster.
+
+5. Improved scroll synchronization
+   Now the diff view's panels are synchronized almost immediately. However, depending on your
+   computer, they may lag sometimes.
+
+6. Handling multiple instances
+   Sublimerge can now run many parallel instances of diff windows.
+
+7. New settings:
+   - `diff_block_conflict`    - color used to draw conflicting regions
+
+   - `three_way_navigate_all`      - defines how to navigate through changes in 3-way diff view. When
+                                     set to `false` navigation is performed on conflicts only (this is
+                                     the default). It can be changed for current diff session from
+                                     Context menu too.
+
+   - `auto_merge_simple_conflicts` - Tries to automatically resolve simple conflicts in 3-way diff.
+                                     When set to `false` all conflicts will be reported and left to be
+                                     resolved by you.
+
+   - `three_way_layout`            - defines layout type for three-way diff view
+
+   - `three_way_merged_height`     - percentage height of merged pane when `three_way_layout` = 1
+
+   - `go_to_next_after_merge`      - defines whether should view automatically go to the next change
+                                     after merging previous one.
+
+   - `git_global_args`             - additional arguments used for all git commands except `git log`
+                                     and `git show`.
+
+   - `svn_global_args`             - the same as above, but for `svn` command
+
+   - `hg_global_args`              - the same as above, but for `hg` command
+
+   - `scroll_sync_interval`        - previously `scroll_sync_defer`. Defines how often, in milliseconds,
+                                     diff panels should be synchronized. Defaults to 1, but change it to
+                                     a greater value if you experience performance/stability problems.
+
+  8. New Custom Comparisons variables:
+     - {git} - shorthand for `{config:git_executable_path} {config:git_global_args}`
+     - {svn} - shorthand for `{config:svn_executable_path} {config:svn_global_args}`
+     - {hg} - shorthand for `{config:hg_executable_path} {config:hg_global_args}`
+
+  9. Custom Comparisons: ability to run more steps after `compare` step.
+     Now the `compare` step is not the final one. You can now define more steps which will be executed
+     after the diff view is closed.
+
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)

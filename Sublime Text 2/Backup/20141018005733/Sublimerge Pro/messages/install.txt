@@ -1,0 +1,65 @@
+Sublimerge has just been installed. Thanks!
+
+It is highly recommended to restart Sublime Text before first use.
+------------------------------------------------------------------
+
+Simplified usage instructions
+=============================
+
+In file view:
+
+    [ctrl]+[alt]+[d]                - display Quick Panel with Sublimerge commands available for current view
+
+In diff view:
+
+    [/]                             - display Differences Navigator
+    [down]                          - select the next difference (only single selection is possible)
+    [up]                            - select the previous difference (only single selection is possible)
+    [left]                          - merge selected change(s) from right to left
+    [right]                         - merge selected change(s) from left to right
+    [shift]+[left]                  - merge all changes from right to left
+    [shift]+[right]                 - merge all changes from left to right
+    [ctrl]+[enter]                  - toggle edit mode (currently in 2-way diff view only)
+    [ctrl]+[alt]+[left click]       - select/deselect change block (multiple selection is possible)
+    [ctrl]+[shift]+[left click]     - merge selected changes from left to right
+    [ctrl]+[shift]+[right click]    - merge selected changes from right to left
+
+In directories diff view:
+
+    [enter]                         - enter subdirectory (if differs) or diff selected text file
+    [down]                          - select next file/directory
+    [up]                            - select previous file/directory or navigate one level up
+    [ctrl]+[alt]+[left click]       - select/deselect change block (multiple selection is possible)
+    [right]                         - apply selected change from left to right
+    [left]                          - apply all changes from left to right
+    [shift]+[left]                  - apply selected change from right to left
+    [shift]+[right]                 - apply all changes from right to left
+
+
+Licensing
+=========
+
+If you like Sublimerge, please support development by buying a license. It doesn't cost much! :)
+
+
+Solving most common problems
+============================
+
+Sublimerge doesn't work. Console reports: "ImportError: No module named 'sublimerge'"
+
+If you installed Sublimerge using Package Control, please make sure that you use its final version.
+Alpha does not install Sublimerge properly. You can also try Manual Installation (please view
+sublimerge.com/installation.html for more details)
+
+
+See also
+========
+
+If you are using Gerrit Code Review, please take a look at SublimeGerrit - the full featured
+Gerrit Code Review integration for Sublime Text - http://www.sublimegerrit.com/
+
+
+More information
+================
+
+For more information, troubleshooting, customizing settings and more, please visit www.sublimerge.com

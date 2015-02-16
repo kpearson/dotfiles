@@ -1,0 +1,13 @@
+Sublime Better Completion Package
+===============================
+
+How To USE
+==========
+
+This package APIs is **disabled** by default during the initial installation.
+
+So Go-To "Packages->Sublime-Better-Completion->Settings - Default" copy and enable the one you want in "Packages->Sublime-Better-Completion->Settings - User" and finally you have to re-start your sublime text editor.
+
+
+For more information, please visit:
+	https://github.com/Pleasurazy/Sublime-Better-Completion
