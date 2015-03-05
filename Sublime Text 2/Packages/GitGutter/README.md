@@ -8,8 +8,11 @@ A sublime text 2/3 plugin to show an icon in the gutter area indicating whether 
 
 ### Installation
 
-You can install via [Sublime Package Control](http://wbond.net/sublime_packages/package_control)
-Or you can clone this repo into your *Sublime Text 2/Packages*
+You can install via [Sublime Package Control](http://wbond.net/sublime_packages/package_control):
+  * [GitGutter](https://sublime.wbond.net/packages/GitGutter) - Release based
+  * [GitGutter-Edge](https://sublime.wbond.net/packages/GitGutter-Edge) - Stick with master branch (at your own peril)
+
+Or you can clone this repo into your *Sublime Text x/Packages*:
 
 *OSX*
 ```shell
@@ -31,6 +34,24 @@ GitGutter assumes that the `git` command is available on the command line. If it
 cd "%APPDATA%\Sublime Text 2\Packages"
 git clone git://github.com/jisaacks/GitGutter.git
 ```
+
+On OS X you might need to install the package [SublimeFixMacPath](https://github.com/int3h/SublimeFixMacPath).
+
+### Comparing against different commits/branches/tags
+
+By default, Git Gutter compares your working copy against the HEAD. You can change this behaviour through the ST command palette. The following options are available:
+
+- Compare against HEAD
+- Compare against particular branch
+- Compare against particular tag
+- Compare against specific commit
+
+To change the compare option:
+
+- Open the command palette (`Ctrl-Shift-P` for Windows/Linux, `Cmd-Shift-P` for Mac)
+- Start typing `GitGutter`
+- You'll see the 4 options listed above, select one with the keyboard.
+- Choose the branch/tag/commit to compare against.
 
 ### Settings
 Settings are accessed via the <kbd>Preferences</kbd> > <kbd>Package Settings</kbd> > <kbd>GitGutter</kbd> menu.
@@ -83,6 +104,7 @@ The colors come from your *color scheme* **.tmTheme** file.
 
 Color schemes that already have support for GitGutter include:
 
+* [Dark Room](https://github.com/NeilCresswell/themes)
 * [Deep Blue See](https://github.com/jisaacks/DeepBlueSee)
 * [Flatland](https://github.com/thinkpixellab/flatland)
 * [Monokai Extended](https://github.com/jisaacks/sublime-monokai-extended)
@@ -98,6 +120,8 @@ Color schemes that already have support for GitGutter include:
 * [Neon](https://github.com/farzher/Sublime-Text-Themes)
 * [Afterglow](https://github.com/YabataDesign/afterglow-theme)
 * [Desert Night](https://github.com/fgb/desert_night)
+* [Cobalt2](https://github.com/wesbos/cobalt2)
+* [Fox](https://github.com/karelvuong/fox)
 * _Contact me if you want your color scheme listed here. Or do a pull request._
 
 If your color scheme file does not define the appropriate colors (or you want to edit them) add an entry that looks like this:
@@ -159,22 +183,15 @@ If your color scheme file does not define the appropriate colors (or you want to
   </dict>
 </dict>
 ```
+
 ### Jumping Between Changes
+
 There are commands to jump between modifications. The default keybindings for these commands are:
 
-**OSX**
-
-prev: <kbd>command</kbd> + <kbd>shift</kbd> + <kbd>option</kbd> + <kbd>k</kbd>
-next: <kbd>command</kbd> + <kbd>shift</kbd> + <kbd>option</kbd> + <kbd>j</kbd>
-
-**Windows**
-
-prev: <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>alt</kbd> + <kbd>k</kbd>
-next: <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>alt</kbd> + <kbd>j</kbd>
-
-<br>
-
-------------
+| OS X | Windows / Linux | Description |
+|------|-----------------|-------------|
+| <kbd>Command</kbd>+<kbd>Shift</kbd>+<kbd>Option</kbd>+<kbd>k</kbd> | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>k</kbd> | Previous |
+| <kbd>Command</kbd>+<kbd>Shift</kbd>+<kbd>Option</kbd>+<kbd>j</kbd> | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>j</kbd> | Next |
 
 ### Alternatives
 

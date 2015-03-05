@@ -1,2 +1,2 @@
 #!/bin/sh
-git checkout
+git commit -m $1

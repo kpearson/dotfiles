@@ -7,18 +7,6 @@ except (ImportError, ValueError):
     from view_collection import ViewCollection
 
 
-def plugin_loaded():
-    """
-    Ugly hack for icons in ST3
-    kudos:
-    github.com/facelessuser/BracketHighlighter/blob/BH2ST3/bh_core.py#L1380
-    """
-    from os import makedirs
-    from os.path import exists, join
-
-    icon_path = join(sublime.packages_path(), "Theme - Default")
-    if not exists(icon_path):
-        makedirs(icon_path)
 
 
 class GitGutterCommand(sublime_plugin.WindowCommand):
@@ -46,6 +34,34 @@ class GitGutterCommand(sublime_plugin.WindowCommand):
             self.lines_removed(deleted)
             self.bind_icons('inserted', inserted)
             self.bind_icons('changed', modified)
+
+            if(ViewCollection.show_status(self.view) != "none"):
+                if(ViewCollection.show_status(self.view) == 'all'):
+                    branch = ViewCollection.current_branch(
+                        self.view).decode("utf-8").strip()
+                else:
+                    branch = ""
+
+                self.update_status(len(inserted),
+                                   len(modified),
+                                   len(deleted),
+                                   ViewCollection.get_compare(self.view), branch)
+            else:
+                self.update_status(0, 0, 0, "", "")
+
+    def update_status(self, inserted, modified, deleted, compare, branch):
+
+        def set_status_if(test, key, message):
+            if test:
+                self.view.set_status("git_gutter_status_" + key, message)
+            else:
+                self.view.set_status("git_gutter_status_" + key, "")
+
+        set_status_if(inserted > 0, "inserted", "Inserted : %d" % inserted)
+        set_status_if(modified > 0, "modified", "Modified : %d" % modified)
+        set_status_if(deleted > 0, "deleted", "Deleted : %d regions" % deleted)
+        set_status_if(compare, "comparison", "Comparing against : %s" % compare)
+        set_status_if(branch, "branch", "On branch : %s" % branch)
 
     def clear_all(self):
         for region_name in self.region_names:
@@ -92,7 +108,7 @@ class GitGutterCommand(sublime_plugin.WindowCommand):
             extn = '.png'
 
         return "/".join([path, 'icons', icon_name + extn])
-        
+
     def bind_icons(self, event, lines):
         regions = self.lines_to_regions(lines)
         event_scope = event

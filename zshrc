@@ -1,7 +1,7 @@
-# ____________Load Alieses_________________
+# ________Load Alieses/Functions__________
 export PATH="$HOME/.dotfiles/bin:$PATH"
 
- #______________Git Prompt_________________
+ # _____________Git Prompt_________________
 source ~/configure/zsh-git-prompt/zshrc.sh
 PROMPT='%B%m%~%b$(git_super_status) %# '
 
@@ -12,7 +12,7 @@ autoload -Uz compinit
 compinit
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
-setopt correctall
+# setopt correctall
 
 ### End of lines added by compinstall
 
@@ -22,9 +22,6 @@ eval "$(rbenv init -)"
 
 # _____________go lang gvm_______________
 [[ -s "/Users/Kit/.gvm/scripts/gvm" ]] && source "/Users/Kit/.gvm/scripts/gvm"
-
-# git-browse
-export PATH=$PATH:~/Library/git-browse/bin
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile

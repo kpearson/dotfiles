@@ -1,2 +1,2 @@
 #!/bin/sh
-subl ~/.zshrc && reload
+subl ~/.zshrc && zreload

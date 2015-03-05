@@ -18,6 +18,9 @@ set nocompatible                           " be iMproved, required
   Plugin 'tpope/vim-repeat'                  " <.> Reapeat
   Plugin 'tpope/vim-sleuth'                  " Indent
   Plugin 'tpope/vim-liquid'                  " shopify liquid templating
+  Plugin 'tpope/vim-rbenv'                   " rbenv stuff and things
+  Plugin 'SirVer/ultisnips'                  " tab completion snippets
+  Plugin 'honza/vim-snippets'                " the snippets for ulitsnips
   Plugin 'christoomey/vim-tmux-navigator'    " navagate between tmux and vim
   Plugin 'christoomey/vim-tmux-runner'       " send commands from vim to tmux
   Plugin 'bling/vim-airline'                 " status/tabline
@@ -31,6 +34,9 @@ set nocompatible                           " be iMproved, required
   Plugin 'rking/ag.vim'                      " the silver searcher
   Plugin 'airblade/vim-gitgutter'            " Git Gutter
   Plugin 'Valloric/YouCompleteMe'            " Completion
+  Plugin 'fatih/vim-go'                      " Go Lang Syntax
+  Plugin 'kien/ctrlp.vim'                    " Control P
+  Plugin 'altercation/vim-colors-solarized'
 
 " All Plugins must be added above this line
   call vundle#end()                          " Vundle required
@@ -53,20 +59,21 @@ set nocompatible                           " be iMproved, required
   autocmd VimResized * :wincmd =
 
 " zoom vim pane, <C-w>= to re-balance
-  "nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
-  "nnoremap <leader>= :wincmd =<cr>
+  nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+  nnoremap <leader>= :wincmd =<cr>
 
 " auto resize panes
-  set winwidth=84
-  set winheight=5
-  set winminheight=5
-  set winheight=999
+"  set winwidth=84
+"  set winheight=5
+"  set winminheight=5
+"  set winheight=999
 
 " mapping leader key
   let mapleader = "\<Space>"
   nnoremap <Leader>w :w<CR>
-
+  set timeoutlen=200
   set showcmd                                  " Show the current command context in the lower right
+  nmap <leader>f :FZF<CR>
 
 "  ________ Search Configuration _________
   set incsearch                                " Highlight while searching
@@ -76,26 +83,28 @@ set nocompatible                           " be iMproved, required
   set smartcase                                " Overide ignorecase if pattern contains upcase
 
 " __________ Color and Syntax ____________
-" the falloing block doesent semto be working
-  highlight clear SignColumn
-  highlight VertSplit    ctermbg=236
-  highlight ColorColumn  ctermbg=237
-  highlight LineNr       ctermbg=236 ctermfg=240
-  highlight CursorLineNr ctermbg=236 ctermfg=240
-  highlight CursorLine   ctermbg=236
-  highlight StatusLineNC ctermbg=238 ctermfg=0
-  highlight StatusLine   ctermbg=240 ctermfg=12
-  highlight IncSearch    ctermbg=3   ctermfg=1
-  highlight Search       ctermbg=1   ctermfg=3
-  highlight Visual       ctermbg=3   ctermfg=0
-  highlight Pmenu        ctermbg=240 ctermfg=12
-  highlight PmenuSel     ctermbg=3   ctermfg=1
-  highlight SpellBad     ctermbg=0   ctermfg=1
+" the falloing block doesent sem to be working
+"  highlight clear SignColumn
+"  highlight VertSplit    ctermbg=236
+"  highlight ColorColumn  ctermbg=237
+"  highlight LineNr       ctermbg=236 ctermfg=240
+"  highlight CursorLineNr ctermbg=236 ctermfg=240
+"  highlight CursorLine   ctermbg=236
+"  highlight StatusLineNC ctermbg=238 ctermfg=0
+"  highlight StatusLine   ctermbg=240 ctermfg=12
+"  highlight IncSearch    ctermbg=3   ctermfg=1
+"  highlight Search       ctermbg=1   ctermfg=3
+"  highlight Visual       ctermbg=3   ctermfg=0
+"  highlight Pmenu        ctermbg=240 ctermfg=12
+"  highlight PmenuSel     ctermbg=3   ctermfg=1
+"  highlight SpellBad     ctermbg=0   ctermfg=1
 
   let &t_Co=256                             " set vim to support 256 color terminal
 " syntax on
   syntax enable
-  colorscheme tomorrow-Night                " Color Theme
+  set background=dark
+  colorscheme solarized               " Color Theme
+
 " _______ Strip Trailling Whitespace _______
   function! <SID>StripTrailingWhitespaces()
 " Preparation: save last search, and cursor position.
@@ -114,7 +123,7 @@ set nocompatible                           " be iMproved, required
 " set NredTree to close when last pane closes
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
   map <C-n> :NERDTreeToggle<CR>              " map NerdTree Toggle
-  let g:NERDTreeWinSize = 30
+"  let g:NERDTreeWinSize = 30
 
 " _____________ Key Mapping ______________
 " move between panes with CTRL and direction keys
@@ -128,7 +137,7 @@ set nocompatible                           " be iMproved, required
 
 " _____________ White Space _______________
 " ___ Highlight trailing spaces in red ____
-  highlight ExtraWhitespace ctermbg=1 guibg=green
+  highlight ExtraWhitespace ctermbg=1 guibg=red
   match ExtraWhitespace /\s\+$/
   autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
   autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
@@ -141,21 +150,33 @@ set nocompatible                           " be iMproved, required
   set tabstop=2 shiftwidth=2
   set expandtab                              " spaces as tabs
 
-" ___________ Cursor & Line Numbers ________
-  set cursorline                             " highlights line cursor in on
-  set number                                 " provides absolute numbers in the left gutter
-  set relativenumber                         " overides number except on current line
-  set completefunc=syntaxcomplete#Complete   " i_CTRL-X_CTRL-U
+" ___________ Cursor & Line Numbers _______
+  set cursorline                            " highlights line cursor in on
+  set number                                 " overides number except on current line
+"  set completefunc=syntaxcomplete#Complete  " i_CTRL-X_CTRL-U
 
 " __________ Disable Swap files ___________
   set nobackup                               " no backup files
   set nowritebackup                          " don't backup file while editing
   set noswapfile                             " don't create swapfiles for new
 " ___ buffers ___
-" set updatecount=0                           " Don't try to write swapfiles
+" set updatecount=0                          " Don't try to write swapfiles
 " after some number of updates
-" set backupskip=/tmp/*,/private/tmp/*"       " can edit crontab files
+" set backupskip=/tmp/*,/private/tmp/*"      " can edit crontab files
 
-  augroup mkd
-    autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
-  augroup END
+vnoremap . :norm.<CR>;                       " in visual mode, "." will for each line, go into normal mode and execute the "."
+cmap %/ <C-R>=expand("%:p:h")."/"<CR>
+cmap %% <C-R>=expand("%")<CR>
+
+" ____________ ultiSnipps _________________
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
+
+" ___________ comment toggle _____________
+augroup mkd
+  autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
+augroup END

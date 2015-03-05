@@ -1,2 +1,2 @@
 #!/bin/sh
-vim ~/turing/projects/trial-and-error/
+cd ~/turing/projects/trial-and-error/ && vim

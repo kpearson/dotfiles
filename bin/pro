@@ -1,2 +1,2 @@
 #!/bin/sh
-vim ~/turing/projects/pivot/
+cd ~/turing/projects/pivot/ && vim

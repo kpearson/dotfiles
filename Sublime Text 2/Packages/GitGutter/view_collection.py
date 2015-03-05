@@ -1,3 +1,4 @@
+import sublime
 import tempfile
 import time
 
@@ -47,23 +48,19 @@ class ViewCollection:
 
     @staticmethod
     def diff(view):
-        key = ViewCollection.get_key(view)
-        return ViewCollection.views[key].diff()
+        return ViewCollection.get_handler(view).diff()
 
     @staticmethod
     def untracked(view):
-        key = ViewCollection.get_key(view)
-        return ViewCollection.views[key].untracked()
+        return ViewCollection.get_handler(view).untracked()
 
     @staticmethod
     def ignored(view):
-        key = ViewCollection.get_key(view)
-        return ViewCollection.views[key].ignored()
+        return ViewCollection.get_handler(view).ignored()
 
     @staticmethod
     def total_lines(view):
-        key = ViewCollection.get_key(view)
-        return ViewCollection.views[key].total_lines()
+        return ViewCollection.get_handler(view).total_lines()
 
     @staticmethod
     def git_time(view):
@@ -104,8 +101,21 @@ class ViewCollection:
         ViewCollection.compare_against = commit
 
     @staticmethod
-    def get_compare():
-        if ViewCollection.compare_against:
-            return ViewCollection.compare_against
-        else:
-            return "HEAD"
+    def get_compare(view):
+        compare = ViewCollection.compare_against or "HEAD"
+        return view.settings().get('git_gutter_compare_against', compare)
+
+    @staticmethod
+    def current_branch(view):
+        key = ViewCollection.get_key(view)
+        return ViewCollection.views[key].git_current_branch()
+
+    @staticmethod
+    def show_status(view):
+        key = ViewCollection.get_key(view)
+        return ViewCollection.views[key].show_status
+
+
+def plugin_loaded():
+    settings = sublime.load_settings('GitGutter.sublime-settings')
+    ViewCollection.compare_against = settings.get('compare_against', 'HEAD')

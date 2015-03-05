@@ -1,1 +1,1 @@
-{"url": "https://github.com/tadast/sublime-rails-snippets", "version": "2014.01.08.12.49.45", "description": "Rails 3, Ruby 1.9 oriented snippets"}
+{"description": "Sublime Text snippets for the latest Ruby and Rails versions", "url": "https://github.com/tadast/sublime-rails-snippets", "platforms": ["*"], "version": "2015.02.18.21.12.00", "sublime_text": "*", "dependencies": []}

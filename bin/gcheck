@@ -1,0 +1,3 @@
+#!/bin/sh
+# ruby -e 'p ARGV' -- "$@"
+git checkout "$@"

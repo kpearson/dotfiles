@@ -1,2 +1,2 @@
 #!/bin/sh
-vim ~/turing/exercises/
+cd ~/turing/exercises/ && vim
