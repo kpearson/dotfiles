@@ -1,1 +1,1 @@
-{"url": "https://github.com/revolunet/sublimetext-markdown-preview", "version": "1.1.12", "description": "markdown preview and build plugin for sublime text 2/3"}
+{"description": "markdown preview and build plugin for sublime text 2/3", "url": "https://github.com/revolunet/sublimetext-markdown-preview", "platforms": ["*"], "version": "1.2.0", "sublime_text": "*", "dependencies": []}

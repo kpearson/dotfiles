@@ -1,0 +1,36 @@
+[
+    {
+        "caption": "Markdown Preview: Preview in Browser",
+        "command": "markdown_preview_select",
+        "args": {
+            "target": "browser"
+        }
+    },
+    {
+        "caption": "Markdown Preview: Export HTML in Sublime Text",
+        "command": "markdown_preview_select",
+        "args": {
+            "target": "sublime"
+        }
+    },
+    {
+        "caption": "Markdown Preview: Save to HTML",
+        "command": "markdown_preview_select",
+        "args": {
+            "target": "save"
+        }
+    },
+    {
+        "caption": "Markdown Preview: Copy to Clipboard",
+        "command": "markdown_preview_select",
+        "args": {
+            "target": "clipboard"
+        }
+    },
+
+    {
+        "caption": "Markdown Preview: Open Markdown Cheat sheet",
+        "command": "markdown_cheatsheet",
+        "args": {}
+    }
+]

@@ -1,5 +1,5 @@
-" ________________Vundle________________
-set nocompatible                           " be iMproved, required
+" ================= Vundle =================
+set nocompatible                             " be iMproved, required
   filetype off                               " Vundle required
 
 " set the runtime path to include Vundle and initialize
@@ -18,25 +18,25 @@ set nocompatible                           " be iMproved, required
   Plugin 'tpope/vim-repeat'                  " <.> Reapeat
   Plugin 'tpope/vim-sleuth'                  " Indent
   Plugin 'tpope/vim-liquid'                  " shopify liquid templating
-  Plugin 'tpope/vim-rbenv'                   " rbenv stuff and things
+  Plugin 'tpope/vim-rbenv'                   " rbenv completions and ruby source
   Plugin 'SirVer/ultisnips'                  " tab completion snippets
   Plugin 'honza/vim-snippets'                " the snippets for ulitsnips
   Plugin 'christoomey/vim-tmux-navigator'    " navagate between tmux and vim
   Plugin 'christoomey/vim-tmux-runner'       " send commands from vim to tmux
-  Plugin 'bling/vim-airline'                 " status/tabline
-  Plugin 'Shougo/neocomplcache.vim'
-  Plugin 'vim-rspec'                         " Rspec
-  Plugin 'tslime.vim'
-  Plugin 'junegunn/fzf'                      " Fuzzy finder
   Plugin 'scrooloose/nerdtree'               " NerdTree
-  Plugin 'scrooloose/nerdcommenter'          " comment toggle
-  Plugin 'flazz/vim-colorschemes'            " pritty colors
-  Plugin 'rking/ag.vim'                      " the silver searcher
+  Plugin 'scrooloose/syntastic'              " Linter
+  Plugin 'Shougo/neocomplcache.vim'
+  Plugin 'plasticboy/vim-markdown'           " Markdown syntax
   Plugin 'airblade/vim-gitgutter'            " Git Gutter
-  Plugin 'Valloric/YouCompleteMe'            " Completion
-  Plugin 'fatih/vim-go'                      " Go Lang Syntax
+  Plugin 'flazz/vim-colorschemes'            " pritty colors
+  Plugin 'itchyny/lightline.vim'
+  Plugin 'tomtom/tcomment_vim'
+  Plugin 'godlygeek/tabular'                 " Needed for vim-markdown
   Plugin 'kien/ctrlp.vim'                    " Control P
-  Plugin 'altercation/vim-colors-solarized'
+  Plugin 'fatih/vim-go'                      " Go Lang Syntax
+  Plugin 'rking/ag.vim'                      " the silver searcher
+  Plugin 'tslime.vim'
+  Plugin 'vim-rspec'                         " Rspec
 
 " All Plugins must be added above this line
   call vundle#end()                          " Vundle required
@@ -54,6 +54,7 @@ set nocompatible                           " be iMproved, required
 " _____________ END Vundle _______________
 " Put non-Plugin stuff after this line
 
+
 " ___________ Tmux Integration ___________
 " resize panes to respond to Tmux
   autocmd VimResized * :wincmd =
@@ -62,50 +63,22 @@ set nocompatible                           " be iMproved, required
   nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
   nnoremap <leader>= :wincmd =<cr>
 
-" auto resize panes
-"  set winwidth=84
-"  set winheight=5
-"  set winminheight=5
-"  set winheight=999
 
-" mapping leader key
-  let mapleader = "\<Space>"
-  nnoremap <Leader>w :w<CR>
-  set timeoutlen=200
-  set showcmd                                  " Show the current command context in the lower right
-  nmap <leader>f :FZF<CR>
-
-"  ________ Search Configuration _________
-  set incsearch                                " Highlight while searching
-  set hlsearch                                 " Persistent search highlight
-  nmap <leader>h :nohlsearch<cr>               " Turn off search highlight
-  set ignorecase                               " Case insensitive pattern matching
-  set smartcase                                " Overide ignorecase if pattern contains upcase
-
-" __________ Color and Syntax ____________
-" the falloing block doesent sem to be working
-"  highlight clear SignColumn
-"  highlight VertSplit    ctermbg=236
-"  highlight ColorColumn  ctermbg=237
-"  highlight LineNr       ctermbg=236 ctermfg=240
-"  highlight CursorLineNr ctermbg=236 ctermfg=240
-"  highlight CursorLine   ctermbg=236
-"  highlight StatusLineNC ctermbg=238 ctermfg=0
-"  highlight StatusLine   ctermbg=240 ctermfg=12
-"  highlight IncSearch    ctermbg=3   ctermfg=1
-"  highlight Search       ctermbg=1   ctermfg=3
-"  highlight Visual       ctermbg=3   ctermfg=0
-"  highlight Pmenu        ctermbg=240 ctermfg=12
-"  highlight PmenuSel     ctermbg=3   ctermfg=1
-"  highlight SpellBad     ctermbg=0   ctermfg=1
-
-  let &t_Co=256                             " set vim to support 256 color terminal
-" syntax on
+" =========== Visual Settings ==============
+  let &t_Co=256                                " set vim to support 256 color terminal
   syntax enable
-  set background=dark
-  colorscheme solarized               " Color Theme
+  colorscheme jellybeans                       " Color Theme
+  let &colorcolumn=join(range(81,999),",")     " Set 80 character ruler
+  set hl-CursorLineNr
 
-" _______ Strip Trailling Whitespace _______
+" ==============  Nerd Tree =================
+"  autocmd vimenter * NERDTree                " Set NerdTree to open by default
+" ____ set NredTree to close when last pane closes
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+  map <C-n> :NERDTreeToggle<CR>              " map NerdTree Toggle
+
+
+ " _______ Strip Trailling Whitespace _______
   function! <SID>StripTrailingWhitespaces()
 " Preparation: save last search, and cursor position.
     let _s=@/
@@ -118,22 +91,6 @@ set nocompatible                           " be iMproved, required
     call cursor(l, c)
   endfunction
 
-" _____________ Nerd Tree ________________
-  autocmd vimenter * NERDTree                " Set NerdTree to open by default
-" set NredTree to close when last pane closes
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-  map <C-n> :NERDTreeToggle<CR>              " map NerdTree Toggle
-"  let g:NERDTreeWinSize = 30
-
-" _____________ Key Mapping ______________
-" move between panes with CTRL and direction keys
-  map <C-j> <C-W>j
-  map <C-k> <C-W>k
-  map <C-h> <C-W>h
-  map <C-l> <C-W>l
-
-  imap jk <Esc>
-  imap kj <Esc>
 
 " _____________ White Space _______________
 " ___ Highlight trailing spaces in red ____
@@ -146,37 +103,151 @@ set nocompatible                           " be iMproved, required
 
   autocmd BufWritePre * :%s/\s\+$//e         " revove all trailing white space on save or :w
 
-" ____________ Tab as 2 spaces ___________
-  set tabstop=2 shiftwidth=2
-  set expandtab                              " spaces as tabs
 
-" ___________ Cursor & Line Numbers _______
-  set cursorline                            " highlights line cursor in on
-  set number                                 " overides number except on current line
-"  set completefunc=syntaxcomplete#Complete  " i_CTRL-X_CTRL-U
+" ============ Syntastic Linter ============
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+
+  let g:syntastic_always_populate_loc_list = 1
+  " let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+
+
+" ================ Completion =======================
+ " Stuff to ignore when tab completing
+   set wildmode=list:longest
+   set wildignore=*.o,*.obj,*~
+   set wildignore+=*vim/backups*
+   set wildignore+=*sass-cache*
+   set wildignore+=*DS_Store*
+   set wildignore+=*.gem
+   set wildignore+=log/**
+   set wildignore+=node_modules/**
+   set wildignore+=tmp/**
+
+" Autocompletion
+"   let g:neocomplete#enable_at_startup = 1
+"   let g:neocomplete#force_overwrite_completefunc = 1
+
+" For snippet_complete marker.
+   if has('conceal')
+     set conceallevel=2 concealcursor=i
+   endif
+
+" Trigger configuration for snippets
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsListSnippets="<c-tab>"
+  let g:UltiSnipsJumpForwardTrigger="<c-j>"
+  let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+
+" =========== Status Bar config ===========
+  set laststatus=2                           " Enable status bar
+
+    let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', ], [ 'fugitive', 'readonly', 'filename' ] ],
+      \   'right': [ [ 'syntastic', 'column', 'lineinfo' ], [ 'filetype' ] ]
+      \ },
+      \ 'component': {
+      \   'column': '%c'
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'MyFugitive',
+      \   'readonly': 'MyReadonly',
+      \   'lineinfo': 'MyLineInfo'
+      \ },
+      \ 'component_expand': {
+      \   'syntastic': 'SyntasticStatuslineFlag',
+      \ },
+      \ 'component_type': {
+      \   'syntastic': 'error',
+      \ },
+      \ 'separator': { 'left': '⮀', 'right': '⮂' },
+      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+      \ }
+
+" ___________ Lightline Functions ___________
+  function! MyReadonly()
+    if &readonly
+      return "⭤"
+    else
+      return ""
+    endif
+  endfunction
+
+  function! MyFugitive()
+    if exists('*fugitive#head')
+      let _ = fugitive#head()
+      return strlen(_) ? '⭠ '._ : ''
+    endif
+    return ''
+  endfunction
+
+  function! MyLineInfo()
+    return '⭡ ' . line('.') . '/' . line('$')
+  endfunction
+
+  augroup AutoSyntastic
+    autocmd!
+    autocmd BufWritePost *.rb,*.js,*.css,*.sh call s:syntastic()
+  augroup END
+  function! s:syntastic()
+    SyntasticCheck
+    call lightline#update()
+  endfunction
+
+" ========== General Settings ==============
 
 " __________ Disable Swap files ___________
   set nobackup                               " no backup files
   set nowritebackup                          " don't backup file while editing
   set noswapfile                             " don't create swapfiles for new
-" ___ buffers ___
-" set updatecount=0                          " Don't try to write swapfiles
-" after some number of updates
-" set backupskip=/tmp/*,/private/tmp/*"      " can edit crontab files
 
-vnoremap . :norm.<CR>;                       " in visual mode, "." will for each line, go into normal mode and execute the "."
-cmap %/ <C-R>=expand("%:p:h")."/"<CR>
-cmap %% <C-R>=expand("%")<CR>
+  vnoremap . :norm.<CR>;                     " in visual mode, "." will for each line, go into normal mode and execute the "."
+  cmap %/ <C-R>=expand("%:p:h")."/"<CR>
+  cmap %% <C-R>=expand("%")<CR>
 
-" ____________ ultiSnipps _________________
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
+" ____________ Tab as 2 spaces ___________
+  set tabstop=2 shiftwidth=2
+  set expandtab                              " spaces as tabs
 
-" ___________ comment toggle _____________
-augroup mkd
-  autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
-augroup END
+" ___________ Cursor & Line Numbers _______
+  set cursorline                             " highlights line cursor in on
+  set number                                 " overides number except on current line
+  set ttyfast                                " u got a fast terminal
+  set ttyscroll=3
+  set lazyredraw                             " to avoid scrolling problems
+
+" ______________ Key Mapping ______________
+" move between panes with CTRL and direction keys
+  map <C-j> <C-W>j
+  map <C-k> <C-W>k
+  map <C-h> <C-W>h
+  map <C-l> <C-W>l
+
+  imap jk <Esc>
+  imap kj <Esc>
+
+  let mapleader = "\<Space>"                   " Set leader key to space bar
+  nnoremap <Leader>w :w<CR>
+  set timeoutlen=200
+
+  set showcmd                                  " Show the current command context in the lower right
+
+  set visualbell                               " No sound
+
+" ___________ Detect filetypes ___________
+  " filetype plugin on
+  " filetype indent off
+
+"  ________ Search Configuration _________
+  set incsearch                                " Highlight while searching
+  set hlsearch                                 " Persistent search highlight
+  nmap <leader>h :nohlsearch<cr>               " Turn off search highlight
+  set ignorecase                               " Case insensitive pattern matching
+  set smartcase                                " Overide ignorecase if pattern contains upcase
+

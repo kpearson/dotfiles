@@ -1,20 +1,12 @@
 # ________Load Alieses/Functions__________
 export PATH="$HOME/.dotfiles/bin:$PATH"
 
+# ________ Load ZSH-Completions __________
+fpath=(/usr/local/share/zsh-completions $fpath)
+
  # _____________Git Prompt_________________
 source ~/configure/zsh-git-prompt/zshrc.sh
 PROMPT='%B%m%~%b$(git_super_status) %# '
-
-# ______________Compinstall_________________
-# tab complition (works with aliases)
-zstyle :compinstall filename '~/.zshrc'
-autoload -Uz compinit
-compinit
-zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
-zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
-# setopt correctall
-
-### End of lines added by compinstall
 
 # ________________rbenv____________________
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -30,6 +22,11 @@ SAVEHIST=1000
 
 # ____________Default Editor_______________
 export EDITOR=vim
+
+unsetopt beep
+unsetopt hist_beep
+unsetopt list_beep
+
 
 # ________________Alias____________________
 ## LoadPath concerns are located in ~/.envrc
