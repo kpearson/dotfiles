@@ -1,4 +1,4 @@
-" ================= Vundle =================
+" =============== Vundle ===============
 set nocompatible                             " be iMproved, required
   filetype off                               " Vundle required
 
@@ -8,7 +8,7 @@ set nocompatible                             " be iMproved, required
 " alternatively, pass a path where Vundle should install plugins
 " call vundle#begin('~/some/path/here')
 
-" ___Vundle managed plugins___
+" _______ Vundle managed plugins _______
   Plugin 'gmarik/Vundle.vim'                 " let Vundle manage Vundle, required
   Plugin 'tpope/vim-fugitive'                " git integration
   Plugin 'tpope/vim-surround'                " surround with tag
@@ -19,19 +19,20 @@ set nocompatible                             " be iMproved, required
   Plugin 'tpope/vim-sleuth'                  " Indent
   Plugin 'tpope/vim-liquid'                  " shopify liquid templating
   Plugin 'tpope/vim-rbenv'                   " rbenv completions and ruby source
-  Plugin 'SirVer/ultisnips'                  " tab completion snippets
-  Plugin 'honza/vim-snippets'                " the snippets for ulitsnips
+  Plugin 'tpope/vim-unimpaired.git'          " Bindings for global commands
+  Plugin 'godlygeek/tabular'                 " Needed for vim-markdown
+  Plugin 'SirVer/ultisnips'                  " Tab completion engine
+  Plugin 'honza/vim-snippets'                " Snippets for ulitsnips
   Plugin 'christoomey/vim-tmux-navigator'    " navagate between tmux and vim
   Plugin 'christoomey/vim-tmux-runner'       " send commands from vim to tmux
   Plugin 'scrooloose/nerdtree'               " NerdTree
   Plugin 'scrooloose/syntastic'              " Linter
-  Plugin 'Shougo/neocomplcache.vim'
+  Plugin 'Shougo/neocomplcache.vim'          " Keyword completion  via: <c-n>
   Plugin 'plasticboy/vim-markdown'           " Markdown syntax
   Plugin 'airblade/vim-gitgutter'            " Git Gutter
-  Plugin 'flazz/vim-colorschemes'            " pritty colors
+  Plugin 'flazz/vim-colorschemes'            " Pritty colors
   Plugin 'itchyny/lightline.vim'
   Plugin 'tomtom/tcomment_vim'
-  Plugin 'godlygeek/tabular'                 " Needed for vim-markdown
   Plugin 'kien/ctrlp.vim'                    " Control P
   Plugin 'fatih/vim-go'                      " Go Lang Syntax
   Plugin 'rking/ag.vim'                      " the silver searcher
@@ -51,11 +52,11 @@ set nocompatible                             " be iMproved, required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
-" _____________ END Vundle _______________
+" ____________ END Vundle ______________
 " Put non-Plugin stuff after this line
 
 
-" ___________ Tmux Integration ___________
+" ========== Tmux Integration ==========
 " resize panes to respond to Tmux
   autocmd VimResized * :wincmd =
 
@@ -64,21 +65,22 @@ set nocompatible                             " be iMproved, required
   nnoremap <leader>= :wincmd =<cr>
 
 
-" =========== Visual Settings ==============
+" ========== Visual Settings ===========
   let &t_Co=256                                " set vim to support 256 color terminal
   syntax enable
   colorscheme jellybeans                       " Color Theme
   let &colorcolumn=join(range(81,999),",")     " Set 80 character ruler
-  set hl-CursorLineNr
 
-" ==============  Nerd Tree =================
+
+" =============  Nerd Tree =============
 "  autocmd vimenter * NERDTree                " Set NerdTree to open by default
 " ____ set NredTree to close when last pane closes
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
   map <C-n> :NERDTreeToggle<CR>              " map NerdTree Toggle
 
 
- " _______ Strip Trailling Whitespace _______
+" ============ White Space =============
+ " _____ Strip Trailling Whitespace ____
   function! <SID>StripTrailingWhitespaces()
 " Preparation: save last search, and cursor position.
     let _s=@/
@@ -91,8 +93,6 @@ set nocompatible                             " be iMproved, required
     call cursor(l, c)
   endfunction
 
-
-" _____________ White Space _______________
 " ___ Highlight trailing spaces in red ____
   highlight ExtraWhitespace ctermbg=1 guibg=red
   match ExtraWhitespace /\s\+$/
@@ -104,7 +104,7 @@ set nocompatible                             " be iMproved, required
   autocmd BufWritePre * :%s/\s\+$//e         " revove all trailing white space on save or :w
 
 
-" ============ Syntastic Linter ============
+" ========= Syntastic Linter ===========
   set statusline+=%#warningmsg#
   set statusline+=%{SyntasticStatuslineFlag()}
   set statusline+=%*
@@ -115,7 +115,7 @@ set nocompatible                             " be iMproved, required
   let g:syntastic_check_on_wq = 0
 
 
-" ================ Completion =======================
+" ============ Completion ==============
  " Stuff to ignore when tab completing
    set wildmode=list:longest
    set wildignore=*.o,*.obj,*~
@@ -127,23 +127,30 @@ set nocompatible                             " be iMproved, required
    set wildignore+=node_modules/**
    set wildignore+=tmp/**
 
-" Autocompletion
-"   let g:neocomplete#enable_at_startup = 1
-"   let g:neocomplete#force_overwrite_completefunc = 1
+" Keyword completion w/ neocomplete
+  let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#force_overwrite_completefunc = 1
 
 " For snippet_complete marker.
    if has('conceal')
      set conceallevel=2 concealcursor=i
    endif
 
-" Trigger configuration for snippets
+" Trigger configuration for snippets w/ UltiSnips
   let g:UltiSnipsExpandTrigger="<tab>"
-  let g:UltiSnipsListSnippets="<c-tab>"
-  let g:UltiSnipsJumpForwardTrigger="<c-j>"
-  let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+  let g:UltiSnipsJumpForwardTrigger="<tab>"
+  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+" ____________ Tabularize ______________
+  if exists(":Tabularize")
+    nmap <Leader>= :Tabularize /=<CR>
+    vmap <Leader>= :Tabularize /=<CR>
+    nmap <Leader>; :Tabularize /:\zs<CR>
+    vmap <Leader>; :Tabularize /:\zs<CR>
+  endif
 
-" =========== Status Bar config ===========
+" ========== Status Bar config =========
+" ____________ Lightline _______________
   set laststatus=2                           " Enable status bar
 
     let g:lightline = {
@@ -170,7 +177,7 @@ set nocompatible                             " be iMproved, required
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
       \ }
 
-" ___________ Lightline Functions ___________
+" _________ Lightline Functions ________
   function! MyReadonly()
     if &readonly
       return "⭤"
@@ -200,9 +207,9 @@ set nocompatible                             " be iMproved, required
     call lightline#update()
   endfunction
 
-" ========== General Settings ==============
 
-" __________ Disable Swap files ___________
+" ========== General Settings ==========
+" __________ Disable Swap files ________
   set nobackup                               " no backup files
   set nowritebackup                          " don't backup file while editing
   set noswapfile                             " don't create swapfiles for new
@@ -211,18 +218,18 @@ set nocompatible                             " be iMproved, required
   cmap %/ <C-R>=expand("%:p:h")."/"<CR>
   cmap %% <C-R>=expand("%")<CR>
 
-" ____________ Tab as 2 spaces ___________
+" __________ Tab as 2 spaces ___________
   set tabstop=2 shiftwidth=2
   set expandtab                              " spaces as tabs
 
-" ___________ Cursor & Line Numbers _______
+" _______ Cursor & Line Numbers ________
   set cursorline                             " highlights line cursor in on
   set number                                 " overides number except on current line
   set ttyfast                                " u got a fast terminal
   set ttyscroll=3
   set lazyredraw                             " to avoid scrolling problems
 
-" ______________ Key Mapping ______________
+" ____________ Key Mapping _____________
 " move between panes with CTRL and direction keys
   map <C-j> <C-W>j
   map <C-k> <C-W>k
@@ -240,14 +247,13 @@ set nocompatible                             " be iMproved, required
 
   set visualbell                               " No sound
 
-" ___________ Detect filetypes ___________
+" __________ Detect filetypes __________
   " filetype plugin on
   " filetype indent off
 
-"  ________ Search Configuration _________
+"  ______ Search Configuration _________
   set incsearch                                " Highlight while searching
   set hlsearch                                 " Persistent search highlight
   nmap <leader>h :nohlsearch<cr>               " Turn off search highlight
   set ignorecase                               " Case insensitive pattern matching
   set smartcase                                " Overide ignorecase if pattern contains upcase
-

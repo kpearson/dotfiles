@@ -1,0 +1,5 @@
+ERBAutocomplete 1.0.9
+-------------
+
+Enhancements:
+- Fix `content_for...end` snippet lost `do` word.

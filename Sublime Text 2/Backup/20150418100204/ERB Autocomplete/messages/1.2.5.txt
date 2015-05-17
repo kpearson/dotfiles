@@ -1,0 +1,6 @@
+ERB Autocomplete 1.2.5
+-------------
+
+Enhancements:
+- Easy to add partial view to your ERB file.
+- Added reloader to make sure all dependencies are reloaded on upgrade.

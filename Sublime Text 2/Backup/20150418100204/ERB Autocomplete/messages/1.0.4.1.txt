@@ -1,0 +1,6 @@
+ERBAutocomplete 1.0.4.1
+-------------
+
+Enhancements:
+- Add try/excep avoid set syntax file not found.
+- Fix support emmet,

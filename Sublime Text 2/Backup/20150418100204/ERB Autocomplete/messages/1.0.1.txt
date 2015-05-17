@@ -1,0 +1,7 @@
+ERBAutocomplete 1.0.1
+-------------
+
+Enhancements:
+- Add content helpers.
+- Add tag helpers.
+- Add tips words in popup view

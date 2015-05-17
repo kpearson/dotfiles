@@ -1,0 +1,20 @@
+[
+  {
+    "keys": [
+      "ctrl+."
+    ],
+    "command": "mark_comment"
+  },
+  {
+    "keys": [
+      "ctrl+,"
+    ],
+    "command": "unmark_comment"
+  },
+  {
+    "keys":[
+      "ctrl+alt+l"
+    ],
+    "command": "create_layout"
+  }
+]

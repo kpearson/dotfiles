@@ -6,7 +6,7 @@
 	"detect_slow_plugins": false,
 	"ensure_single_trailing_newline": true,
 	"font_face": "Inconsolata",
-	"font_size": 14.0,
+	"font_size": 16.0,
 	"fonts_list":
 	[
 		"Monofur",

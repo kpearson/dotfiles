@@ -1,0 +1,8 @@
+ERBAutocomplete 1.0.2
+-------------
+
+Enhancements:
+- Extend tag helpers.
+- Add escape helpers.
+- Add lorem helpers.
+- Add zh_lorem helpers.

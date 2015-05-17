@@ -1,5 +1,5 @@
 # ________Load Alieses/Functions__________
-export PATH="$HOME/.dotfiles/bin:$PATH"
+# export PATH="$HOME/.dotfiles/bin:$PATH"
 
 # ________ Load ZSH-Completions __________
 fpath=(/usr/local/share/zsh-completions $fpath)

@@ -1,0 +1,5 @@
+ERBAutocomplete 1.0.6.1
+-------------
+
+Enhancements:
+- Fix detect special key '<' not working.

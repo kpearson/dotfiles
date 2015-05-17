@@ -1,4 +1,4 @@
 {
-	"last_test_run": "rspec spec/feature/unauthenticated_guest_spec.rb:182",
-	"last_test_working_dir": "/Users/Kit/turing/projects/dinner_dash"
+	"last_test_run": "ruby -Itest sentence_test.rb/",
+	"last_test_working_dir": "/Users/Kit/turing/exercises/code_retreat/sentence_reversal/sentence_test.rb"
 }

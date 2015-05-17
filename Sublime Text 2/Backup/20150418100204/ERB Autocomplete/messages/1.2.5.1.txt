@@ -1,0 +1,5 @@
+ERB Autocomplete 1.2.5.1
+-------------
+
+Bug:
+- Remove tmLanguage cache to avoid ST2 syntax not work.
