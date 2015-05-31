@@ -78,6 +78,8 @@ set nocompatible                             " be iMproved, required
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
   map <C-n> :NERDTreeToggle<CR>              " map NerdTree Toggle
 
+" ========  Markdown Highlighing =======
+  let g:vim_markdown_frontmatter=1            " Frontmatter highlighting
 
 " ============ White Space =============
  " _____ Strip Trailling Whitespace ____
@@ -110,10 +112,9 @@ set nocompatible                             " be iMproved, required
   set statusline+=%*
 
   let g:syntastic_always_populate_loc_list = 1
-  " let g:syntastic_auto_loc_list = 1
+  let g:syntastic_auto_loc_list = 0
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq = 0
-
 
 " ============ Completion ==============
  " Stuff to ignore when tab completing
@@ -141,7 +142,7 @@ set nocompatible                             " be iMproved, required
   let g:UltiSnipsJumpForwardTrigger="<tab>"
   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-" ____________ Tabularize ______________
+" =========== Tabularize ==============
   if exists(":Tabularize")
     nmap <Leader>= :Tabularize /=<CR>
     vmap <Leader>= :Tabularize /=<CR>
@@ -229,7 +230,7 @@ set nocompatible                             " be iMproved, required
   set ttyscroll=3
   set lazyredraw                             " to avoid scrolling problems
 
-" ____________ Key Mapping _____________
+" ============ Key Mapping ============
 " move between panes with CTRL and direction keys
   map <C-j> <C-W>j
   map <C-k> <C-W>k
@@ -243,15 +244,16 @@ set nocompatible                             " be iMproved, required
   nnoremap <Leader>w :w<CR>
   set timeoutlen=200
 
+  set clipboard=unnamed                       "  Set Clipboard to Mirror the Default Regester
   set showcmd                                  " Show the current command context in the lower right
-
   set visualbell                               " No sound
+  set makeef=~/##
 
-" __________ Detect filetypes __________
+" ========== Detect filetypes ==========
   " filetype plugin on
   " filetype indent off
 
-"  ______ Search Configuration _________
+" ======== Search Configuration ========
   set incsearch                                " Highlight while searching
   set hlsearch                                 " Persistent search highlight
   nmap <leader>h :nohlsearch<cr>               " Turn off search highlight

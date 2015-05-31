@@ -4,15 +4,15 @@
 # ________ Load ZSH-Completions __________
 fpath=(/usr/local/share/zsh-completions $fpath)
 
- # _____________Git Prompt_________________
+# _____________Git Prompt_________________
 source ~/configure/zsh-git-prompt/zshrc.sh
-PROMPT='%B%m%~%b$(git_super_status) %# '
+PROMPT='%B%~%b$(git_super_status) %# '
 
 # ________________rbenv____________________
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-# _____________go lang gvm_______________
+# ______________go lang gvm________________
 [[ -s "/Users/Kit/.gvm/scripts/gvm" ]] && source "/Users/Kit/.gvm/scripts/gvm"
 
 # Lines configured by zsh-newuser-install

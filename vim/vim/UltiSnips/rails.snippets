@@ -1,0 +1,113 @@
+snippet pry
+binding.pry
+endsnippet
+
+snippet mailconfig
+config.action_mailer.delivery_method = :smtp
+
+config.action_mailer.smtp_settings = {
+  address:              'smtp.mandrillapp.com',
+  port:                 587,
+  domain:               'example.com',
+  user_name:            ENV=["MANDRILL_NAME"],
+  password:             ENV=["MANDRILL_PASS"],
+  authentication:       'plain',
+  enable_starttls_auto: true
+}
+
+# ===============================
+# rails generate mailer ${1:`echo "${PWD##*/}"`}Mailer
+
+# https://github.com/kpearson/youve_changed/commit/c11eb8e2fa852a14e16fc16cd9621366684bf3be
+# http://guides.rubyonrails.org/action_mailer_basics.html
+
+
+# ========= Email Class =========
+
+# app/mailers/application_mailer.rb
+# class ApplicationMailer < ActionMailer::Base
+#   default from: "from@example.com"
+#   layout 'mailer'
+# end
+
+# app/mailers/$1_mailer.rb
+# class $1Mailer < ApplicationMailer
+#   def ${2:notify}(user, contact)
+#     @user = user
+#     attachments['scott.jpg'] = File.read("#{Rails.root}/public/scott.jpg")
+#     mail(to: contact, subject: "#{user.name} <mail subject text>.")
+#   end
+# end
+
+# Add to a controller controller action
+# $1Mailer.$2(current_user, params[:email]).deliver_later
+
+
+# ========== Email Body ===========
+# generated...
+
+# app/views/layouts/mailer.html.erb
+# <html>
+#   <body>
+#     <%= yield %>
+#   </body>
+# </html>
+
+# app/views/$1_mailer.html.erb
+# <%= yield %>
+
+# app/views/layouts/mailer.html.erb
+# html version of the email body
+
+# app/views/layouts/mailer.text.erb
+# test version of the email body.
+
+
+# ========== Mailer Testing ===========
+# snippet = mailtester
+
+# test/mailers/friend_mailer_test.rb
+# require 'test_helper'
+
+# class FriendMailerTest < ActionMailer::TestCase
+#   def test_it_sends_an_email
+#     user = User.create(name: 'Changy McChangerson', email: 'changy@example.com')
+#     FriendMailer.$2(user, 'test@example.com').deliver_now
+#     result = ActionMailer::Base.deliveries.last
+#
+#     assert result
+#     assert result.to.include? "test@example.com"
+#     assert_equal "Changy McChangerson says you've changed.", result.subject
+#   end
+# end
+endsnippet
+
+snippet mailcatcher
+# app/config/environments/development.rb
+config.action_mailer.delivery_method = :smtp
+
+config.action_mailer.smtp_settings = {
+  address: "localhost", :port => 1025
+}
+
+# 1) gem install mailcatcher
+# 2) mailcatcher
+# 3) Go to http://localhost:1080/
+# 4) Send mail through smtp://localhost:1025
+endsnippet
+
+snippet mailtest
+require 'test_helper'
+
+class FriendMailerTest < ActionMailer::TestCase
+  def test_it_sends_an_email
+    user = User.create(name: 'Changy McChangerson', email: 'changy@example.com')
+    <name>Mailer.${2:notify}user(user, 'test@example.com').deliver_now
+    result = ActionMailer::Base.deliveries.last
+
+    assert result
+    assert result.to.include? "test@example.com"
+    assert_equal "Changy McChangerson <email subject text>.", result.subject
+  end
+end
+endsnippet

@@ -1,1 +1,1 @@
-{"url": "https://github.com/akshaykumar90/sublime-font-cycler", "version": "0.2.0", "description": "Quickly cycle between your favorite fonts in Sublime Text with the press of a key"}
+{"description": "Quickly cycle between your favorite fonts in Sublime Text with the press of a key", "url": "https://github.com/akshaykumar90/sublime-font-cycler", "platforms": ["*"], "version": "0.3.0", "sublime_text": "*", "dependencies": []}
