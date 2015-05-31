@@ -1,2 +1,6 @@
 #!/bin/sh
 git add "$@"
+
+
+
+#"!sh -c :' git add "$@"'"

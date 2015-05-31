@@ -1,0 +1,6 @@
+#!/bin/sh
+echo 'gem "rspec-rails", :group => [:development, :test]\ngem "capybara", :group => [:development, :test]' >> Gemfile &&
+bundle install &&
+rails generate rspec:install &&
+echo "Add $(tput bold)require 'capybara/rails'$(tput sgr0) to the rails-helper\nFeature specs go in $(tput bold)spec/features$(tput sgr0)\nCapybara quick reference $(tput bold)https://gist.github.com/zhengjia/428105"
+
