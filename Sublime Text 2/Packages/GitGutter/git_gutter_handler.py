@@ -1,8 +1,9 @@
 import os
-import sublime
 import subprocess
-import encodings
 import re
+import codecs
+
+import sublime
 
 try:
     from . import git_helper
@@ -19,16 +20,17 @@ class GitGutterHandler:
         self.view = view
         self.git_temp_file = ViewCollection.git_tmp_file(self.view)
         self.buf_temp_file = ViewCollection.buf_tmp_file(self.view)
-        if self.on_disk():
-            self.git_tree = git_helper.git_tree(self.view)
-            self.git_dir = git_helper.git_dir(self.git_tree)
-            self.git_path = git_helper.git_file_path(self.view, self.git_tree)
+        self.git_tree = None
+        self.git_dir = None
+        self.git_path = None
 
     def _get_view_encoding(self):
         # get encoding and clean it for python ex: "Western (ISO 8859-1)"
         # NOTE(maelnor): are we need regex here?
         pattern = re.compile(r'.+\((.*)\)')
         encoding = self.view.encoding()
+        if encoding == "Undefined":
+            encoding = self.view.settings().get('default_encoding')
         if pattern.match(encoding):
             encoding = pattern.sub(r'\1', encoding)
 
@@ -43,7 +45,14 @@ class GitGutterHandler:
 
     def on_disk(self):
         # if the view is saved to disk
-        return self.view.file_name() is not None
+        on_disk = self.view.file_name() is not None
+        if on_disk:
+            self.git_tree = self.git_tree or git_helper.git_tree(self.view)
+            self.git_dir = self.git_dir or git_helper.git_dir(self.git_tree)
+            self.git_path = self.git_path or git_helper.git_file_path(
+                self.view, self.git_tree
+            )
+        return on_disk
 
     def reset(self):
         if self.on_disk() and self.git_path and self.view.window():
@@ -70,6 +79,9 @@ class GitGutterHandler:
         contents = contents.replace(b'\r\n', b'\n')
         contents = contents.replace(b'\r', b'\n')
         f = open(self.buf_temp_file.name, 'wb')
+
+        if self.view.encoding() == "UTF-8 with BOM":
+            f.write(codecs.BOM_UTF8)
 
         f.write(contents)
         f.close()
@@ -132,21 +144,14 @@ class GitGutterHandler:
                 deleted += [start + 1]
             else:
                 modified += range(start, start + new_size)
-        if len(inserted) == self.total_lines() and not self.show_untracked:
-            # All lines are "inserted"
-            # this means this file is either:
-            # - New and not being tracked *yet*
-            # - Or it is a *gitignored* file
-            return ([], [], [])
-        else:
-            return (inserted, modified, deleted)
+        return (inserted, modified, deleted)
 
     def diff(self):
         if self.on_disk() and self.git_path:
             self.update_git_file()
             self.update_buf_file()
             args = [
-                self.git_binary_path, 'diff', '-U0', '--no-color',
+                self.git_binary_path, 'diff', '-U0', '--no-color', '--no-index',
                 self.ignore_whitespace,
                 self.patience_switch,
                 self.git_temp_file.name,
@@ -158,7 +163,15 @@ class GitGutterHandler:
             try:
                 decoded_results = results.decode(encoding.replace(' ', ''))
             except UnicodeError:
-                decoded_results = results.decode("utf-8")
+                try:
+                    decoded_results = results.decode("utf-8")
+                except UnicodeDecodeError:
+                    decoded_results = ""
+            except LookupError:
+                try:
+                    decoded_results = codecs.decode(results)
+                except UnicodeDecodeError:
+                    decoded_results = ""
             return self.process_diff(decoded_results)
         else:
             return ([], [], [])
@@ -170,7 +183,7 @@ class GitGutterHandler:
         return self.handle_files(['-i'])
 
     def handle_files(self, additionnal_args):
-        if self.show_untracked and self.on_disk() and self.git_path:
+        if self.on_disk() and self.git_path:
             args = [
                 self.git_binary_path,
                 '--git-dir=' + self.git_dir,

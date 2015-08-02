@@ -1,2 +1,2 @@
 #!/bin/sh
-cd ~/turing/projects/pivot/ && vim
+cd ~/turing/projects/lights-out

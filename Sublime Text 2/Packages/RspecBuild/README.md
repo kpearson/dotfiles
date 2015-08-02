@@ -4,7 +4,7 @@ This is a Sublime Text plugin for Running Rspec File.
 
 ## Installation
 
-Install using Package Control (Recommanded)
+Install using Package Control (Recommended)
 
 1. I guess most Sublime Text 2 users are using Sublime Package Control. If not, please install it from here <http://wbond.net/sublime_packages/package_control>
 2. Go to Preference > Package Control, and Choose "Install Package"

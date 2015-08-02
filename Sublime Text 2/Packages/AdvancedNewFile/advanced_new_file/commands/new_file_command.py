@@ -72,7 +72,6 @@ class AdvancedNewFileNew(AdvancedNewFileBase, sublime_plugin.WindowCommand):
         else:
             return [initial_list]
 
-
     # Assumes curly braces are balanced
     def expand_single_curly_brace(self, path):
         if "{" not in path:
@@ -119,6 +118,9 @@ class AdvancedNewFileNew(AdvancedNewFileBase, sublime_plugin.WindowCommand):
     def get_default_root_setting(self):
         return NEW_FILE_DEFAULT_ROOT_SETTING
 
+    def empty_file_action(self):
+        self.window.new_file()
+
 
 class AdvancedNewFileNewAtCommand(sublime_plugin.WindowCommand):
     def run(self, dirs):
@@ -130,6 +132,17 @@ class AdvancedNewFileNewAtCommand(sublime_plugin.WindowCommand):
 
     def is_visible(self, dirs):
         return len(dirs) == 1
+
+
+class AdvancedNewFileNewAtFileCommand(sublime_plugin.WindowCommand):
+    def run(self, files):
+        if len(files) != 1:
+            return
+        self.window.run_command("advanced_new_file_new",
+                                {"initial_path": files[0]})
+
+    def is_visible(self, files):
+        return len(files) == 1
 
 
 class AdvancedNewFileNewEventListener(sublime_plugin.EventListener):

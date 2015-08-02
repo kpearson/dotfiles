@@ -1,1 +1,1 @@
-{"description": "A Sublime Text 2/3 plugin to see git diff in gutter", "url": "http://www.jisaacks.com/gitgutter", "platforms": ["*"], "version": "1.1.2", "sublime_text": "*", "dependencies": []}
+{"description": "A Sublime Text 2/3 plugin to see git diff in gutter", "url": "https://github.com/jisaacks/GitGutter", "platforms": ["*"], "version": "1.2.1", "sublime_text": "*", "dependencies": []}

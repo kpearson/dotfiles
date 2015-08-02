@@ -2,11 +2,12 @@
 	"auto_complete_commit_on_tab": true,
 	"bold_folder_labels": true,
 	"caret_style": "phase",
-	"color_scheme": "Packages/Monokai Gray/MonokaiGray.tmTheme",
+	"color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow-Night-Eighties.tmTheme",
 	"detect_slow_plugins": false,
 	"ensure_single_trailing_newline": true,
+	"font.size": 18.0,
 	"font_face": "Inconsolata",
-	"font_size": 16.0,
+	"font_size": 17.0,
 	"fonts_list":
 	[
 		"Monofur",

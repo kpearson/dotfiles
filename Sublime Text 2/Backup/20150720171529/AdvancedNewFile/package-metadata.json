@@ -1,0 +1,1 @@
+{"description": "File creation plugin for Sublime Text 2 and Sublime Text 3.", "url": "https://github.com/skuroda/Sublime-AdvancedNewFile", "platforms": ["*"], "version": "1.6.0", "sublime_text": "*", "dependencies": []}

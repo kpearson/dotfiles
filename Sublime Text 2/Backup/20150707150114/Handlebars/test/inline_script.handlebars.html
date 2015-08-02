@@ -1,0 +1,112 @@
+---
+published: false
+
+layout: post
+title: "Test"
+date: 2013-02-13 15:36
+comments: true
+external-url:
+categories:
+---
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Test</title>
+</head>
+
+<body>
+	<div id="test">
+		<h1>Test</h1>
+		<p>Test</p>
+	</div>
+
+	<script type="text/javascript">
+		// Do stuff
+		console.log('Bi-winning');
+	</script>
+
+	<div data-container="draggable"></div>
+
+	<div data-attribute_weird="yes"></div>
+
+	<script data-partial="nav" type="text/x-handlebars-template">
+		<ul>
+			{{#each route}}
+				<li><button data-app-route="{{ path }}">{{{ name }}}</button></li>
+			{{/each}}
+		</ul>
+	</script>
+
+	<script type="text/x-handlebars-template" id="template-gallery">
+		<div class="{{class}}" id="{{myId}}">
+			<div class="content_container">
+				{{{content}}}
+			</div>
+
+			<div id="gallery">
+				{{#each content.galleryImages}}
+				<a href="{{../content.fullBaseUrl}}{{imageUrl}}">
+					<img src="{{../content.thumbBaseUrl}}{{imageUrl}}" />
+				</a>
+				{{/each}}
+
+				{{#each array}}
+					{{@index}}: {{this}}
+				{{/each}}
+				{{#each object}}
+					{{@key}}: {{this}}
+				{{/each}}
+			</div>
+
+			{{#if date}}
+			<h3 class="date">{{date}}</h3>
+			{{else}}
+			<h3 class="no_date">No date available.</h3>
+			{{/if}}
+
+			{{! <p>Not that interesting.}} <p>No comment.</p>
+			{{!-- <p>Even less interesting. {{#if otherCondition}}<strong>"{{otherTestToken}}"</strong> {{/if}}</p> --}} <p>Nothing to see here.</p>
+			{{!-- <p>Marginally less interesting. {{{testToken}}}</p> --}} <p>Move along.</p>
+		</div>
+	</script>
+
+	<script type="text/x-handlebars" id="template-small-second">
+		<div class="{{class}}" id="{{myId}}">
+			<div class="content_container">
+				{{{content}}}
+			</div>
+			{{#list nav id="nav-bar" class="top" bubbles=false}}
+				<a href="{{url}}">{{title}}</a>
+			{{/list}}
+			<button class="tiny button" {{action addToCampaign id="add-campaign" bubbles=false}}>Choose</button>
+			<p class="{{class}}">Filler</p>
+			<a class="pull-left" {{bind-attr href=link}}>
+				<img {{bind-attr src=this.thumbLink alt=this.name}} class="media-object">
+			</a>
+	</script>
+
+	<script type="text/javascript">
+		// Do stuff
+		console.log('Tri-winning');
+		$('#jquery').remove();
+	</script>
+
+	<script type="text/template" id="template-small-third">
+		<div class="{{class}}" id="{{myId}}">
+			<div class="content_container">
+				{{!~whitespace control~}}
+				{{~foo~}}{{~foo}}{{foo~}}
+				{{~&foo~}}{{~{foo}~}}
+				{{~#if foo~}} bar {{~/if~}}
+				{{~^if foo~}} bar {{~/if~}}
+				{{#if foo~}} bar {{~^~}} baz {{~/if}}
+				{{#if foo~}} bar {{~else~}} baz {{~/if}}
+				foo {{~> dude~}} {{> dude~}}
+			</div>
+	</script>
+</body>
+
+</html>

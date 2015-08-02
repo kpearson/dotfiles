@@ -59,7 +59,7 @@ Settings are accessed via the <kbd>Preferences</kbd> > <kbd>Package Settings</kb
 Default settings should not be modified, as they are overwritten when GitGutter updates. Instead, you should copy the relevant settings into GitGutter's user settings file.
 
 #### Non Blocking Mode
-By default, GitGutter runs in the same thread which can block if it starts to perform slowly. Usually this isn't a problem but depending on the size of your file or repo it can be. If you set `non_blocking` to `true` then GitGutter will run in a seperate thread and will not block. This does cause a slight delay between when you make a modification and when the icons update in the gutter. This is a ***Sublime Text 3 only feature***, ST2 users can turn off live mode if performance is an issue.
+When set to `true` then GitGutter will run in a seperate thread and will not block. This does cause a slight delay between when you make a modification and when the icons update in the gutter.
 
 #### Debounce Delay
 When using non_blocking mode, delay update of gutter icons by the following amount (in milliseconds). Useful for performance issues. Default 1000 (1 second).
@@ -69,7 +69,7 @@ By default, GitGutter detects changes every time the file is modified. If you ex
 
 
 #### Untracked Files
-GitGutter shows icons for new files and ignored files. These icons will be on everyline. You can toggle the setting `show_markers_on_untracked_file` to turn this feature off. Defaults to true (shows icons). You may need to add scopes to your color scheme (`markup.ignored.git_gutter` and `markup.untracked.git_gutter`) to color the icons.
+GitGutter shows icons for new files and ignored files. These icons will be on every line. You can toggle the setting `show_markers_on_untracked_file` to turn this feature off. Defaults to true (shows icons). You may need to add scopes to your color scheme (`markup.ignored.git_gutter` and `markup.untracked.git_gutter`) to color the icons.
 
 #### Git path
 If git is not in your PATH, you may need to set the `git_binary` setting to the location of the git binary, e.g. in a portable environment;
@@ -122,6 +122,8 @@ Color schemes that already have support for GitGutter include:
 * [Desert Night](https://github.com/fgb/desert_night)
 * [Cobalt2](https://github.com/wesbos/cobalt2)
 * [Fox](https://github.com/karelvuong/fox)
+* [Hitoshi](https://github.com/runxel/hitoshi)
+* [Grandson of Obsidian](https://github.com/jfromaniello/Grandson-of-Obsidian)
 * _Contact me if you want your color scheme listed here. Or do a pull request._
 
 If your color scheme file does not define the appropriate colors (or you want to edit them) add an entry that looks like this:
@@ -195,10 +197,4 @@ There are commands to jump between modifications. The default keybindings for th
 
 ### Alternatives
 
-*Don't use Sublime?*
- - [Vim GitGutter](https://github.com/airblade/vim-gitgutter)
- - [Emacs GitGutter](https://github.com/syohex/emacs-git-gutter)
-
-*Don't use Git?*
- - [VcsGutter](https://github.com/bradsokol/VcsGutter)
- - [Modific](https://github.com/gornostal/Modific) *Not a port/fork of __GitGutter__ but similar*
+Check out the [collection of GitGutter(ish) packages for various editors](https://github.com/gitgutter)

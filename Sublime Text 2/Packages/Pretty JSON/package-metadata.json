@@ -1,1 +1,1 @@
-{"description": "plugin for Sublime Text 2 & 3 editor to pretty json", "url": "https://github.com/dzhibas/SublimePrettyJson", "platforms": ["*"], "version": "2015.02.12.19.04.53", "sublime_text": "*", "dependencies": []}
+{"description": "plugin for Sublime Text 2 & 3 editor to pretty json", "url": "https://github.com/dzhibas/SublimePrettyJson", "platforms": ["*"], "version": "2015.05.29.15.54.47", "sublime_text": "*", "dependencies": []}

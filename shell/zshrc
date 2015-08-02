@@ -1,0 +1,39 @@
+source /Users/Kit/.dotfiles/antigen/antigen.zsh
+eval "$(hub alias -s)"
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Git aliases and completions
+antigen bundle peterhurford/git-aliases.zsh
+
+# Open files on Github repo on a given branch
+antigen bundle peterhurford/git-it-on.zsh
+
+# Bundle
+antigen bundle bundler
+
+antigen bundle rails
+
+antigen bundle willghatch/zsh-snippets
+
+#put thous variables in the place
+antigen-bundle Tarrasch/zsh-autoenv
+
+# Heroku
+antigen bundle heroku
+
+# pip completions - pip is the native zsh package manager
+antigen bundle pip
+
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Load the theme.
+antigen theme zhann
+
+# Tell antigen that you're done.
+antigen apply
+
+export NVM_DIR="/Users/Kit/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

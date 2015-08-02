@@ -1,18 +1,22 @@
-# ________Load Alieses/Functions__________
-# export PATH="$HOME/.dotfiles/bin:$PATH"
+# _______ Load Alieses/Functions ________
+export PATH="$HOME/.dotfiles/bin:$PATH"
 
 # ________ Load ZSH-Completions __________
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-# _____________Git Prompt_________________
+# ________________Prompt__________________
 source ~/configure/zsh-git-prompt/zshrc.sh
-PROMPT='%B%~%b$(git_super_status) %# '
+PROMPT='%B%~%b$(git_super_status)
+%{$fg_no_bold[yellow]%} ✒︎  %{$reset_color%}%'
 
-# ________________rbenv____________________
+# ________________rbenv___________________
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-# ______________go lang gvm________________
+# _________________ hub __________________
+eval "$(hub alias -s)"
+
+# ______________go lang gvm_______________
 [[ -s "/Users/Kit/.gvm/scripts/gvm" ]] && source "/Users/Kit/.gvm/scripts/gvm"
 
 # Lines configured by zsh-newuser-install
@@ -20,7 +24,7 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
-# ____________Default Editor_______________
+# ____________Default Editor______________
 export EDITOR=vim
 
 unsetopt beep
@@ -28,7 +32,7 @@ unsetopt hist_beep
 unsetopt list_beep
 
 
-# ________________Alias____________________
+# ________________Alias___________________
 ## LoadPath concerns are located in ~/.envrc
 #  Managed by direnv info at https://github.com/zimbatm/direnv#the-stdlib
 # eval "$(direnv hook $0)
