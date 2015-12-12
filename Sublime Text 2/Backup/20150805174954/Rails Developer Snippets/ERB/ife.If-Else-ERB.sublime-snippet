@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+<% if ${1:condition} %>
+	$2
+<% else %>
+	$3
+<% end %>
+]]></content>
+	<tabTrigger>ife</tabTrigger>
+	<scope>text.html.ruby</scope>
+	<description>ERB ifelse</description>
+</snippet>

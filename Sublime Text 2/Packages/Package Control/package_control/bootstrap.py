@@ -1,10 +1,8 @@
 import zipfile
 import os
 import hashlib
-import sys
 import json
 from os import path
-from textwrap import dedent
 try:
     from urlparse import urlparse
     str_cls = unicode
@@ -21,14 +19,25 @@ import sublime
 from .clear_directory import clear_directory
 from .download_manager import downloader
 from .downloaders.downloader_exception import DownloaderException
-from .settings import pc_settings_filename, load_list_setting, save_list_setting
 from .console_write import console_write
 from . import loader
 from .sys_path import st_dir
 from .open_compat import open_compat, read_compat
 from .semver import SemVer
 from .file_not_found_error import FileNotFoundError
+from .settings import pc_settings_filename
 
+
+def mark_bootstrapped():
+    """
+    Mark Package Control as successfully bootstrapped
+    """
+
+    pc_settings = sublime.load_settings(pc_settings_filename())
+
+    if not pc_settings.get('bootstrapped'):
+        pc_settings.set('bootstrapped', True)
+        sublime.save_settings(pc_settings_filename())
 
 
 def bootstrap_dependency(settings, url, hash_, priority, version, on_complete):
@@ -68,39 +77,67 @@ def bootstrap_dependency(settings, url, hash_, priority, version, on_complete):
 
     # The package has already been installed. Don't reinstall unless we have
     # a newer version.
-    if path.exists(package_dir):
+    if path.exists(package_dir) and loader.exists(package_basename):
         try:
             dep_metadata_path = path.join(package_dir, 'dependency-metadata.json')
             with open_compat(dep_metadata_path, 'r') as f:
                 metadata = json.loads(read_compat(f))
             old_version = SemVer(metadata['version'])
             if version <= old_version:
+                sublime.set_timeout(mark_bootstrapped, 10)
                 return
-            console_write(u'Upgrading bootstrapped dependency %s to %s from %s' % (package_basename, version, old_version), True)
+
+            console_write(
+                u'''
+                Upgrading bootstrapped dependency %s to %s from %s
+                ''',
+                (package_basename, version, old_version)
+            )
+
         except (KeyError, FileNotFoundError):
             # If we can't determine the old version, install the new one
             pass
 
     with downloader(url, settings) as manager:
         try:
-            console_write(u'Downloading bootstrapped dependency %s' % package_basename, True)
+            console_write(
+                u'''
+                Downloading bootstrapped dependency %s
+                ''',
+                package_basename
+            )
             data = manager.fetch(url, 'Error downloading bootstrapped dependency %s.' % package_basename)
-            console_write(u'Successfully downloaded bootstraped dependency %s' % package_basename, True)
+            console_write(
+                u'''
+                Successfully downloaded bootstraped dependency %s
+                ''',
+                package_basename
+            )
             data_io = BytesIO(data)
 
         except (DownloaderException) as e:
-            console_write(u'%s' % str(e), True)
+            console_write(e)
             return
 
     data_hash = hashlib.sha256(data).hexdigest()
     if data_hash != hash_:
-        console_write(u'Error validating bootstrapped dependency %s (got %s instead of %s)' % (package_basename, data_hash, hash_), True)
+        console_write(
+            u'''
+            Error validating bootstrapped dependency %s (got %s instead of %s)
+            ''',
+            (package_basename, data_hash, hash_)
+        )
         return
 
     try:
         data_zip = zipfile.ZipFile(data_io, 'r')
     except (zipfile.BadZipfile):
-        console_write(u'Error unzipping bootstrapped dependency %s' % package_filename, True)
+        console_write(
+            u'''
+            Error unzipping bootstrapped dependency %s
+            ''',
+            package_filename
+        )
         return
 
     if not path.exists(package_dir):
@@ -117,9 +154,18 @@ def bootstrap_dependency(settings, url, hash_, priority, version, on_complete):
 
         dest = dest.replace('\\', '/')
 
-        if dest == u'loader.py':
+        # loader.py is included for backwards compatibility. New code should use
+        # loader.code with Python inside of it. We no longer use loader.py since
+        # we can't have any files ending in .py in the root of a package,
+        # otherwise Sublime Text loads it as a plugin and then the dependency
+        # path added to sys.path and the package path loaded by Sublime Text
+        # conflict and there will be errors when Sublime Text tries to
+        # initialize plugins. By using loader.code, developers can git clone a
+        # dependency into their Packages folder without issue.
+        if dest in set([u'loader.py', u'loader.code']):
             code = data_zip.read(zip_path).decode('utf-8')
-            continue
+            if dest == u'loader.py':
+                continue
 
         dest = path.join(package_dir, dest)
 
@@ -138,10 +184,21 @@ def bootstrap_dependency(settings, url, hash_, priority, version, on_complete):
 
     if loader.exists(package_basename):
         loader.remove(package_basename)
-        console_write(u'Removed old loader for bootstrapped dependency %s' % package_basename, True)
+        console_write(
+            u'''
+            Removed old loader for bootstrapped dependency %s
+            ''',
+            package_basename
+        )
     loader.add(priority, package_basename, code)
 
-    console_write(u'Successfully installed bootstrapped dependency %s' % package_basename, True)
+    console_write(
+        u'''
+        Successfully installed bootstrapped dependency %s
+        ''',
+        package_basename
+    )
 
+    sublime.set_timeout(mark_bootstrapped, 10)
     if on_complete:
         sublime.set_timeout(on_complete, 100)

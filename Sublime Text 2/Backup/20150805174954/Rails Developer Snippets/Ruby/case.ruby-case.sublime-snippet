@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[case $1
+when $2
+	$3
+when $4
+	$5
+else
+	$6
+end]]></content>
+	<tabTrigger>case</tabTrigger>
+	<scope>source.ruby</scope>
+	<description>Ruby case</description>
+</snippet>

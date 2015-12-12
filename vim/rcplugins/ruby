@@ -1,0 +1,5 @@
+" Ruby - Configuration for editing and compiling Ruby within Vim.
+
+Plugin 'vim-ruby/vim-ruby'
+
+" vim:ft=vim

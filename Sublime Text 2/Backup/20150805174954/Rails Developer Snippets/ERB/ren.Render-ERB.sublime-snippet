@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[<%= render '${1:f}' %>]]></content>
+	<tabTrigger>ren</tabTrigger>
+	<scope>text.html.ruby</scope>
+	<description>ERB Render Tag</description>
+</snippet>

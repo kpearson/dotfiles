@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[<div class="control-group">
+	<%= ${1:f}.label :${2:attribute}, class: "control-label" %>
+	<div class="controls">
+		<%= ${1:f}.text_field :${2:attribute} %>
+	</div>
+</div>
+]]></content>
+<tabTrigger>tfb</tabTrigger>
+<scope>text.html.ruby</scope>
+<description>text field with twitter bootstrap</description>
+</snippet>

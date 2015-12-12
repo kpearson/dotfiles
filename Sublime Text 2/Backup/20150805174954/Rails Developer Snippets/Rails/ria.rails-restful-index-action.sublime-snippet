@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[def index
+	@$1 = $2.all
+end
+]]></content>
+	<tabTrigger>ria</tabTrigger>
+	<scope>source.ruby.rails</scope>
+	<description>Rails Restful Index Action</description>
+</snippet>

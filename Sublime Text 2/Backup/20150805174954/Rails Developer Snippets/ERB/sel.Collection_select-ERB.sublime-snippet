@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[<%= collection_select(:${1:user}, :${2:id}, ${3:@users}, :${4:id}, :${5:name}) %>]]></content>
+	<tabTrigger>sel</tabTrigger>
+	<scope>text.html.ruby</scope>
+	<description>ERB collection select</description>
+</snippet>

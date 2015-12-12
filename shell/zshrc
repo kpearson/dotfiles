@@ -1,39 +1,73 @@
+zmodload zsh/zprof
+
 source /Users/Kit/.dotfiles/antigen/antigen.zsh
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
 eval "$(hub alias -s)"
 
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
+# ____ Tell Brew Cask to link app to root Applications directory
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-# Git aliases and completions
-antigen bundle peterhurford/git-aliases.zsh
+# ============================= Source Aliases =================================
+if [ -f $HOME/.dotfiles/aliases ]; then
+    source $HOME/.dotfiles/aliases
+else
+    print "$HOME/.dotfiles/aliases not found."
+fi
+# ===================================
 
-# Open files on Github repo on a given branch
-antigen bundle peterhurford/git-it-on.zsh
+# export NVM_DIR="/Users/Kit/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# Bundle
-antigen bundle bundler
+# ==============================================================================
+# ============================== Antigen Managed ===============================
 
-antigen bundle rails
+local a="antigen"
 
-antigen bundle willghatch/zsh-snippets
+# ____ Load the oh-my-zsh's library.
+$a use oh-my-zsh
 
-#put thous variables in the place
-antigen-bundle Tarrasch/zsh-autoenv
+# ____ Load the theme
+$a theme cloud
 
-# Heroku
-antigen bundle heroku
+# ____ Git aliases and completions
+$a bundle peterhurford/git-aliases.zsh
 
-# pip completions - pip is the native zsh package manager
-antigen bundle pip
+# ____ Ruby Gems Bundler
+$a bundle bundler
 
-# Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
+# ____ Framework plugins
+$a bundle rails
 
-# Load the theme.
-antigen theme zhann
+# ____ Alias hint
+$a bundle djui/alias-tips
 
-# Tell antigen that you're done.
+# ____ Syntax highlighting on the readline
+$a bundle zsh-users/zsh-syntax-highlighting
+
+# ____ Brew stuff
+$a bundle brew
+$a bundle brew-cask
+
+# ======= Commented to speed Loading ==========
+# ========== Uncomment if usefull =============
+
+# ____ Put those variables in the place
+# antigen-bundle Tarrasch/zsh-autoenv
+# antigen bundle unixorn/git-extra-commands
+
+# ____ Heroku
+# antigen bundle heroku
+
+# ____ pip completions - pip is the native zsh package manager
+# antigen bundle pip
+
+# ____ Open files on Github repo on a given branch
+# antigen bundle peterhurford/git-it-on.zsh
+
+# ____ Auto update of Antigen and its managed bundles
+# antigen bundle unixorn/autoupdate-antigen.zshplugin.git
+
+# ____ Tell antigen that you're done.
 antigen apply
-
-export NVM_DIR="/Users/Kit/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

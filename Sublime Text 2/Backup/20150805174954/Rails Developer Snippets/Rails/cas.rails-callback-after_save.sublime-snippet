@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[after_save :${1:method}]]></content>
+	<tabTrigger>cas</tabTrigger>
+	<scope>source.ruby.rails</scope>
+	<description>Ruby after_save callback</description>
+</snippet>

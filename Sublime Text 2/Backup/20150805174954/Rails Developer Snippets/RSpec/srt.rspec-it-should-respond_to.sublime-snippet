@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[it { ${1:should} respond_to(:${2:method}) } ]]></content>
+	<tabTrigger>srt</tabTrigger>
+	<string>source.ruby.rspec</string>
+	<description>RSpec Should Respond To</description>
+</snippet>

@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+<% end %>
+]]></content>
+	<tabTrigger>end</tabTrigger>
+	<scope>text.html.ruby</scope>
+	<description>ERB end</description>
+</snippet>

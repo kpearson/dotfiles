@@ -1,0 +1,19 @@
+" VTR - Vim tmux integration
+
+Plugin 'christoomey/vim-tmux-navigator'
+
+" =========== Tmux Integration ==========
+" move between panes with CTRL and direction keys
+  map <C-j> <C-W>j
+  map <C-k> <C-W>k
+  map <C-h> <C-W>h
+  map <C-l> <C-W>l
+
+" resize panes to respond to Tmux
+  autocmd VimResized * :wincmd =
+
+" zoom vim pane, <C-w>= to re-balance
+  nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+  nnoremap <leader>= :wincmd =<cr>
+
+" vim:ft=vim

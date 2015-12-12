@@ -1,0 +1,10 @@
+" Colorschemes - one stop shop for vim colorschemes.
+
+Plugin 'flazz/vim-colorschemes'
+
+let &t_Co=256  " set vim to support 256 color terminal
+syntax enable
+colorscheme jellybeans
+let &colorcolumn=join(range(81,999),",")   " Set 80 character ruler
+
+" vim:ft=vim

@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[def edit
+	@$1 = $2.find($3)
+end
+]]></content>
+	<tabTrigger>rea</tabTrigger>
+	<scope>source.ruby.rails</scope>
+	<description>Rails Restful Edit Action</description>
+</snippet>

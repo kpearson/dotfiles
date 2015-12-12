@@ -8,7 +8,8 @@
   "environment_variables": {
     // for bootstrapping rbenv
     // if you manage your versions differently, you'll have to figure out how your manager works
-    "RBENV_VERSION": "2.1.4"
+    "RBENV_VERSION": "2.2.2p95"
+    "LANG": "en_US.UTF-8"
   },
 
 
@@ -17,16 +18,13 @@
   "flags": {
 
     // max length of the entire line (only truncates results, not source lines)
-    "--line-length": 1000,
+    "--line-length": 500,
 
     // select the alignment strategy:
     // file  (DEFAULT) =>  the entire file is at the same alignment
     // chunk           =>  each chunk of code is at the same alignment
     // line            =>  each line is at its own alignment
     "--alignment-strategy": "chunk",
-
-    // prevents large number of captures from taking up too much memory (stops recording after seeing this many results on a line)
-    "--number-of-captures": "300",
 
     // timeout limit in seconds when evaluating source file (ex. -t 0.3 or -t 3)
     // omit for no timeout (warning, can freeze your editor up if you have an infinite loop)

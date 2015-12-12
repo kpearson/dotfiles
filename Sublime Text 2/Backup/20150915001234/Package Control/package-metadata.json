@@ -1,0 +1,1 @@
+{"description": "A full-featured package manager", "url": "https://packagecontrol.io", "platforms": ["*"], "version": "3.0.1", "sublime_text": "*", "dependencies": []}

@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[before_validation :${1:method}]]></content>
+	<tabTrigger>cbv</tabTrigger>
+	<scope>source.ruby.rails</scope>
+	<description>Ruby before_validation callback</description>
+</snippet>

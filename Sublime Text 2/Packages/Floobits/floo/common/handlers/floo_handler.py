@@ -34,9 +34,9 @@ except ImportError:
     io = None
 
 
-MAX_WORKSPACE_SIZE = 100000000  # 100MB
+MAX_WORKSPACE_SIZE = 200000000  # 200MB
 TOO_BIG_TEXT = '''Maximum workspace size is %.2fMB.\n
-%s is too big (%.2fMB) to upload.\n\nWould you like to ignore the following and continue?\n\n%s'''
+%s is too big (%.2fMB) to upload.\n\nWould you like to ignore these paths and continue?\n\n%s'''
 
 
 class FlooHandler(base.BaseHandler):
@@ -285,7 +285,11 @@ class FlooHandler(base.BaseHandler):
         if view:
             view.rename(new)
         else:
-            os.rename(old, new)
+            try:
+                os.rename(old, new)
+            except Exception as e:
+                msg.debug('Error moving ', old, 'to', new, str_e(e))
+                utils.save_buf(self.bufs[data.id])
         self.bufs[data['id']]['path'] = data['path']
 
     def _on_delete_buf(self, data):
@@ -491,7 +495,7 @@ class FlooHandler(base.BaseHandler):
             else:
                 yield self._initial_upload, ig, missing_bufs, changed_bufs
 
-        success_msg = 'Successfully joined workspace %s/%s' % (self.owner, self.workspace)
+        success_msg = '%s@%s/%s: Joined!' % (self.username, self.owner, self.workspace)
         msg.log(success_msg)
         editor.status_message(success_msg)
 

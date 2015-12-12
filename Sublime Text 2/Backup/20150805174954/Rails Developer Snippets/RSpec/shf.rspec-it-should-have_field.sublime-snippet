@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[it { ${1:should} have_field('${2:selector}') } ]]></content>
+	<tabTrigger>shf</tabTrigger>
+	<string>source.ruby.rspec</string>
+	<description>RSpec Should Have Field</description>
+</snippet>

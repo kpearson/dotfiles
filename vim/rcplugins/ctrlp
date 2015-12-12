@@ -1,0 +1,5 @@
+" CTRL-P - Full path fuzzy file, buffer, mru, tag, ... finder.
+
+Plugin 'kien/ctrlp.vim'
+
+" vim:ft=vim

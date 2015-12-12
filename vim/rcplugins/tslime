@@ -1,0 +1,5 @@
+" tslime - Sends portion of text from a vim buffer to a running tmux session.
+
+Plugin 'jgdavey/tslime.vim'
+
+" vim:ft=vim

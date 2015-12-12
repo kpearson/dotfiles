@@ -1,0 +1,12 @@
+" Tabular - lines up text.
+
+Plugin 'godlygeek/tabular'  " This is required for 'vim-markdown'.
+
+if exists(":Tabularize")
+  nmap <Leader>= :Tabularize /=<CR>
+  vmap <Leader>= :Tabularize /=<CR>
+  nmap <Leader>; :Tabularize /:\zs<CR>
+  vmap <Leader>; :Tabularize /:\zs<CR>
+endif
+
+" vim:ft=vim

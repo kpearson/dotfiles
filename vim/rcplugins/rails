@@ -1,0 +1,5 @@
+" Rails.vim - Help for working with Rails projects in vim
+
+Plugin 'tpope/vim-rails'
+
+" vim:ft=vim

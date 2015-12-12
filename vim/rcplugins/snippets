@@ -1,0 +1,5 @@
+" vim-snippets - Snippet package for Ultisnips
+
+Plugin 'honza/vim-snippets'
+
+" vim:ft=vim

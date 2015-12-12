@@ -1,0 +1,5 @@
+" Vim-Livedown - Markdown previewer. A Vim plugin for Livedown
+
+Plugin 'shime/vim-livedown'
+
+" vim:ft=vim

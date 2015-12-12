@@ -1,265 +1,65 @@
-" =============== Vundle ===============
-set nocompatible                             " be iMproved, required
-  filetype off                               " Vundle required
+"===========================================================================
+"                                ~My vimrc~
+"===========================================================================
+" Author:        Kit Pearson [http://trialanderror.io]
+" Source:        https://github.com/kpearson/dotfiles
+"
+" My vimrc, mostly for rails & javascript development. I have organized
+" all of my vimrc style configurations into individual files organized
+" by functionality. These live in ~/.vim/rcfiles.
+"
+" I am using Vundle to manage my plugins, which is configured below
+" Each plugin is configured in its own file in ~/.vim/rcplugins
+"---------------------------------------------------------------------
 
-" set the runtime path to include Vundle and initialize
-  set rtp+=~/.vim/bundle/Vundle.vim
-  call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-" call vundle#begin('~/some/path/here')
+" Want to set this before any others
+  let mapleader = "\<Space>"
 
-" ======= Vundle managed plugins =======
-  Plugin 'gmarik/Vundle.vim'                 " let Vundle manage Vundle, required
-  Plugin 'tpope/vim-fugitive'                " git integration
-  Plugin 'tpope/vim-surround'                " surround with tag
-  Plugin 'tpope/vim-rails'                   " Rails
-  Plugin 'tpope/vim-bundler'                 " Bundler
-  Plugin 'tpope/vim-rake'                    " Rake
-  Plugin 'tpope/vim-repeat'                  " <.> Reapeat
-  Plugin 'tpope/vim-sleuth'                  " Indent
-  Plugin 'tpope/vim-liquid'                  " shopify liquid templating
-  Plugin 'tpope/vim-rbenv'                   " rbenv completions and ruby source
-  Plugin 'tpope/vim-unimpaired.git'          " Bindings for global commands
-  Plugin 'vim-rspec'                         " Rspec
-  Plugin 'godlygeek/tabular'                 " Needed for vim-markdown
-  Plugin 'SirVer/ultisnips'                  " Tab completion engine
-  Plugin 'honza/vim-snippets'                " Snippets for ulitsnips
-  Plugin 'christoomey/vim-tmux-navigator'    " navagate between tmux and vim
-  Plugin 'christoomey/vim-tmux-runner'       " send commands from vim to tmux
-  Plugin 'terryma/vim-multiple-cursors'      " Multipule cursors
-  Plugin 'scrooloose/nerdtree'               " NerdTree
-  Plugin 'scrooloose/syntastic'              " Linter
-  Plugin 'Shougo/neocomplcache.vim'          " Keyword completion  via: <c-n>
-  Plugin 'plasticboy/vim-markdown'           " Markdown syntax
-  Plugin 'airblade/vim-gitgutter'            " Git Gutter
-  Plugin 'flazz/vim-colorschemes'            " Pritty colors
-  Plugin 'itchyny/lightline.vim'
-  Plugin 'tomtom/tcomment_vim'
-  Plugin 'kien/ctrlp.vim'                    " Cntl p
-  Plugin 'fatih/vim-go'                      " Go Lang Syntax
-  Plugin 'rking/ag.vim'                      " the silver searcher
-  Plugin 'tslime.vim'
-  Plugin 'peterhurford/send.vim'             " Git add, commit and push <branch>
-  Plugin 'shime/vim-livedown'                " Markdown preview
+  function! s:SourceConfigFilesIn(directory)
+    let directory_splat = '~/.vim/' . a:directory . '/*'
+     for config_file in split(glob(directory_splat), '\n')
+       if filereadable(config_file)
+          execute 'source' config_file
+      endif
+    endfor
+  endfunction
 
-" All Plugins must be added above this line
-  call vundle#end()                          " Vundle required
-  filetype plugin indent on                  " Vundle required
-" To ignore plugin indent changes, instead use:
-  filetype plugin on
-" ____________ END Vundle ______________
+" Setup Vundle to manage my bundles
+"-----------------------------------
+  filetype off " required!
+  set rtp+=~/.vim/bundle/Vundle.vim/
+  call vundle#rc("~/.vim/bundle/")
 
+" Plugins are each listed in their own file. Loop and source ftw
+"----------------------------------------------------------------
+  call s:SourceConfigFilesIn('rcplugins')
 
-" ========== Tmux Integration ==========
-" move between panes with CTRL and direction keys
-  map <C-j> <C-W>j
-  map <C-k> <C-W>k
-  map <C-h> <C-W>h
-  map <C-l> <C-W>l
+  filetype plugin indent on " required!
+  syntax on
 
-" resize panes to respond to Tmux
-  autocmd VimResized * :wincmd =
+" Vimrc is split accross multiple files, so loop over and source each
+"---------------------------------------------------------------------
+  call s:SourceConfigFilesIn('rcfiles')
 
-" zoom vim pane, <C-w>= to re-balance
-  nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
-  nnoremap <leader>= :wincmd =<cr>
+" ============ Key Mapping ============
+  nnoremap <Leader>w :w<CR>   " Leader w to write
+  set timeoutlen=200
 
-" ============= Markdown ==============
-  let g:vim_markdown_frontmatter=1             " Frontmatter highlighting
+  set clipboard=unnamed  " Set Clipboard to Mirror the Default Regester
+  set showcmd  " Show the current command context in the lower right
+  set makeef=~/##
+
+  nmap <Leader>z :set spell!<CR>
+
+" ============== Markdown ==============
+  autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+  let g:vim_markdown_frontmatter=1  " Frontmatter highlighting
   let g:vim_markdown_folding_disabled=1
-  let g:rspec_runner = "os_x_iterm2"
-
-" ========== Visual Settings ===========
-  let &t_Co=256                                " set vim to support 256 color terminal
-  syntax enable
-  colorscheme jellybeans                       " Color Theme
-  let &colorcolumn=join(range(81,999),",")     " Set 80 character ruler
-
-" =============  Nerd Tree =============
-"  autocmd vimenter * NERDTree                 " Set NerdTree to open by default
-  map <C-n> :NERDTreeToggle<CR>                " map NerdTree Toggle
-
-" set NredTree to close when last pane closes
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-
-" ============= Multi Cursor ===========
-  let g:multi_cursor_use_default_mapping=0
-
-  let g:multi_cursor_next_key='<F1>'
-  let g:multi_cursor_prev_key='<F2>'
-  let g:multi_cursor_skip_key='<F3>'
-  let g:multi_cursor_quit_key='<Esc>'
-
-" ============ White Space =============
- " _____ Strip Trailling Whitespace ____
-  function! <SID>StripTrailingWhitespaces()
-" Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-" Do the business:
-    %s/\s\+$//e
-" Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-  endfunction
-
-" ___ Highlight trailing spaces in red ____
-  highlight ExtraWhitespace ctermbg=1 guibg=red
-  match ExtraWhitespace /\s\+$/
-  autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-  autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-  autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-  autocmd BufWinLeave * call clearmatches()
-  autocmd BufWritePre * :%s/\s\+$//e         " revove all trailing white space on save or :w
-
-" ========= Syntastic Linter ===========
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
-
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 0
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
-
-" ============ Completion ==============
- " Stuff to ignore when tab completing
-   set wildmode=list:longest
-   set wildignore=*.o,*.obj,*~
-   set wildignore+=*vim/backups*
-   set wildignore+=*sass-cache*
-   set wildignore+=*DS_Store*
-   set wildignore+=*.gem
-   set wildignore+=log/**
-   set wildignore+=node_modules/**
-   set wildignore+=tmp/**
-
-" Keyword completion w/ neocomplete
-  let g:neocomplete#enable_at_startup = 1
-  let g:neocomplete#force_overwrite_completefunc = 1
-
-" For snippet_complete marker.
-   if has('conceal')
-     set conceallevel=2 concealcursor=i
-   endif
-
-" Trigger configuration for snippets w/ UltiSnips
-  let g:UltiSnipsExpandTrigger="<tab>"
-  let g:UltiSnipsJumpForwardTrigger="<tab>"
-  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-  let g:UltiSnipsEditSplit="vertical"
-
-" =========== Tabularize ==============
-  if exists(":Tabularize")
-    nmap <Leader>= :Tabularize /=<CR>
-    vmap <Leader>= :Tabularize /=<CR>
-    nmap <Leader>; :Tabularize /:\zs<CR>
-    vmap <Leader>; :Tabularize /:\zs<CR>
-  endif
-
-" ========== Status Bar config =========
-" ____________ Lightline _______________
-  set laststatus=2                           " Enable status bar
-
-    let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', ], [ 'fugitive', 'readonly', 'filename' ] ],
-      \   'right': [ [ 'syntastic', 'column', 'lineinfo' ], [ 'filetype' ] ]
-      \ },
-      \ 'component': {
-      \   'column': '%c'
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'MyFugitive',
-      \   'readonly': 'MyReadonly',
-      \   'lineinfo': 'MyLineInfo'
-      \ },
-      \ 'component_expand': {
-      \   'syntastic': 'SyntasticStatuslineFlag',
-      \ },
-      \ 'component_type': {
-      \   'syntastic': 'error',
-      \ },
-      \ 'separator': { 'left': '⮀', 'right': '⮂' },
-      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
-      \ }
-
-" _________ Lightline Functions ________
-  function! MyReadonly()
-    if &readonly
-      return "⭤"
-    else
-      return ""
-    endif
-  endfunction
-
-  function! MyFugitive()
-    if exists('*fugitive#head')
-      let _ = fugitive#head()
-      return strlen(_) ? '⭠ '._ : ''
-    endif
-    return ''
-  endfunction
-
-  function! MyLineInfo()
-    return '⭡ ' . line('.') . '/' . line('$')
-  endfunction
-
-  augroup AutoSyntastic
-    autocmd!
-    autocmd BufWritePost *.rb,*.js,*.css,*.sh call s:syntastic()
-  augroup END
-  function! s:syntastic()
-    SyntasticCheck
-    call lightline#update()
-  endfunction
-
 
 " ========== General Settings ==========
-" __________ Disable Swap files ________
-  set nobackup                               " no backup files
-  set nowritebackup                          " don't backup file while editing
-  set noswapfile                             " don't create swapfiles for new
 
   vnoremap . :norm.<CR>;                     " in visual mode, "." will for each line, go into normal mode and execute the "."
   cmap %/ <C-R>=expand("%:p:h")."/"<CR>
   cmap %% <C-R>=expand("%")<CR>
 
-" __________ Tab as 2 spaces ___________
-  set tabstop=2 shiftwidth=2
-  set expandtab                              " spaces as tabs
 
-" _______ Cursor & Line Numbers ________
-  " set cursorline                             " highlights line cursor in on
-  set number                                 " overides number except on current line
-  set ttyfast                                " u got a fast terminal
-  set ttyscroll=3
-  set lazyredraw                             " to avoid scrolling problems
-
-" ============ Key Mapping ============
-  imap jk <Esc>
-  imap kj <Esc>
-
-  let mapleader = "\<Space>"                   " Set leader key to space bar
-  nnoremap <Leader>w :w<CR>
-  set timeoutlen=200
-
-  set clipboard=unnamed                       "  Set Clipboard to Mirror the Default Regester
-  set showcmd                                  " Show the current command context in the lower right
-  set visualbell                               " No sound
-  set makeef=~/##
-
-" ========== Detect filetypes ==========
-  " filetype plugin on
-  " filetype indent off
-
-" ======== Search Configuration ========
-  set incsearch                                " Highlight while searching
-  set hlsearch                                 " Persistent search highlight
-  nmap <leader>h :nohlsearch<cr>               " Turn off search highlight
-  set ignorecase                               " Case insensitive pattern matching
-  set smartcase                                " Overide ignorecase if pattern contains upcase

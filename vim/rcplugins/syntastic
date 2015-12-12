@@ -1,0 +1,22 @@
+" Syntastic - Syntax checking on the fly
+
+Plugin 'scrooloose/syntastic'
+
+nmap <silent> <leader>sy :SyntasticToggleMode<cr>
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_xml_checkers = []
+let g:syntastic_scss_checkers = []
+let g:syntastic_html_checkers = []
+let g:syntastic_ruby_checkers = []
+let g:syntastic_json_checkers = ['jsonlint']
+
+" vim:ft=vim

@@ -1,0 +1,13 @@
+<snippet>
+  <content><![CDATA[describe "${1:something to be performed}" do
+  context "${2:under condition}" do
+    it "${3:behaves like}" do
+      $4
+    end
+  end
+end
+]]></content>
+  <tabTrigger>dci</tabTrigger>
+  <string>source.ruby.rspec</string>
+  <description>RSpec Describe + Context + It Block</description>
+</snippet>

@@ -1,0 +1,11 @@
+" NerdTree - NERD tree allows you to explore your filesystem and to open files and directories
+
+Plugin 'scrooloose/nerdtree'
+
+" autocmd vimenter * NERDTree                " Set NerdTree to open by default
+  map <C-n> :NERDTreeToggle<CR>              " map NerdTree Toggle
+
+" set NredTree to close when last pane closes
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" vim:ft=vim

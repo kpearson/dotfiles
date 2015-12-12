@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[<%= link_to ${1:"${2:Some Page}"}, ${3:some}_path %>]]></content>
+	<tabTrigger>lt</tabTrigger>
+	<scope>text.html.ruby</scope>
+	<description>ERB link_to</description>
+</snippet>

@@ -1,0 +1,20 @@
+" " Neocomplcache provides keyword completion system.
+"
+" Plugin 'Shougo/neocomplcache.vim'
+"
+" " Stuff to ignore when tab completing
+"   set wildmode=list:longest
+"   set wildignore=*.o,*.obj,*~
+"   set wildignore+=*vim/backups*
+"   set wildignore+=*sass-cache*
+"   set wildignore+=*DS_Store*
+"   set wildignore+=*.gem
+"   set wildignore+=log/**
+"   set wildignore+=node_modules/**
+"   set wildignore+=tmp/**
+"
+" " Keyword completion w/ neocomplete
+"   let g:neocomplete#enable_at_startup = 1
+"   let g:neocomplete#force_overwrite_completefunc = 1
+"
+" " vim:ft=vim

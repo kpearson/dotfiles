@@ -1,0 +1,5 @@
+" Dash - Vim intergration for dash.
+
+Plugin 'rizzatti/dash.vim'
+
+" vim:ft=vim

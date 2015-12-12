@@ -1,0 +1,6 @@
+<snippet>
+    <content><![CDATA[it { expect { $1 }.to change($2, $3) } ]]></content>
+    <tabTrigger>iec</tabTrigger>
+    <string>source.ruby.rspec</string>
+    <description>RSpec It Expect Change Inline</description>
+</snippet>

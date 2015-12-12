@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[<%= ${1:f}.label :${2:attribute} %><br />
+<%= ${1:f}.check_box :${2:attribute} %>
+]]></content>
+	<tabTrigger>cb</tabTrigger>
+	<scope>text.html.ruby</scope>
+	<description>ERB check box</description>
+</snippet>

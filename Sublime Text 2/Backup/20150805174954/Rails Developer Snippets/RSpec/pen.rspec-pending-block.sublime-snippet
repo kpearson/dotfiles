@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[pending "${1:a specification}" do
+	$2
+end
+]]></content>
+	<tabTrigger>pen</tabTrigger>
+	<string>source.ruby.rspec</string>
+	<description>RSpec Pending Block</description>
+</snippet>

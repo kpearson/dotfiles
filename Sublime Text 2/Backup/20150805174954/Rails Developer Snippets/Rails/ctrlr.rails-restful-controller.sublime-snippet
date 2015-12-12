@@ -1,0 +1,61 @@
+<snippet>
+	<content><![CDATA[class ${1:User}sController < ApplicationController
+	before_action :find_${2:user}, except: [:index, :new, :create]
+
+	def index
+		@${2:user}s = ${1:User}.all
+	end
+
+	def show
+	end
+
+	def new
+		@${2:user} = ${1:User}.new
+	end
+
+	def edit
+	end
+
+	def create
+		@${2:user} = ${1:User}.new(params[:${2:user}])
+		if @${2:user}.save
+		  flash[:success] = "${1:User} successfully created"
+		  redirect_to @${2:user}
+		else
+		  flash[:error] = "Something went wrong"
+		  render 'new'
+		end
+	end
+
+	def update
+		if @${2:user}.update_attributes(params[:${2:user}])
+		  flash[:success] = "${1:User} was successfully updated"
+		  redirect_to @${2:user}
+		else
+		  flash[:error] = "Something went wrong"
+		  render 'edit'
+		end
+	end
+
+	def destroy
+		if @${2:user}.destroy
+			flash[:success] = "${1:User} was successfully deleted"
+			redirect_to @${2:user}s_path
+		else
+			flash[:error] = "Something went wrong"
+			redirect_to @${2:user}s_path
+		end
+	end
+
+	private
+
+		def find_${2:user}
+			@${2:user} = ${1:User}.find(params[:id])
+		end
+
+end
+]]></content>
+	<tabTrigger>ctrlr</tabTrigger>
+	<scope>source.ruby.rails</scope>
+	<description>Rails Restful Controller</description>
+</snippet>

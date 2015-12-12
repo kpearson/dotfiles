@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[def update
+	@${1:object} = ${2:Object}.find(${3:params[:id]})
+    if @${1:object}.update_attributes(params[:${1:object}])
+      flash[:success] = "${2:Object} was successfully updated"
+      redirect_to @${1:object}
+    else
+      flash[:error] = "Something went wrong"
+      render 'edit'
+    end
+end
+]]></content>
+	<tabTrigger>rua</tabTrigger>
+	<scope>source.ruby.rails</scope>
+	<description>Rails Restful Update Action</description>
+</snippet>

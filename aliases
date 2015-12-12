@@ -1,0 +1,16 @@
+alias Gwho="git log --all --format='%cN <%Cblue%cE%Creset>' | sort -u"
+alias todo="vi ~/.todo.md"
+alias job="vi $HOME/.jobs.md"
+
+# global
+alias vi="mvim"
+alias reload=". ~/.zshrc && echo 'ZSH reloaded!'"
+alias zshr="vim ~/.zshrc && reload"
+alias vimr="vim ~/.vimrc && . $HOME/.vimrc"
+alias zshs="subl ~/.zshrc && reload"
+alias ex="vim ~/turing/exercises/"
+alias pro="vim $HOME/code/my_projects"
+alias te="cd $HOME/code/my_projects/trial-and-error/ && vi"
+alias t="tmux"
+alias tl="tmux ls"
+alias aliases="vim $HOME/.dotfiles/aliases"

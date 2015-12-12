@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[<% elsif ${1:true} %>]]></content>
+	<tabTrigger>eif</tabTrigger>
+	<scope>text.html.ruby</scope>
+	<description>ERB elsif</description>
+</snippet>

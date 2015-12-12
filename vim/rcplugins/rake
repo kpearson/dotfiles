@@ -1,0 +1,5 @@
+" vim-rake - Help for working with Rake projects in vim
+
+Plugin 'tpope/vim-rake'
+
+" vim:ft=vim

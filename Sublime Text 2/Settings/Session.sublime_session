@@ -1,6 +1,13 @@
 {
 	"folder_history":
 	[
+		"/Users/Kit/code/client-projects/flexa/development_flexa",
+		"/Users/Kit/exercism/ruby/hello-world",
+		"/Users/Kit/code/turing/projects/module_3/trackFund_mod3_personal_proj",
+		"/Users/Kit/code/my_projects/trial-and-error",
+		"/Users/Kit/rails_projects/exercism.io/ruby/bob",
+		"/Users/Kit/rails_projects/exercism.io/ruby/hamming",
+		"/Users/Kit/rails_projects/exercism.io",
 		"/Users/Kit/turing/projects/octochat-rails",
 		"/Users/Kit/turing/projects/octochat",
 		"/Users/Kit/turing/projects/lights-out",
@@ -82,7 +89,6 @@
 		"/Users/Kit/rails_projects/exercism.io/ruby/word-count",
 		"/Users/Kit/turing/exercises/warmups/locations",
 		"/Users/Kit/turing/exercises/warmups/geolocation-exercise",
-		"/Users/Kit/rails_projects/exercism.io",
 		"/Users/Kit/rails_projects/exercism.io/ruby",
 		"/Users/Kit/turing/exercises/codeRetreat/robot",
 		"/Users/Kit/turing/exercises/code_retreat/robot",
@@ -122,15 +128,9 @@
 		"/Users/Kit/rails_projects/devArchive/LRD_Archive/LHMP4",
 		"/Users/Kit/rails_projects/prag_course/studio_game",
 		"/Users/Kit/turing/projects/csv-exercises",
-		"/Users/Kit/turing/ruby-exercises/mutation",
-		"/Users/Kit/turing/enums-exercises",
-		"/Users/Kit/turing/exercises/js_paring",
-		"/Users/Kit/turing/exercises/tick_tack_toe",
-		"/Users/Kit/turing/ideabox/ideabox",
-		"/Users/Kit/turing/projects/csv-exercises/level-i/phone_book",
-		"/Users/Kit/turing/csv-practice"
+		"/Users/Kit/turing/ruby-exercises/mutation"
 	],
-	"last_window_id": 1012,
+	"last_window_id": 1025,
 	"settings":
 	{
 		"new_window_height": 855.0,
@@ -850,6 +850,14 @@
 			},
 			"file_history":
 			[
+				"/Users/Kit/Downloads/Input-Font/Input_Fonts/SETTINGS.txt",
+				"/Users/Kit/Downloads/Input-Font/Scripts/_template_Bold.txt",
+				"/private/var/folders/ll/l77h02_15mz0f9d3g633d_140000gp/T/TemporaryItems/(A Document Being Saved By Illustrator CC 5)/ai14483403061.tmp/ai14483403061.txt",
+				"/Users/Kit/Downloads/Resume201509230158.txt.txt",
+				"/Users/Kit/rails_projects/exercism.io/ruby/bob/bob.rb",
+				"/Users/Kit/rails_projects/exercism.io/ruby/bob/_bob.rb",
+				"/Users/Kit/rails_projects/exercism.io/ruby/bob/bob_test.rb",
+				"/Users/Kit/Downloads/export.csv",
 				"/Users/Kit/Downloads/startbootstrap-landing-page-1.0.4/README.md",
 				"/Users/Kit/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/F0318B5F-25F9-4352-B293-7420462148AD/DGA RevUp Export DGA 7.9.15.csv",
 				"/Users/Kit/.dotfiles/Sublime Text 2/Packages/User/Preferences.sublime-settings",
@@ -969,15 +977,7 @@
 				"/Users/Kit/turing/projects/dinner_dash/app/assets/images/apples.jpg",
 				"/Users/Kit/turing/projects/dinner_dash/Gemfile",
 				"/Users/Kit/turing/projects/dinner_dash/app/controllers/items_controller.rb",
-				"/Users/Kit/turing/projects/dinner_dash/app/views/admin/items/_form.html.erb",
-				"/Users/Kit/turing/projects/dinner_dash/config/application.rb",
-				"/Users/Kit/turing/exercises/jQuery-playground/rails-jQuery/app/views/layouts/application.html.erb",
-				"/Users/Kit/turing/exercises/jQuery-playground/basic-jQuery/style.css",
-				"/Users/Kit/turing/exercises/jQuery-playground/rails-jQuery/app/views/home/index.html.erb",
-				"/Users/Kit/turing/exercises/jQuery-playground/rails-jQuery/app/assets/javascripts/home.js",
-				"/Users/Kit/turing/exercises/jQuery-playground/basic-jQuery/application.js",
-				"/Users/Kit/turing/exercises/jQuery-playground/basic-jQuery/index.html",
-				"/Users/Kit/turing/eval/scrabble-web/app/views/application.html.erb"
+				"/Users/Kit/turing/projects/dinner_dash/app/views/admin/items/_form.html.erb"
 			],
 			"find":
 			{
@@ -1003,6 +1003,10 @@
 				"case_sensitive": true,
 				"find_history":
 				[
+					"    skip\n",
+					"skip",
+					"def",
+					"test_asking_gibberish",
 					"env",
 					"UsersProject",
 					"has_many_through",
@@ -1126,11 +1130,7 @@
 					"vailid",
 					"menu",
 					"Scopes",
-					"rails_helper",
-					"Breakfast",
-					"Lunch",
-					"BLT",
-					"(#"
+					"rails_helper"
 				],
 				"highlight": true,
 				"in_selection": false,

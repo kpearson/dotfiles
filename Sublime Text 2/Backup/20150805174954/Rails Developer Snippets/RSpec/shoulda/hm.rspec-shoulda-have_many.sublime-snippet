@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[it { ${1:should} have_many(:${2:objects}) } ]]></content>
+	<tabTrigger>hm</tabTrigger>
+	<string>source.ruby.rspec</string>
+	<description>RSpec "shoulda" have_many</description>
+</snippet>

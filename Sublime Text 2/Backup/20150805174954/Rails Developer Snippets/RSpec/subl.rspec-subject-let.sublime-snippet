@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[subject(:${1:var}) { $2 } ]]></content>
+	<tabTrigger>subl</tabTrigger>
+	<string>source.ruby.rspec</string>
+	<description>RSpec Subject-Let</description>
+</snippet>
