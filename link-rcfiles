@@ -1,0 +1,39 @@
+#!/bin/sh
+
+# Welcome to Kit's rcfile symlinking script!
+
+fancy_echo() {
+  local fmt="$1"; shift
+
+  # shellcheck disable=SC2059
+  printf "\n$fmt\n" "$@"
+}
+
+file_exsists() {
+	ls -al $HOME | grep -F "$1" >/dev/null
+}
+
+link_exsists() {
+	ls -al $HOME | grep -F "$1 ->" >/dev/null
+}
+
+create_them_symlinks() {
+        rcfile=${1##*/}
+	if file_exsists $rcfile; then
+	    if link_exsists $rcfile; then
+		fancy_echo "A link to \e[1;33m$rcfile\e[0m is already in place at \e[1;33m$HOME/.$rcfile\e[0m. \e[1;31mSkipping...\e[0m" "$1" 
+	    else
+		fancy_echo "File named \e[1;33m$rcfile\e[0m exsists at \e[1;33m$HOME/.$rcfile\e[0m. \e[1;31mSkipping...\e[0m" "$1" 
+	    fi
+	else
+	    fancy_echo "\e[1;37m$rcfile\e[0m sym-linked to \e[1;37m$HOME/.$rcfile\e[0m" "$1"
+	    ln -s $1 $HOME/$rcfile
+	fi
+}
+
+find $HOME/.dotfiles -maxdepth 2 -name "*rc" | while read line; do
+	create_them_symlinks $line
+done
+
+create_them_symlinks vim
+create_them_symlinks tmux.conf
