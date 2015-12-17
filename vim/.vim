@@ -1,1 +1,1 @@
-/Users/Kit/.vim
+/Users/kit/.vim

@@ -1,6 +1,6 @@
-zmodload zsh/zprof
+# zmodload zsh/zprof
 
-source /Users/Kit/.dotfiles/antigen/antigen.zsh
+source /Users/kit/dotfiles/antigen/antigen.zsh
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
@@ -9,13 +9,14 @@ eval "$(hub alias -s)"
 # ____ Tell Brew Cask to link app to root Applications directory
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
+# ==============================================================================
 # ============================= Source Aliases =================================
-if [ -f $HOME/.dotfiles/aliases ]; then
-    source $HOME/.dotfiles/aliases
+if [ -f $HOME/dotfiles/aliases ]; then
+    source $HOME/dotfiles/aliases
 else
-    print "$HOME/.dotfiles/aliases not found."
+    print "$HOME/dotfiles/aliases not found."
 fi
-# ===================================
+# ==============================================================================
 
 # export NVM_DIR="/Users/Kit/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -50,7 +51,7 @@ $a bundle zsh-users/zsh-syntax-highlighting
 $a bundle brew
 $a bundle brew-cask
 
-# ======= Commented to speed Loading ==========
+# ======= Commented out to speed Loading ==========
 # ========== Uncomment if usefull =============
 
 # ____ Put those variables in the place
@@ -69,5 +70,5 @@ $a bundle brew-cask
 # ____ Auto update of Antigen and its managed bundles
 # antigen bundle unixorn/autoupdate-antigen.zshplugin.git
 
-# ____ Tell antigen that you're done.
+# ____ End Antigen
 antigen apply

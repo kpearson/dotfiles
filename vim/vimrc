@@ -1,6 +1,6 @@
-"===========================================================================
+"===============================================================================
 "                                ~My vimrc~
-"===========================================================================
+"===============================================================================
 " Author:        Kit Pearson [http://trialanderror.io]
 " Source:        https://github.com/kpearson/dotfiles
 "
@@ -10,22 +10,22 @@
 "
 " I am using Vundle to manage my plugins, which is configured below
 " Each plugin is configured in its own file in ~/.vim/rcplugins
-"---------------------------------------------------------------------
+"-------------------------------------------------------------------------------
 
-" Want to set this before any others
+" Set this before any others
   let mapleader = "\<Space>"
 
   function! s:SourceConfigFilesIn(directory)
     let directory_splat = '~/.vim/' . a:directory . '/*'
-     for config_file in split(glob(directory_splat), '\n')
-       if filereadable(config_file)
-          execute 'source' config_file
+    for config_file in split(glob(directory_splat), '\n')
+      if filereadable(config_file)
+        execute 'source' config_file
       endif
     endfor
   endfunction
 
 " Setup Vundle to manage my bundles
-"-----------------------------------
+"----------------------------------
   filetype off " required!
   set rtp+=~/.vim/bundle/Vundle.vim/
   call vundle#rc("~/.vim/bundle/")
@@ -58,8 +58,6 @@
 
 " ========== General Settings ==========
 
-  vnoremap . :norm.<CR>;                     " in visual mode, "." will for each line, go into normal mode and execute the "."
+  vnoremap . :norm.<CR>;                " in visual mode, "." will for each line, go into normal mode and execute the "."
   cmap %/ <C-R>=expand("%:p:h")."/"<CR>
   cmap %% <C-R>=expand("%")<CR>
-
-
