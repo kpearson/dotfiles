@@ -41,3 +41,4 @@ done
 create_them_symlinks $(pwd)/vim
 create_them_symlinks $(pwd)/tmux/tmux.conf
 create_them_symlinks $(pwd)/antigin/antigen.zsh
+create_them_symlinks $(pwd)/atom
