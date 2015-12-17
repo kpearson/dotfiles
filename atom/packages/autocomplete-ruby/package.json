@@ -1,0 +1,167 @@
+{
+  "name": "autocomplete-ruby",
+  "main": "./lib/autocomplete-ruby",
+  "version": "0.1.0",
+  "author": {
+    "name": "Ian Hattendorf",
+    "email": "ianhattendorf@gmail.com",
+    "url": "http://ianhattendorf.com/"
+  },
+  "description": "Intelligent Ruby code completion",
+  "keywords": [
+    "autocomplete",
+    "autocomplete-plus",
+    "rsense",
+    "ruby"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ianhattendorf/autocomplete-ruby.git"
+  },
+  "homepage": "https://github.com/ianhattendorf/autocomplete-ruby",
+  "bugs": {
+    "url": "https://github.com/ianhattendorf/autocomplete-ruby/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">=0.174.0 <2.0.0"
+  },
+  "dependencies": {
+    "jquery": "^2"
+  },
+  "providedServices": {
+    "autocomplete.provider": {
+      "description": "Intelligent Ruby code completion",
+      "versions": {
+        "1.1.0": "provideAutocompletion"
+      }
+    }
+  },
+  "readme": "# Atom Autocomplete+ Ruby Suggestions\n[![Dependency status](https://david-dm.org/ianhattendorf/autocomplete-ruby.svg)](https://david-dm.org/ianhattendorf/autocomplete-ruby)\n[![GitHub version](https://badge.fury.io/gh/ianhattendorf%2Fautocomplete-ruby.svg)](http://badge.fury.io/gh/ianhattendorf%2Fautocomplete-ruby)\n\nProvides intelligent code completion for Ruby. Requires [RSense](https://github.com/rsense/rsense) and [Autocomplete+](https://github.com/atom-community/autocomplete-plus).\n\n## Status\nCurrently pre-alpha, buggy and not fully implemented. All help is welcome.\n\n## Why?\nBecause I wanted Ruby code completion in Atom and [atom-rsense](https://github.com/rsense/atom-rsense) hasn't been updated since June 2014, which is a long time for an Atom package. It's currently broken and I didn't like the dependency on Opal, as much as I enjoy Ruby, so I decided to create this.\n\n## Installation\nInstall required gems and Atom packages:\n```shell\n$ gem install rsense\n$ apm install autocomplete-plus\n```\n\n## Usage\nLaunch the rsense server in the project root you want completion:\n```shell\n$ rsense start\nrsense version: 0.5.18\nlogs at: /tmp/rsense.log\nprocess running at: 925\n```\n\n## Bugs\nA lot. If you're brave enough to try this out and notice any specifically, feel free to open an issue or even better submit a pull request.\n\n## Development\nClone the repository into your working directory:\n```shell\n$ git clone git@github.com:ianhattendorf/autocomplete-ruby.git\n```\n\nInstall dependencies:\n```shell\n$ cd autocomplete-ruby\n$ apm install\n```\n\nLink to Atom as a dev package:\n```shell\n$ apm link --dev\n```\n\nFeel free to fork it and submit a pull request for any changes you make.\n",
+  "readmeFilename": "README.md",
+  "_id": "autocomplete-ruby@0.1.0",
+  "_shasum": "905d98a4e1edc94ab7aeb6328b51c66637fcce75",
+  "_resolved": "file:../d-1151115-10150-13pshvz/package.tgz",
+  "_from": "../d-1151115-10150-13pshvz/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "jquery",
+        "version": "2.1.4",
+        "path": "node_modules/jquery/dist/jquery.js"
+      }
+    ],
+    "extensions": {
+      ".coffee": [
+        "lib/autocomplete-ruby-client.coffee",
+        "lib/autocomplete-ruby-provider.coffee",
+        "lib/autocomplete-ruby.coffee"
+      ],
+      ".json": [
+        "node_modules/jquery/bower.json",
+        "node_modules/jquery/package.json",
+        "package.json"
+      ],
+      ".js": [
+        "node_modules/jquery/dist/jquery.js",
+        "node_modules/jquery/dist/jquery.min.js",
+        "node_modules/jquery/src/ajax/jsonp.js",
+        "node_modules/jquery/src/ajax/load.js",
+        "node_modules/jquery/src/ajax/parseJSON.js",
+        "node_modules/jquery/src/ajax/parseXML.js",
+        "node_modules/jquery/src/ajax/script.js",
+        "node_modules/jquery/src/ajax/var/nonce.js",
+        "node_modules/jquery/src/ajax/var/rquery.js",
+        "node_modules/jquery/src/ajax/xhr.js",
+        "node_modules/jquery/src/ajax.js",
+        "node_modules/jquery/src/attributes/attr.js",
+        "node_modules/jquery/src/attributes/classes.js",
+        "node_modules/jquery/src/attributes/prop.js",
+        "node_modules/jquery/src/attributes/support.js",
+        "node_modules/jquery/src/attributes/val.js",
+        "node_modules/jquery/src/attributes.js",
+        "node_modules/jquery/src/callbacks.js",
+        "node_modules/jquery/src/core/access.js",
+        "node_modules/jquery/src/core/init.js",
+        "node_modules/jquery/src/core/parseHTML.js",
+        "node_modules/jquery/src/core/ready.js",
+        "node_modules/jquery/src/core/var/rsingleTag.js",
+        "node_modules/jquery/src/core.js",
+        "node_modules/jquery/src/css/addGetHookIf.js",
+        "node_modules/jquery/src/css/curCSS.js",
+        "node_modules/jquery/src/css/defaultDisplay.js",
+        "node_modules/jquery/src/css/hiddenVisibleSelectors.js",
+        "node_modules/jquery/src/css/support.js",
+        "node_modules/jquery/src/css/swap.js",
+        "node_modules/jquery/src/css/var/cssExpand.js",
+        "node_modules/jquery/src/css/var/getStyles.js",
+        "node_modules/jquery/src/css/var/isHidden.js",
+        "node_modules/jquery/src/css/var/rmargin.js",
+        "node_modules/jquery/src/css/var/rnumnonpx.js",
+        "node_modules/jquery/src/css.js",
+        "node_modules/jquery/src/data/Data.js",
+        "node_modules/jquery/src/data/accepts.js",
+        "node_modules/jquery/src/data/var/data_priv.js",
+        "node_modules/jquery/src/data/var/data_user.js",
+        "node_modules/jquery/src/data.js",
+        "node_modules/jquery/src/deferred.js",
+        "node_modules/jquery/src/deprecated.js",
+        "node_modules/jquery/src/dimensions.js",
+        "node_modules/jquery/src/effects/Tween.js",
+        "node_modules/jquery/src/effects/animatedSelector.js",
+        "node_modules/jquery/src/effects.js",
+        "node_modules/jquery/src/event/ajax.js",
+        "node_modules/jquery/src/event/alias.js",
+        "node_modules/jquery/src/event/support.js",
+        "node_modules/jquery/src/event.js",
+        "node_modules/jquery/src/exports/amd.js",
+        "node_modules/jquery/src/exports/global.js",
+        "node_modules/jquery/src/intro.js",
+        "node_modules/jquery/src/jquery.js",
+        "node_modules/jquery/src/manipulation/_evalUrl.js",
+        "node_modules/jquery/src/manipulation/support.js",
+        "node_modules/jquery/src/manipulation/var/rcheckableType.js",
+        "node_modules/jquery/src/manipulation.js",
+        "node_modules/jquery/src/offset.js",
+        "node_modules/jquery/src/outro.js",
+        "node_modules/jquery/src/queue/delay.js",
+        "node_modules/jquery/src/queue.js",
+        "node_modules/jquery/src/selector-native.js",
+        "node_modules/jquery/src/selector-sizzle.js",
+        "node_modules/jquery/src/selector.js",
+        "node_modules/jquery/src/serialize.js",
+        "node_modules/jquery/src/sizzle/dist/sizzle.js",
+        "node_modules/jquery/src/sizzle/dist/sizzle.min.js",
+        "node_modules/jquery/src/traversing/findFilter.js",
+        "node_modules/jquery/src/traversing/var/rneedsContext.js",
+        "node_modules/jquery/src/traversing.js",
+        "node_modules/jquery/src/var/arr.js",
+        "node_modules/jquery/src/var/class2type.js",
+        "node_modules/jquery/src/var/concat.js",
+        "node_modules/jquery/src/var/hasOwn.js",
+        "node_modules/jquery/src/var/indexOf.js",
+        "node_modules/jquery/src/var/pnum.js",
+        "node_modules/jquery/src/var/push.js",
+        "node_modules/jquery/src/var/rnotwhite.js",
+        "node_modules/jquery/src/var/slice.js",
+        "node_modules/jquery/src/var/strundefined.js",
+        "node_modules/jquery/src/var/support.js",
+        "node_modules/jquery/src/var/toString.js",
+        "node_modules/jquery/src/wrap.js"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "lib",
+          "",
+          "spec"
+        ],
+        "dependencies": {
+          "jquery": "^2"
+        }
+      }
+    ]
+  }
+}

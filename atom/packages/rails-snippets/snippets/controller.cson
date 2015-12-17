@@ -1,0 +1,63 @@
+'.source.ruby, .source.ruby.rails .meta.rails.controller':
+
+  'redirect_to':
+    'prefix': 'rt'
+    'body': 'redirect_to ${1:resource}_url'
+
+  'respond_to':
+    'prefix': 'respond_to'
+    'body': """
+      respond_to do |format|
+        format.html
+        format.json { render json: @${1:resource} }
+      end
+    """
+
+  'skip_before_action':
+    'prefix': 'sba'
+    'body': 'skip_before_action :${1:method_name}, only: [:${2:index}]'
+
+  'skip_before_filter':
+    'prefix': 'sbf'
+    'body': 'skip_before_filter :${1:method_name}, only: [:${2:index}]'
+
+  'skip_after_action':
+    'prefix': 'saa'
+    'body': 'skip_after_action :${1:method_name}, only: [:${2:index}]'
+
+  'skip_after_filter':
+    'prefix': 'saf'
+    'body': 'skip_after_filter :${1:method_name}, only: [:${2:index}]'
+
+  'before_action':
+    'prefix': 'ba'
+    'body': 'before_action :${1:method_name}, only: [:${2:index}]'
+
+  'before_filter':
+    'prefix': 'bf'
+    'body': 'before_filter :${1:method_name}, only: [:${2:index}]'
+
+  'after_filter':
+    'prefix': 'af'
+    'body': 'after_filter :${1:method_name}, only:[:${2:index}]'
+
+  'after_action':
+    'prefix': 'aa'
+    'body': 'after_action :${1:method_name}, only:[:${2:index}]'
+
+  'render_partial':
+    'prefix': 'rp'
+    'body': 'render "${1:action}"'
+
+  'current_user':
+    'prefix': 'cur'
+    'body': 'current_user'
+
+  'params_whitelist':
+    'prefix': 'wparams'
+    'body': """
+      def ${1:model}_params
+        params.require(:${1:model}).permit(
+          :${2:attr_1}
+        )
+    """

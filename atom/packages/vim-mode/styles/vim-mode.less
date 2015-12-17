@@ -1,0 +1,146 @@
+@import "syntax-variables";
+@import "ui-variables";
+
+.normal-mode-input atom-text-editor[mini] {
+  background-color: inherit;
+  border: none;
+  width: 100%;
+  font-weight: normal;
+  color: @text-color;
+  line-height: 1.28;
+  cursor: default;
+  white-space: nowrap;
+  padding-left: 10px;
+}
+
+.vim-hidden-normal-mode-input {
+  height: 0px !important;
+  width: 0px !important;
+  overflow: hidden !important;
+  border: none !important;
+  padding: 0 !important;
+  display: block !important;
+  position: fixed !important;
+  top: -10px !important;
+  left: -10px !important;
+}
+
+.block-cursor(@visibility: visible) {
+  border: 0;
+  background-color: @syntax-cursor-color;
+  visibility: @visibility;
+  opacity: 0.5;
+}
+
+.underline-cursor(@visibility: visible) {
+  border: none;
+  border-bottom: .3em solid @syntax-cursor-color;
+  background: none;
+  visibility: @visibility;
+  opacity: 0.5;
+}
+
+.low-block-cursor(@visibility: visible) {
+  border: none;
+  border-bottom: .6em solid @syntax-cursor-color;
+  background: none;
+  visibility: @visibility;
+  opacity: 0.5;
+}
+
+atom-text-editor.vim-mode.normal-mode,
+atom-text-editor.vim-mode.operator-pending-mode,
+atom-text-editor.vim-mode.visual-mode,
+{
+  &::shadow, // shadow-DOM enabled
+  &           // shadow-DOM disabled
+  {
+    .cursor {
+      .block-cursor(hidden);
+    }
+  }
+}
+
+atom-text-editor.vim-mode.normal-mode.is-focused,
+atom-text-editor.vim-mode.operator-pending-mode.is-focused,
+atom-text-editor.vim-mode.visual-mode.is-focused
+{
+  &::shadow, // shadow-DOM enabled
+  &           // shadow-DOM disabled
+  {
+    .cursor {
+      .block-cursor;
+    }
+  }
+}
+
+atom-text-editor.vim-mode.visual-mode
+{
+  &::shadow, // shadow-DOM enabled
+  &           // shadow-DOM disabled
+  {
+    .cursor.hidden-cursor {
+      display: block;
+    }
+  }
+}
+
+atom-text-editor.vim-mode.replace-mode
+{
+  &::shadow, // shadow-DOM enabled
+  &           // shadow-DOM disabled
+  {
+    .cursor {
+      .underline-cursor(hidden);
+    }
+  }
+}
+
+atom-text-editor.vim-mode.replace-mode.is-focused
+{
+  &::shadow, // shadow-DOM enabled
+  &           // shadow-DOM disabled
+  {
+    .cursor {
+      .underline-cursor;
+    }
+
+    .cursors.blink-off .cursor {
+      .underline-cursor(hidden);
+    }
+  }
+}
+
+atom-text-editor.vim-mode.operator-pending-mode
+{
+  &::shadow, // shadow-DOM enabled
+  &           // shadow-DOM disabled
+  {
+    .cursor {
+      .low-block-cursor(hidden);
+    }
+  }
+}
+
+atom-text-editor.vim-mode.operator-pending-mode.is-focused
+{
+  &::shadow, // shadow-DOM enabled
+  &           // shadow-DOM disabled
+  {
+    .cursor {
+      .low-block-cursor;
+    }
+
+    .cursors.blink-off .cursor {
+      .low-block-cursor(hidden);
+    }
+  }
+}
+
+.search-input atom-text-editor[mini]::before {
+  content: '/';
+}
+
+.reverse-search-input atom-text-editor[mini]::before {
+  content: '?';
+}

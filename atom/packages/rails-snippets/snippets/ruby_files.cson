@@ -1,0 +1,138 @@
+# this snippets are sensitive defaults when working with rails, are intended to
+# be used when the selected syntax is different than Ruby (Ruby on Rails).
+'.source.ruby, .source.ruby.rails':
+  'it':
+    'prefix': 'it'
+    'body': """
+      it "should $1" do
+        $2
+      end
+    """
+
+  'describe':
+    'prefix': 'describe'
+    'body': """
+      describe "when $1" do
+        $2
+      end
+    """
+
+  'class':
+    'prefix': 'class'
+    'body': """
+      class ${1:ClassName}
+        ${2:#code}
+      end
+    """
+
+  'model':
+    'prefix': 'model'
+    'body': """
+      class ${1:User} ${2:< ${3:ActiveRecord::Base}}
+        ${4:# lot of code :D}
+      end
+    """
+  'controller':
+    'prefix': 'controller'
+    'body': """
+      class ${1:Users}Controller < ApplicationController
+        ${2:# lot of controller code :D}
+      end
+    """
+
+  'module':
+    'prefix': 'module'
+    'body': """
+      module ${1:ModuleName}
+        ${2:#code}
+      end
+    """
+
+  'concern':
+    'prefix': 'concern'
+    'body': """
+      module ${1:ConcernName}
+        extend ActiveSupport::Concern
+        ${3:included do
+          ${2:# code ...}
+        end}
+
+        # instance methods go here
+        ${4:# def instance_method
+        #
+        # end}
+
+        module ClassMethods
+          # static methods go here
+          ${5:# def static_method
+          #
+          # end}
+        end
+      end
+    """
+
+  'each block':
+    'prefix': '.each'
+    'body': """
+      .each do |${1:member}|
+        ${2:#code...}
+      end $3
+    """
+
+  'each do':
+    'prefix': '.e'
+    'body': """
+      .each do |${1:member}|
+        ${2:#code...}
+      end $3
+    """
+
+  'each_with_index':
+    'prefix': '.ewi'
+    'body': """
+      .each_with_index do |${1:member}, ${2:index}|
+        ${3:#code...}
+      end $4
+    """
+
+  'update_attribute':
+    'prefix': '.ua'
+    'body': '.update_attribute :${1:attribute}, "${2:new value}"'
+
+  'update_attributes':
+    'prefix': '.uas'
+    'body': """
+      .update_attributes(
+        ${1:attribute}: "${2:value1}",
+        ${3:attribute_2}: "${4:value2}"
+      )
+    """
+
+  'else statement':
+    'prefix': 'else'
+    'body': 'elsif ${1:true}'
+
+  'elsif else statement':
+    'prefix': 'elsee'
+    'body': """
+      elsif ${1:true}
+        ${2:#code}
+      else
+    """
+
+  'array_iteration':
+    'prefix': '=loop'
+    'body': """
+      ${1:array}.each do |${2:member}|
+        $3
+      end
+    """
+
+  #just if not using atom official ruby syntax::
+  'def':
+    'prefix': 'def'
+    'body': """
+      def ${1:method}
+        ${2:#code}
+      end
+    """

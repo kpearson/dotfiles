@@ -1,0 +1,45 @@
+'.source.ruby, .source.ruby.rails':
+
+  'create_table':
+    'prefix': 'ct'
+    'body': """
+      create_table :${1:table_name} do |t|
+        t.${2:string} :${3:name}
+      end
+    """
+
+  'add_column':
+    'prefix': 'ac'
+    'body': 'add_column :${1:table_name}, :${2:column_name}, :${3:type}'
+
+  'drop_table':
+    'prefix': 'dt'
+    'body': 'drop_table :${1:table_name}'
+
+  'rename_table':
+    'prefix': 'ret'
+    'body': 'rename_table :${1:old_table_name}, :${2:new_table_name}'
+
+  'rename_column':
+    'prefix': 'rnc'
+    'body': 'rename_column :${1:table_name}, :${2:column_name}, :${3:new_column_name}'
+
+  'remove_column':
+    'prefix': 'rmc'
+    'body': 'remove_column :${1:table_name}, :${2:column_name}'
+
+  'change_column':
+    'prefix': 'cc'
+    'body': 'change_column :${1:table_name}, :${2:column_name}, :${3:type}, ${4:default: 0}'
+
+  'add_index':
+    'prefix': 'ai'
+    'body': 'add_index :${1:table_name}, :${2:column_name}${3:, {$4}}'
+
+  'add_foreign_key':
+    'prefix': 'afk'
+    'body': 'add_foreign_key :${1:from_table}, :${2:to_table}${3:, options = {}}'
+
+  'remove_foreign_key':
+    'prefix': 'rfk'
+    'body': 'remove_foreign_key :${1:from_table}, column: :${2:model_id}'
