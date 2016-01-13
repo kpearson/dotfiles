@@ -1,6 +1,0 @@
-ERBAutocomplete 1.0.6.2
--------------
-
-Enhancements:
-- Fix detect special key '<' within html tag will fail.
-- Add erb comment tag.

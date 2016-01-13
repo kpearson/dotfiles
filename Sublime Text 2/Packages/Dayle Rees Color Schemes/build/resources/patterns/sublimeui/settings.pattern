@@ -1,4 +1,0 @@
-{
-    "color_scheme": "Packages/Dayle Rees Color Schemes/sublimeui/{% if theme.dir %}{{ theme.dir }}/{% endif %}{{ theme.slug }}/Widget - {{ theme.slug }}.stTheme",
-    "draw_shadows": false
-}

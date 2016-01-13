@@ -1,6 +1,0 @@
-<snippet>
-    <content><![CDATA[format.${1:js|xml|html}${2: { $0 \}}]]></content>
-    <tabTrigger>format</tabTrigger>
-    <scope>meta.rails.controller</scope>
-    <description>format.format</description>
-</snippet>

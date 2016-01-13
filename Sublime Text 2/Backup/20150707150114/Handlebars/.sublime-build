@@ -1,7 +1,0 @@
-{
-    "target": "convert_file",
-    "target_format": "plist",
-    "ext": "tmLanguage",
-
-    "selector": "Handlebars.json"
-}

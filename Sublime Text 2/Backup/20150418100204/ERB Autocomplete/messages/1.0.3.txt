@@ -1,5 +1,0 @@
-ERBAutocomplete 1.0.3
--------------
-
-Enhancements:
-- Add jp_lorem helpers.

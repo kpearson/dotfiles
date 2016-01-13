@@ -1,8 +1,0 @@
-{
-  "save_on_run": true,
-  // "check_for_bundler": true,
-  "check_for_rbenv": true
-
-  // "run_ruby_unit_command": "rake test {relative_path}",
-  // "run_single_ruby_unit_command": "rake test {relative_path} {test_name}"
-}

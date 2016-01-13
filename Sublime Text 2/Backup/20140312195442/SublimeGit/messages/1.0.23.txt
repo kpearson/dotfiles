@@ -1,6 +1,0 @@
-SublimeGit 1.0.23
-=================
-
-Bug Fixes:
-----------
- - Disable verbose commits by default.
