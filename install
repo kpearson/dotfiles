@@ -1,9 +1,13 @@
 #!/bin/sh
 
-# Welcome to Kit's rcfile symlinking script!
+# Welcome to Kit's install script!
 # Files locaded one level deep reletive to this file will be linked to the
 # user root directory.
 # Call this script form directory this file redides in. `sh link_exsists`
+
+xcode-select --install
+
+curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install
 
 fancy_echo() {
   local fmt="$1"; shift
