@@ -1,13 +1,17 @@
 # zmodload zsh/zprof
 
-source /Users/kit/dotfiles/antigen/antigen.zsh
+source /Users/Kit/dotfiles/antigen/antigen.zsh
 
+# ==============================================================================
+# ====================== RBEBV to manage Ruby versions =========================
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 eval "$(hub alias -s)"
 
-# ____ Tell Brew Cask to link app to root Applications directory
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+# ==============================================================================
+# ====================== NVM to manage Node versions ===========================
+# export NVM_DIR="/Users/Kit/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # ==============================================================================
 # ============================= Source Aliases =================================
@@ -16,17 +20,16 @@ if [ -f $HOME/dotfiles/aliases ]; then
 else
     print "$HOME/dotfiles/aliases not found."
 fi
-# ==============================================================================
 
-# export NVM_DIR="/Users/Kit/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# ==============================================================================
+# ======================= Brew Cask to link location ===========================
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # ==============================================================================
 # ============================== Antigen Managed ===============================
-
 local a="antigen"
 
-# ____ Load the oh-my-zsh's library.
+# ____ Load the oh-my-zsh's library
 $a use oh-my-zsh
 
 # ____ Load the theme
@@ -51,8 +54,8 @@ $a bundle zsh-users/zsh-syntax-highlighting
 $a bundle brew
 $a bundle brew-cask
 
-# ======= Commented out to speed Loading ==========
-# ========== Uncomment if usefull =============
+# ________ Commented out to speed Loading _________
+# ____________ Uncomment if usefull _______________
 
 # ____ Put those variables in the place
 # antigen-bundle Tarrasch/zsh-autoenv
