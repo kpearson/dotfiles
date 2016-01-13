@@ -1,4 +1,4 @@
-alias Gwho="git log --all --format='%cN <%Cblue%cE%Creset>' | sort -u"
+alias Gwho="git log --all --format='%cN %Cblue<%cE>%Creset' | sort -u"
 alias todo="vi ~/.todo.md"
 alias job="vi $HOME/.jobs.md"
 
