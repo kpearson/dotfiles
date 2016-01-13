@@ -1,0 +1,45 @@
+#!/bin/bash
+
+set -e
+
+# Set a blazingly fast keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 0
+
+# Enable full keyboard access for all controls (e.g. Tab in modal dialogs)
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# Set menu bar and dock to dark
+defaults write NSGlobalDomain AppleInterfaceStyle Dark; killall Dock
+
+# Show the ~/Library folder
+chflags nohidden ~/Library
+
+# Disable Dashboard
+defaults write com.apple.dashboard mcx-disabled -bool true
+
+# Don’t show Dashboard as a Space
+defaults write com.apple.dock dashboard-in-overlay -bool true
+
+# Configure iTerm2 to read preferences from Copy
+defaults write com.googlecode.iterm2 PrefsCustomFolder ~/Copy
+
+# Configure Alfred to read preferences from Copy
+defaults write com.runningwithcrayons.Alfred-Preferences syncfolder ~/Copy/Alfred_Settings
+
+# 1Password, View, Item List Layout
+# [x] Top
+defaults write com.agilebits.onepassword4 MainWindowLayout 'H'
+
+# 1Password, Preferences, Watchtower
+# [x] Enable 1Password Watchtower
+defaults write 2BUA8C4S2C.com.agilebits.onepassword4-helper watchtowerService -int 1
+
+# 1Password, Preferences, Browser
+# [ ] Automatically submit logins after filling
+defaults write 2BUA8C4S2C.com.agilebits.onepassword4-helper autosubmit -int 0
+
+# 1Password, Preferences, Advanced
+# [ ] Verify browser code signature
+defaults write 2BUA8C4S2C.com.agilebits.onepassword4-helper OPPrefBrowserCodesigningRequirementDisabled -int 1
+
+# vi:ft=sh
