@@ -1,0 +1,9 @@
+[user]
+	name = Kit Pearson
+	email = dev_kit@icloud.com
+
+[core]
+	editor = vim
+
+[color]
+	ui = true

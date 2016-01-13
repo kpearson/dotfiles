@@ -1,0 +1,11 @@
+.*.sw?
+.svn
+*.pdf
+.DS_Store
+*.tmproj
+*.zip
+.com.apple.*
+.idea
+.powenv
+/doc/tags
+*.rbc
