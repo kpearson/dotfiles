@@ -1,5 +1,0 @@
-" vim-rbenv - Provides a :Rbenv command that wraps !rbenv with tab complete.
-
-Plugin 'tpope/vim-rbenv'
-
-" vim:ft=vim

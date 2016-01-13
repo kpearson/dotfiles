@@ -1,5 +1,0 @@
-" Gitgutter - Visual of uncommited lines.
-
-Plugin 'airblade/vim-gitgutter'
-
-" vim:ft=vim

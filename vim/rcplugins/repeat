@@ -1,5 +1,0 @@
-" Repeat.vim - Enable repeating of supported plugin maps, ie surround.vim
-
-Plugin 'tpope/vim-repeat'
-
-" vim:ft=vim
