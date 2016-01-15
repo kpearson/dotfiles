@@ -5,9 +5,7 @@
 # user root directory.
 # Call this script form directory this file redides in. `sh link_exsists`
 
-xcode-select --install
-
-curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install
+eval "curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install"
 
 fancy_echo() {
   local fmt="$1"; shift
@@ -48,7 +46,7 @@ create_them_symlinks $(pwd)/gitconfig
 create_them_symlinks $(pwd)/gitignore
 
 brew bundle
-create_them_symlinks $(pwd)/atom
+ln -s $HOME/Copy/Atom/ .atom
 
 git clone https://github.com/kpearson/vimfiles ~/.vim
-create_them_symlinks $(pwd)/vim
+ln -s $HOME/.vim/vimrc ~/.vimrc
