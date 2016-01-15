@@ -4,6 +4,7 @@ tap 'universal-ctags/universal-ctags'
 
 brew 'tmux'
 brew 'vim'
+brew 'zsh'
 brew 'macvim'
 brew 'rbenv'
 brew 'heroku-toolbelt'
@@ -19,7 +20,9 @@ brew 'go'
 brew 'git'
 brew 'hub'
 brew 'ffmpeg'
+brew 'cmake'
 
+HOMEBREW_CASK_OPTS="--appdir=/Applications"
 tap 'caskroom/cask'
 brew 'caskroom/cask/brew-cask'
 cask 'dropbox'
