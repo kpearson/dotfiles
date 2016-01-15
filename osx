@@ -9,7 +9,23 @@ defaults write NSGlobalDomain KeyRepeat -int 0
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Set menu bar and dock to dark
-defaults write NSGlobalDomain AppleInterfaceStyle Dark; killall Dock
+defaults write NSGlobalDomain AppleInterfaceStyle Dark
+
+defaults write com.apple.Dock orientation -string left
+
+defaults write com.apple.dock autohide -bool true
+
+defaults write com.apple.dock autohide-delay -float 0
+
+defaults write com.apple.dock autohide-time-modifier -float 0
+
+killall Dock
+
+# Set finder to display list view
+defaults write com.apple.Finder FXPreferredViewStyle Nlsv
+
+# Finder: show path bar
+defaults write com.apple.finder ShowPathbar -bool true
 
 # Show the ~/Library folder
 chflags nohidden ~/Library
