@@ -18,8 +18,9 @@ Brew installed.
 
 Once installed the brew version of zsh needs to
 be added to `/etc/shells` file, before switching the default shell to the brew
-installed zsh shell.
+installed version of zsh.
 
+To do this:
 Run `which zsh`. The value returned is what needs add to `/etc/shells`.
 
 Open the `/etc/shells` with root write access.
@@ -37,7 +38,7 @@ Add to the end of the file:
 Now it's possible to set the brew installed version of Zsh as the default shell.
 
 ```shell
-chsh -s usr/local/bin/zsh
+chsh -s /usr/local/bin/zsh
 ```
 
 ### Antigen
@@ -46,11 +47,13 @@ chsh -s usr/local/bin/zsh
 
 Confirm the path the to `antigen.zsh` in the `zsh.rc` file.
 
-The antigen directory is a git submodule.
+The antigen directory is a git submodule. If the dotfiles were not cloned with
+the recursive strategy run `git submodule init` and `git submodule update` form
+inside the dotfiles directory.
 
 ### iTerm
 
-Install via `brew cask install iterm2`
+Brew cask installed.
 
 #### iTerm Settings:
 
@@ -62,26 +65,19 @@ Install via `brew cask install iterm2`
 
 ### Vim
 
-Install [MacVim] via [Homebrew] Cask.  
-MacVim requires the full xCode (Command Line Tools is not enough, _sigh_).  
-The MacVim binary is essential for [Vundle].
-These dotfiles use [Vundle] to manage Vim plugins.
-
-Symlink `vimrc` and the `vim/` directory to the root directory as `.vimrc` and
-`.vim/`. _This is handeled by the `link-rcfiles` script._
-
-The vimrc file is split up across multiple files in two directories, `rcfiles`
-and `rcplugins`. The file are organized by topic and contain pluging specific
-binding and setting. See the vim directory [README](/vim/README.md).
+My [Vimfiles](www.github.com/kpearson/vimfiles/) are in there own repo. The
+install script clones them in and creates the appropriate links. If have your
+own Vim setup in place and would link to user mine, move your current `.vim`
+directory to different location or rename it and run install.
 
 ### rbenv
 
 Brew installed with: `brew install rbenv`.
 
-Insure at least one ruby version is installed: `which ruby` should return the 
+Insure at least one ruby version is installed: `which ruby` should return the
 brew rbenv location. ` `rbenv install 2.2.3`.
 
-Then set that Ruby veresion to default: `rbenv global 2.2.3`.
+Then set that Ruby version to default: `rbenv global 2.2.3`.
 
 Now ruby gems can be installed in the correct location.
 
@@ -107,7 +103,7 @@ manage are located in `$HOME/dotfiles/aliases` and added to the shell session
 in the `.zshrc`.
 
 ### Global Key-bindings
- 
+
 I try to contain as many of my key-bindings in the Karabiner app as possible.
 The others I try to keep track of here. While their are many ways to
 go about this I like having them all in a centralized location with scriptable
@@ -125,9 +121,7 @@ Set this with:
 
 #### Karabiner
 
-Brew installed.
-
-With Karabiner installed: 
+With Karabiner installed:
 
 To load setting from these dot files run the karabiner script with:
 ```shell
@@ -150,7 +144,14 @@ At the moment I am not using [Tmux] on a daily basis. However this set of
 dotfiles contains extensive support Tmux. See the `tmux.conf`. Vim
 configurations are located in `/dotfiles/vim/rcplugings/tmux`.
 
+## New Mechine Notes
+
+Install xcode or command line tools
+
 ## Other brew installed app
+
+Applications I user at the moment. More uptodate list in the accompaning
+_Brewfile_.
 
 Name | Discription
 --- | ---
