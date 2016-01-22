@@ -3,7 +3,7 @@ Dotfiles
 
 Kit Pearson 2015
 
-## Clone and install
+## Clone
 
 Clone with the recursive strategy to bering in git submodules.
 
