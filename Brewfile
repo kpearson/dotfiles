@@ -21,6 +21,7 @@ brew 'git'
 brew 'hub'
 brew 'ffmpeg'
 brew 'cmake'
+brew 'exercism'
 
 HOMEBREW_CASK_OPTS="--appdir=/Applications"
 tap 'caskroom/cask'
