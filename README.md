@@ -3,8 +3,17 @@ Dotfiles
 
 Kit Pearson 2015
 
-## Symlinks
-The `link-rcfile` script takes care of symlinking the rc-files to the root
+## Clone and install
+
+Clone with the recursive strategy to bering in git submodules.
+
+```
+git clone --recursive git.github.com/kpearson/dotfiles
+```
+
+
+## Install
+The `install` script takes care of symlinking the rc-files to the root
 directory for the most part. All files with names ending in _rc_, in the same
 directory and one level down will be symlinked to your root directory. The
 script can be run multiple time and will not affect links, files or directories
@@ -69,6 +78,9 @@ My [Vimfiles](www.github.com/kpearson/vimfiles/) are in there own repo. The
 install script clones them in and creates the appropriate links. If have your
 own Vim setup in place and would link to user mine, move your current `.vim`
 directory to different location or rename it and run install.
+
+Caveat: This vim setup expects the "PowerlineSymbols-Powerline" font to be
+available. Download [PowerlineSymbols] and install into OSX Font Book.
 
 ### rbenv
 
@@ -176,3 +188,4 @@ Name | Discription
 [Cask]: https://github.com/caskroom/homebrew-cask
 [MacVim]: https://github.com/b4winckler/macvim
 [Karabiner]: /Applications/Karabiner.app/Contents/Library/bin/karabiner
+[PowerlineSymbols]: https://github.com/powerline/powerline/blob/develop/font/PowerlineSymbols.otf?raw=true)
