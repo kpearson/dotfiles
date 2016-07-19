@@ -21,6 +21,11 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 
 killall Dock
 
+#Set screen cap directory to ~/ScreenCaps
+defaults write com.apple.screencapture location ~/ScreenCaps
+
+killall SystemUIServer
+
 # Set finder to display list view
 defaults write com.apple.Finder FXPreferredViewStyle Nlsv
 
@@ -57,5 +62,11 @@ defaults write 2BUA8C4S2C.com.agilebits.onepassword4-helper autosubmit -int 0
 # 1Password, Preferences, Advanced
 # [ ] Verify browser code signature
 defaults write 2BUA8C4S2C.com.agilebits.onepassword4-helper OPPrefBrowserCodesigningRequirementDisabled -int 1
+
+# experimental fix for the shutdown durring sleep issue.
+sudo pmset -a hibernatemode 0
+sudo nvram "use-nvramrc?"=false
+# When done, restart your computer. Now go delete the file
+# /private/var/vm/sleepimage to free up some hard drive space.
 
 # vi:ft=sh
