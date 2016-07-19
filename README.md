@@ -86,15 +86,23 @@ available. Download [PowerlineSymbols] and install into OSX Font Book.
 
 Brew installed with: `brew install rbenv`.
 
-Insure at least one ruby version is installed: `which ruby` should return the
-brew rbenv location. ` `rbenv install 2.2.3`.
+Insure at least one rbenv version of ruby is installed. Running `which ruby`
+should return the location of the rbenv managed versioins of ruby.
 
-Then set that Ruby version to default: `rbenv global 2.2.3`.
+```
+rbenv install 2.2.3
+```
 
-Now ruby gems can be installed in the correct location.
+Then set that Ruby version to default:
+
+```
+rbenv global 2.2.3
+```
+
+Now Ruby gems can be installed in the correct location.
 
 _Already in place in the current dotfiles._
-If this is your first time installing [rbenv] you'll need to include two lined
+If this is your first time installing [rbenv] you'll need to include two lines
 in your `.zshrc` or `.bash_profile` file (depending on your shell):
 
 ```shell
