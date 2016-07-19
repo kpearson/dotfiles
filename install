@@ -45,7 +45,7 @@ create_them_symlinks $(pwd)/gitconfig
 create_them_symlinks $(pwd)/gitignore
 
 brew bundle
-ln -s $HOME/Copy/Atom/ .atom
+ln -s $HOME/Copy/Mega/ .atom
 
 git clone https://github.com/kpearson/vimfiles ~/.vim
 ln -s $HOME/.vim/vimrc ~/.vimrc
