@@ -9,6 +9,10 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 eval "$(hub alias -s)"
 
 # ==============================================================================
+# ======================== Completions for awscli ==============================
+source /usr/local/share/zsh/site-functions/_aws
+
+# ==============================================================================
 # ====================== NVM to manage Node versions ===========================
 # export NVM_DIR="/Users/Kit/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
