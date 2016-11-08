@@ -2,22 +2,18 @@
 
 source /Users/Kit/dotfiles/antigen/antigen.zsh
 
-# ==============================================================================
 # ====================== RBEBV to manage Ruby versions =========================
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 eval "$(hub alias -s)"
 
-# ==============================================================================
 # ======================== Completions for awscli ==============================
 source /usr/local/share/zsh/site-functions/_aws
 
-# ==============================================================================
 # ====================== NVM to manage Node versions ===========================
 # export NVM_DIR="/Users/Kit/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# ==============================================================================
 # ============================= Source Aliases =================================
 if [ -f $HOME/dotfiles/aliases ]; then
     source $HOME/dotfiles/aliases
@@ -25,11 +21,12 @@ else
     print "$HOME/dotfiles/aliases not found."
 fi
 
-# ==============================================================================
+# ============================= Source Custom Bins =============================
+export PATH="$HOME/dotfiles/bin:$PATH"
+
 # ======================= Brew Cask to link location ===========================
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-# ==============================================================================
 # ============================== Antigen Managed ===============================
 local a="antigen"
 
