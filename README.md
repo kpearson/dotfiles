@@ -99,7 +99,7 @@ Then set that Ruby version to default:
 rbenv global 2.2.3
 ```
 
-Now ruby gems can be installed in the correct location.
+Now Ruby gems can be installed in the correct location.
 
 _Already in place in the current dotfiles._
 If this is your first time installing [rbenv] you'll need to include two lines
