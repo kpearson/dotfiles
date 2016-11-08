@@ -27,6 +27,7 @@ HOMEBREW_CASK_OPTS="--appdir=/Applications"
 tap 'caskroom/cask'
 brew 'caskroom/cask/brew-cask'
 cask 'dropbox'
+cask 'megasync'
 cask '1password'
 cask 'spotify'
 cask 'iterm2'
