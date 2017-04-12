@@ -136,3 +136,5 @@ cask 'spotify'
 cask 'stellarium'
 cask 'things'
 cask 'vlc'
+
+# vi:ft=ruby:

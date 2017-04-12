@@ -43,4 +43,5 @@ Thumbs.db
 *.rbc
 *.paw
 .TODO_LOCAL.md
+.sass-cache
 

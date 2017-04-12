@@ -2,11 +2,13 @@ tap 'homebrew/services' #trivial edit
 tap 'homebrew/versions'
 tap 'universal-ctags/universal-ctags'
 
+brew 'python'
 brew 'tmux'
 brew 'vim'
 brew 'zsh'
 brew 'macvim'
 brew 'rbenv'
+brew 'ruby-build'
 brew 'heroku-toolbelt'
 brew 'ag'
 brew 'universal-ctags', args: %w[HEAD]
@@ -33,9 +35,7 @@ cask 'adobe-photoshop-lightroom600'
 cask 'alfred'
 cask 'atom'
 cask 'bartender'
-cask 'caffeine'
 cask 'charles'
-cask 'cathode'
 cask 'daisydisk'
 cask 'dash'
 cask 'google-chrome'
@@ -53,5 +53,8 @@ cask 'skype'
 cask 'slack'
 cask 'spotify'
 cask 'vlc'
+
+mas 'Type Fu', id: 509818877
+mas 'BetterSnapTool', id: 417375580
 
 # vi:ft=ruby:

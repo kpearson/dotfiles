@@ -3,7 +3,7 @@ alias todo="vim ~/.todo.md"
 alias job="vim $HOME/.jobs.md"
 
 # global
-alias vi="vim"
+alias vi="nvim"
 alias reload=". ~/.zshrc && echo 'ZSH reloaded!'"
 alias zshr="vim ~/.zshrc && reload"
 alias vimr="vim ~/.vimrc && . $HOME/.vimrc"
