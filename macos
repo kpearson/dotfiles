@@ -22,7 +22,8 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 killall Dock
 
 #Set screen cap directory to ~/ScreenCaps
-defaults write com.apple.screencapture location ~/ScreenCaps
+mkdir ~/Screenshots
+defaults write com.apple.screencapture location ~/Screenshots
 
 killall SystemUIServer
 

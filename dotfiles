@@ -42,10 +42,6 @@ done
 create_them_symlinks $(pwd)/tmux/tmux.conf
 create_them_symlinks $(pwd)/gitconfig
 
-# ===== Set as shell default Brew installed ZSH
-fancy_echo "Enter password to set brew installed ZSH as default..."
-sudo printf "\n" "/usr/local/bin/zsh" >> "/etc/shells"
-chsh -s /usr/local/bin/zsh
 
 # ===== Install Homebrew
 if ! command -v brew >/dev/null; then
@@ -57,9 +53,41 @@ fi
 # ===== Brew install from Brewfile
 brew bundle
 
+# ===== Set as shell default Brew installed ZSH
+update_shell() {
+  local shell_path;
+  shell_path="$(which zsh)"
+
+  fancy_echo "Changing your shell to zsh ..."
+  if ! grep "$shell_path" /etc/shells > /dev/null 2>&1 ; then
+    fancy_echo "Adding '$shell_path' to /etc/shells"
+    sudo sh -c "echo $shell_path >> /etc/shells"
+  fi
+  chsh -s "$shell_path"
+}
+
+case "$SHELL" in
+  */zsh)
+    if [ "$(which zsh)" != '/bin/zsh' ] ; then
+      update_shell
+    fi
+    ;;
+  *)
+    update_shell
+    ;;
+esac
+
 # Download and link Vim configuration
 git clone https://github.com/kpearson/vimfiles ~/.vim
 ln -s $HOME/.vim/vimrc ~/.vimrc
+
+# Set up Neovim as well...
+ln -s $HOME/.vim/vimrc .config/nvim/init.vim
+ln -s $HOME/.vim/ .config/nvim/.vim
+ln -s $HOME/.vim/autoload/plug.vim .config/nvim/autoload/plug.vim
+
+pip2 install --user neovim
+pip3 install --user neovim
 
 # Fix key map problem in Neovim
 # https://github.com/neovim/neovim/issues/2048#issuecomment-78045837
