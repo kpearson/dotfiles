@@ -6,7 +6,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 eval "$(hub alias -s)"
 
 # ====================== NVM to manage Node versions ===========================
-# export NVM_DIR="/Users/Kit/.nvm"
+# export NVM_DIR=“$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # ============================= Source Aliases =================================
@@ -24,7 +24,7 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # ============================== Antigen Managed ===============================
 
-source /Users/Kit/dotfiles/antigen/antigen.zsh
+source $HOME/dotfiles/antigen/antigen.zsh
 
 local a="antigen"
 
@@ -74,3 +74,4 @@ $a bundle brew-cask
 
 # ____ End Antigen
 antigen apply
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
