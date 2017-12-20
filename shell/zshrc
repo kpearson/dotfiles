@@ -5,9 +5,13 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 eval "$(hub alias -s)"
 
+export PATH=$HOME/Dotfiles/bin/:$PATH
 # ====================== NVM to manage Node versions ===========================
 # export NVM_DIR="/Users/Kit/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# ======================= Enable italic fonts in Neovim ========================
+export TERM=xterm-256color-italic
 
 # ============================= Source Aliases =================================
 if [ -f $HOME/dotfiles/aliases ]; then
@@ -16,15 +20,21 @@ else
     print "$HOME/dotfiles/aliases not found."
 fi
 
+# ======================= Source Environmental Variables =======================
+if [ -f $HOME/.env ]; then
+    source $HOME/.env
+else
+    print "Local $HOME/.env not found."
+fi
+
 # ============================= Source Custom Bins =============================
-export PATH="$HOME/dotfiles/bin:$PATH"
+# export PATH="$HOME/dotfiles/bin:$PATH"
 
 # ======================= Brew Cask to link location ===========================
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # ============================== Antigen Managed ===============================
-
-source /Users/Kit/dotfiles/antigen/antigen.zsh
+source /Users/Kit/Dotfiles/antigen/antigen.zsh
 
 local a="antigen"
 
@@ -36,6 +46,7 @@ $a theme cloud
 
 # ____ Git aliases and completions
 $a bundle peterhurford/git-aliases.zsh
+$a bundle robertzk/send.zsh
 
 # ____ Ruby Gems Bundler
 $a bundle bundler
@@ -49,9 +60,16 @@ $a bundle djui/alias-tips
 # ____ Syntax highlighting on the readline
 $a bundle zsh-users/zsh-syntax-highlighting
 
-# ____ Brew stuff
+# ____ Hoembrew
 $a bundle brew
 $a bundle brew-cask
+
+# ____ Docker
+$a bundle docker
+$a bundle docker-compose
+
+# ____ Auto update of Antigen and its managed bundles
+$a bundle unixorn/autoupdate-antigen.zshplugin.git
 
 # ________ Commented out to speed Loading _________
 # ____________ Uncomment if usefull _______________
@@ -69,8 +87,13 @@ $a bundle brew-cask
 # ____ Open files on Github repo on a given branch
 # antigen bundle peterhurford/git-it-on.zsh
 
-# ____ Auto update of Antigen and its managed bundles
-# antigen bundle unixorn/autoupdate-antigen.zshplugin.git
-
 # ____ End Antigen
-antigen apply
+$a apply
+
+unsetopt completealiases
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+test -e "/usr/local/bin/aws_zsh_completer.sh" && source "aws_zsh_completer.sh" || print "aws_zsh_completer not found"
+
