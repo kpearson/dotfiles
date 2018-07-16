@@ -1,8 +1,11 @@
+zmodload zsh/zprof
+
 export ZSH="/Users/Kit/.oh-my-zsh"
 
 ZSH_THEME="cloud"
 CASE_SENSITIVE="true"
 HYPHEN_INSENSITIVE="true"
+ZSH_CUSTOM="$HOME"/Dotfiles/oh-my-zsh-custom
 
 plugins=(
   alias-tips
