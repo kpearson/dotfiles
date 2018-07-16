@@ -1,61 +1,31 @@
-# zmodload zsh/zprof
+export ZSH="/Users/Kit/.oh-my-zsh"
 
-# ================================= Antigen ====================================
-# IMPORTANT - Include any ZSH related configutation below this block
-# source /Users/Kit/dotfiles/antigen/antigen.zsh
-source /usr/local/share/antigen/antigen.zsh
-local a="antigen"
+ZSH_THEME="cloud"
+CASE_SENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
+# ENABLE_CORRECTION="true"
 
-# ____ Load the oh-my-zsh's library
-$a use oh-my-zsh
+plugins=(
+  alias-tips
+  aws
+  colored-man-pages
+  docker
+  docker-compose
+  git-aliases
+  helm
+  kubectl
+  # rails
+  # rbenv
+  terraform
+  thefuck
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
 
-# ____ Load the theme
-$a theme cloud
+source $ZSH/oh-my-zsh.sh
 
-$a bundle colored-man-pages
-
-$a bundle thefuck
-# ____ Ruby Gems Bundler
-$a bundle bundler
-
-# ____ Framework plugins
-$a bundle rails
-
-# ____ Alias hint
-$a bundle djui/alias-tips
-
-# ____ Syntax highlighting on the readline
-$a bundle zsh-users/zsh-syntax-highlighting
-
-# ____ Brew stuff
-$a bundle brew
-$a bundle brew-cask
-
-# ________________________ Commented to speed Loading __________________________
-# ____________________________ Uncomment if usefull ____________________________
-
-# ____ Put those variables in the place
-# antigen-bundle Tarrasch/zsh-autoenv
-
-# ____ Heroku
-# antigen bundle heroku
-
-# ____ pip completions - pip is the native zsh package manager
-# antigen bundle pip
-
-# ____ Auto update of Antigen and its managed bundles
-# antigen bundle unixorn/autoupdate-antigen.zshplugin.git
-
-# ____ Git aliases and completions
-$a bundle peterhurford/git-aliases.zsh
-
-# autosuggestions Must be last thing in the Antigen block
-$a bundle zsh-users/zsh-autosuggestions
-
-$a bundle kubectl
-
-antigen apply
-# ================================= End Antigen ================================
+# ========================= Non oh-my-zsh configuration ========================
+# ==============================================================================
 
 # ====================== RBEBV to manage Ruby versions =========================
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
@@ -74,18 +44,29 @@ fi
 # ============================= Source Custom Bins =============================
 export PATH="$HOME/dotfiles/bin:$PATH"
 
-# ================================ Load Go lang ================================
+# ================================== Go lang ===================================
 export GOPATH=$HOME/Code/go
 export PATH=$PATH:$GOPATH/bin
 
-# ======================= Brew Cask to link location ===========================
+# ======================== Brew Cask link location =============================
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
-source $HOME/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/kubectl/kubectl.plugin.zsh
-
-if [ $commands[kubectl] ]; then
-  source <(kubectl completion zsh)
-fi
 
 if [[ $TERM == xterm ]]; then export TERM=xterm-256color; fi
 
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
