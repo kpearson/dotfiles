@@ -1,127 +1,85 @@
-# zmodload zsh/zprof
+export ZSH="/Users/Kit/.oh-my-zsh"
 
-if [[ -n $SSH_CONNECTION ]]; then
-    exit
-else
-# ====================== RBEBV to manage Ruby versions =========================
+ZSH_THEME="cloud"
+CASE_SENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
+
+plugins=(
+  alias-tips
+  aws
+  colored-man-pages
+  docker
+  docker-compose
+  git-aliases
+  helm
+  kubectl
+  # rails
+  # rbenv
+  terraform
+  thefuck
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# ========================= END oh-my-zsh configuration =======================
+# =============================================================================
+
+# RBEBV to manage Ruby versions
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-eval "$(hub alias -s)"
-
-# ======================== Homebrew  manage Python  ============================
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-
-# ====================== NVM to manage Node versions ===========================
-# export NVM_DIR="/Users/Kit/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# ======================= Enable italic fonts in Neovim ========================
-export TERM=xterm-256color-italic
-
-# ============================= Source Aliases =================================
-if [ -f $HOME/dotfiles/aliases ]; then
-    source $HOME/dotfiles/aliases
+# Source Aliases
+if [ -f $HOME/Dotfiles/aliases ]; then
+    source $HOME/Dotfiles/aliases
 else
-    print "$HOME/dotfiles/aliases not found."
+    print "$HOME/Dotfiles/aliases not found."
 fi
 
-# ======================= Source Environmental Variables =======================
-if [ -f $HOME/.env ]; then
-    source $HOME/.env
-else
-    print "Local $HOME/.env not found."
-fi
-
-# ============================= Source Custom Bins =============================
-export PATH="$HOME/dotfiles/bin:$PATH"
-
+# Source Bins
+export PATH="$HOME/Dotfiles/bin:$PATH" # Custom
 export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
-# ============================== Source Anaconda ===============================
-# export PATH=/usr/local/anaconda3/bin:"$PATH"
+# GoLang
+export GOPATH=$HOME/Code/go
+export PATH=$PATH:$GOPATH/bin
 
-# =================================== Go =======================================
-export GOPATH=$HOME/go
-export PATH=$PATH:$(go env GOPATH)/bin
-
-# ======================= Brew Cask to link location ===========================
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
-# ========================= Kubernetes config files ============================
+# Kubernetes
 export KUBECONFIG="$HOME/.kube/config"
 
-# ============================== Antigen Managed ===============================
-source /Users/Kit/Dotfiles/antigen/antigen.zsh
+# System
+export TERM=xterm-256color-italic
 
-local a="antigen"
+# ___ None of this works. I wish it did.
+# if [[ -n $SSH_CONNECTION ]]; then
+#     export EDITOR='vim'
+# else
+#     export EDITOR='nvim'
+# fi
 
-# ____ Load the oh-my-zsh's library
-$a use oh-my-zsh
+# if [[ $TERM == xterm-256color ]] && [[ -n $SSH_CONNECTION ]]; then
+#     export TERM=xterm-256color-italic
+# fi
 
-# ____ Load the theme
-$a theme cloud
+# =============================  Not in use  ==================================
+# Python
+# export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+# Anaconda(Python)
+# export PATH=/usr/local/anaconda3/bin:"$PATH"
 
-# ____ Git aliases and completions
-GIT_ALIASES_ICDIFF=1
-$a bundle peterhurford/git-aliases.zsh
+# Node Version Manager (NVM)
+# export NVM_DIR="/Users/Kit/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-$a bundle robertzk/send.zsh
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# ____ Ruby Gems Bundler
-$a bundle bundler
-
-# ____ Framework plugins
-$a bundle rails
-
-# ____ Alias hint
-$a bundle djui/alias-tips
-
-# ____ Syntax highlighting on the readline
-$a bundle zsh-users/zsh-syntax-highlighting
-
-# ____ Hoembrew
-$a bundle brew
-$a bundle brew-cask
-
-# ____ Docker
-$a bundle docker
-$a bundle docker-compose
-
-# ____ Kubernetes
-$a bundle kubectl
-
-# ____ Auto update of Antigen and its managed bundles
-# $a bundle unixorn/autoupdate-antigen.zshplugin.git
-
-# ________ Commented out to speed Loading _________
-# ____________ Uncomment if usefull _______________
-
-# ____ Put those variables in the place
-# antigen-bundle Tarrasch/zsh-autoenv
-# antigen bundle unixorn/git-extra-commands
-
-# ____ Heroku
-# antigen bundle heroku
-
-# ____ pip completions - pip is the native zsh package manager
-# antigen bundle pip
-
-# ____ Open files on Github repo on a given branch
-# antigen bundle peterhurford/git-it-on.zsh
-
-# ____ End Antigen
-$a apply
-
-unsetopt completealiases
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-test -e "/usr/local/bin/aws_zsh_completer.sh" && source "aws_zsh_completer.sh" || print "aws_zsh_completer not found"
-
-# ======================== kubectl autocompletion =============================
-source <(kubectl completion zsh)
-source <(minikube completion zsh)
-
-fi
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
