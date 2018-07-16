@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ "$PWD" == "$HOME/Code/Acme/*" ]; then
+   docker-compose run app rails $1
+else
+   rails $1
+fi;

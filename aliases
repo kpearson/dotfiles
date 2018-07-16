@@ -12,4 +12,6 @@ alias ex="vim ~/turing/exercises/"
 alias te="cd $HOME/code/my_projects/trial-and-error/ && vim"
 alias t="tmux"
 alias tl="tmux ls"
+alias git=hub
+
 alias aliases="vim $HOME/dotfiles/aliases"

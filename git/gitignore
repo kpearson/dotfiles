@@ -42,6 +42,6 @@ Thumbs.db
 /doc/tags
 *.rbc
 *.paw
-.TODO_LOCAL.md
+*TODO_LOCAL.md
 .sass-cache
 

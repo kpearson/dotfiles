@@ -11,7 +11,6 @@ Clone with the recursive strategy to bering in git submodules.
 git clone --recursive git.github.com/kpearson/dotfiles
 ```
 
-
 ## Install
 The `install` script takes care of symlinking the rc-files to the root
 directory for the most part. All files with names ending in _rc_, in the same

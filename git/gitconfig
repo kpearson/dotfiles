@@ -7,7 +7,7 @@
 
 [core]
 	editor = vim
-	excludesfile = /Users/Kit/.gitignore
+	excludesfile = ~/Dotfiles/git/gitignore
 
 [color]
 	ui = true
@@ -15,3 +15,5 @@
 [push]
 	default = simple
 
+[merge]
+        tool = vimdiff
