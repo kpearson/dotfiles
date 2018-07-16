@@ -1,0 +1,131 @@
+#!/usr/bin/env bash
+
+new_version() {
+  aws --profile cyndx --region us-east-1 ecr describe-images \
+      --repository-name cortex \
+      --output text --query \
+      'sort_by(imageDetails,& imagePushedAt)[*].imageTags[*]' \
+      | tr '\t' '\n' | tail -1
+}
+
+print_help() {
+  printf "NAME:\n   %b - %b\n\n" "$name" "$description"
+  printf "VERSION:\n   %s\n\n" $VERSION
+  printf "USAGE:\n   %s\n\n" "$usage"
+  printf "GLOBAL OPTIONS:\n"
+  for ((i = 0; i < ${#options[@]}; i++)) do
+    var=$(expr $i + 1)
+    if [ $var == ${#options[@]} ]; then
+      printf  "% 3s%s\n\n" "" "${options[$i]}"
+    else
+      printf  "% 3s%s\n" "" "${options[$i]}"
+    fi
+  done
+
+  printf "INSTRUCTIONS:\n%b\n\n" "$instructions"
+}
+
+build() {
+  docker build --no-cache \
+    -t 774210489972.dkr.ecr.us-east-1.amazonaws.com/cortex:$VERSION \
+    -t 774210489972.dkr.ecr.us-east-1.amazonaws.com/cortex:acme-stg \
+    -t 774210489972.dkr.ecr.us-east-1.amazonaws.com/cortex:$(git rev-parse HEAD | sed -e "s/.\{30\}$//") .
+}
+
+git-tag() {
+  git tag $VERSION
+  git push origin $VERSION
+}
+
+docker-tag-production() {
+exit
+  docker tag 774210489972.dkr.ecr.us-east-1.amazonaws.com/cortex:acme-stg 774210489972.dkr.ecr.us-east-1.amazonaws.com/cortex:acme-prd
+  docker push 774210489972.dkr.ecr.us-east-1.amazonaws.com/cortex:acme-prd
+}
+
+push() {
+  ecr_login
+
+  docker push 774210489972.dkr.ecr.us-east-1.amazonaws.com/cortex:acme-stg && \
+  docker push 774210489972.dkr.ecr.us-east-1.amazonaws.com/cortex:$VERSION && \
+  docker push 774210489972.dkr.ecr.us-east-1.amazonaws.com/cortex:$(git rev-parse HEAD | sed -e "s/.\{30\}$//")
+}
+
+restart-cortex() {
+  CORTEX="cortex-"
+  CORTEX_ENV=$CORTEX$ENV
+
+  aws ecs update-service --cluster $CORTEX_ENV --service $CORTEX_ENV --profile cyndx --region us-east-1 --force-new-deployment
+}
+
+ecr_login() {
+  $(aws ecr get-login --region us-east-1 --profile cyndx --no-include-email)
+}
+
+# name="algo_run"
+#
+# declare -a options=(
+#   "--algo value, -a value          algo to run"
+#   "--environment value, -e value   environment to run"
+#   "--help, -h                      show help"
+#   "--version, -v                   print the version"
+#   )
+#
+# description="A command line tool to interact with Cortex"
+#
+# usage="algo_run [options] [arguments...]"
+#
+instructions="   There are two commands deploy and rollback.\n\n \
+   Both take one of two required sub-commands [staging] or [prod] \
+   1) [deploy staging] takes the most recent commit on the development branch, \
+      builds a new Docker image and pushes it up to the AWS hosted registry. \
+      It then tags git with the same version and pushes that tag to the code \
+      repository. Finaly, a command is issued initiating a rolling update of \
+      the staging Cortex cluster.\n \
+   1) [deploy prod] tags the most recent Cortex image with the production tag \
+      acme-prd. Then it issues the command to initiate a rolling update of the \
+      production cluster. \
+   2) Rollback \n "
+
+deploy() {
+  if [ "$VERSION" == "" ]; then
+    printf 'Version is required\n\n'
+    print_help
+    exit
+  fi
+
+  if [ '$ENV' == acme-prd ]; then
+    docker-tag-production
+    restart-contex prd
+  elif [ $ENV == acme-stg ]; then
+    build
+    tag
+    push
+    restart-contex stg
+  else
+    printf '\n%b Unkown environment. Please include a valid environment [production or stage]\n\n' '$ERROR'
+    exit
+  fi
+}
+
+while [ "$1" != "" ]; do
+  case $1 in
+    p | prod )           shift
+                         ENV=acme-prd
+                         ;;
+    s | staging )        shift
+                         ENV=acme-stg
+                         ;;
+    -v | version )       shift
+                         VERSION=$2
+                         ;;
+    -h | --help )        print_help
+                         exit
+                         ;;
+    * )                  print_help
+                         exit 1
+                         esac
+                         shift
+done
+
+deploy

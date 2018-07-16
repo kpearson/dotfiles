@@ -1,11 +1,16 @@
 # zmodload zsh/zprof
 
+if [[ -n $SSH_CONNECTION ]]; then
+    exit
+else
 # ====================== RBEBV to manage Ruby versions =========================
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 eval "$(hub alias -s)"
 
-export PATH=$HOME/Dotfiles/bin/:$PATH
+# ======================== Homebrew  manage Python  ============================
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
 # ====================== NVM to manage Node versions ===========================
 # export NVM_DIR="/Users/Kit/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -28,10 +33,23 @@ else
 fi
 
 # ============================= Source Custom Bins =============================
-# export PATH="$HOME/dotfiles/bin:$PATH"
+export PATH="$HOME/dotfiles/bin:$PATH"
+
+export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+# ============================== Source Anaconda ===============================
+# export PATH=/usr/local/anaconda3/bin:"$PATH"
+
+# =================================== Go =======================================
+export GOPATH=$HOME/go
+export PATH=$PATH:$(go env GOPATH)/bin
 
 # ======================= Brew Cask to link location ===========================
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+# ========================= Kubernetes config files ============================
+export KUBECONFIG="$HOME/.kube/config"
 
 # ============================== Antigen Managed ===============================
 source /Users/Kit/Dotfiles/antigen/antigen.zsh
@@ -45,7 +63,9 @@ $a use oh-my-zsh
 $a theme cloud
 
 # ____ Git aliases and completions
+GIT_ALIASES_ICDIFF=1
 $a bundle peterhurford/git-aliases.zsh
+
 $a bundle robertzk/send.zsh
 
 # ____ Ruby Gems Bundler
@@ -68,8 +88,11 @@ $a bundle brew-cask
 $a bundle docker
 $a bundle docker-compose
 
+# ____ Kubernetes
+$a bundle kubectl
+
 # ____ Auto update of Antigen and its managed bundles
-$a bundle unixorn/autoupdate-antigen.zshplugin.git
+# $a bundle unixorn/autoupdate-antigen.zshplugin.git
 
 # ________ Commented out to speed Loading _________
 # ____________ Uncomment if usefull _______________
@@ -97,3 +120,8 @@ eval "$(jenv init -)"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 test -e "/usr/local/bin/aws_zsh_completer.sh" && source "aws_zsh_completer.sh" || print "aws_zsh_completer not found"
 
+# ======================== kubectl autocompletion =============================
+source <(kubectl completion zsh)
+source <(minikube completion zsh)
+
+fi

@@ -34,7 +34,7 @@ Thumbs.db
 ###################
 .*.sw?
 .svn
-*.pdf
+# *.pdf
 *.tmproj
 .com.apple.*
 .idea
@@ -44,4 +44,4 @@ Thumbs.db
 *.paw
 *TODO_LOCAL.md
 .sass-cache
-
+.gitconfig

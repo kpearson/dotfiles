@@ -1,0 +1,4 @@
+#!/bin/sh
+docker_id="$(docker ps | grep cassandra | awk '{print $1;}')"
+docker exec -it $(echo "${docker_id}") cqlsh
+

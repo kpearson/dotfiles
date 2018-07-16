@@ -8,10 +8,15 @@ alias reload=". ~/.zshrc && echo 'ZSH reloaded!'"
 alias zshr="vim ~/.zshrc && reload"
 alias vimr="vim ~/.vimrc && . $HOME/.vimrc"
 alias zshs="subl ~/.zshrc && reload"
-alias ex="vim ~/turing/exercises/"
 alias te="cd $HOME/code/my_projects/trial-and-error/ && vim"
 alias t="tmux"
 alias tl="tmux ls"
 alias git=hub
 
+# Cyndx | Docker 4/28/17
+alias mrs="make rebuild_and_seed"
+alias docker_rollback="dcr -e RAILS_ENV=test app rails db:rollback && dcr app rails db:rollback"
+
 alias aliases="vim $HOME/dotfiles/aliases"
+
+alias tailc="tailcassandra"
