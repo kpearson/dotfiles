@@ -1,33 +1,9 @@
 # zmodload zsh/zprof
 
-source /Users/Kit/dotfiles/antigen/antigen.zsh
-
-# ====================== RBEBV to manage Ruby versions =========================
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-eval "$(hub alias -s)"
-
-# ======================== Completions for awscli ==============================
-source /usr/local/share/zsh/site-functions/_aws
-
-# ====================== NVM to manage Node versions ===========================
-# export NVM_DIR="/Users/Kit/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# ============================= Source Aliases =================================
-if [ -f $HOME/dotfiles/aliases ]; then
-    source $HOME/dotfiles/aliases
-else
-    print "$HOME/dotfiles/aliases not found."
-fi
-
-# ============================= Source Custom Bins =============================
-export PATH="$HOME/dotfiles/bin:$PATH"
-
-# ======================= Brew Cask to link location ===========================
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
-# ============================== Antigen Managed ===============================
+# ================================= Antigen ====================================
+# IMPORTANT - Include any ZSH related configutation below this block
+# source /Users/Kit/dotfiles/antigen/antigen.zsh
+source /usr/local/share/antigen/antigen.zsh
 local a="antigen"
 
 # ____ Load the oh-my-zsh's library
@@ -36,9 +12,9 @@ $a use oh-my-zsh
 # ____ Load the theme
 $a theme cloud
 
-# ____ Git aliases and completions
-$a bundle peterhurford/git-aliases.zsh
+$a bundle colored-man-pages
 
+$a bundle thefuck
 # ____ Ruby Gems Bundler
 $a bundle bundler
 
@@ -55,12 +31,11 @@ $a bundle zsh-users/zsh-syntax-highlighting
 $a bundle brew
 $a bundle brew-cask
 
-# ________ Commented out to speed Loading _________
-# ____________ Uncomment if usefull _______________
+# ________________________ Commented to speed Loading __________________________
+# ____________________________ Uncomment if usefull ____________________________
 
 # ____ Put those variables in the place
 # antigen-bundle Tarrasch/zsh-autoenv
-# antigen bundle unixorn/git-extra-commands
 
 # ____ Heroku
 # antigen bundle heroku
@@ -68,11 +43,49 @@ $a bundle brew-cask
 # ____ pip completions - pip is the native zsh package manager
 # antigen bundle pip
 
-# ____ Open files on Github repo on a given branch
-# antigen bundle peterhurford/git-it-on.zsh
-
 # ____ Auto update of Antigen and its managed bundles
 # antigen bundle unixorn/autoupdate-antigen.zshplugin.git
 
-# ____ End Antigen
+# ____ Git aliases and completions
+$a bundle peterhurford/git-aliases.zsh
+
+# autosuggestions Must be last thing in the Antigen block
+$a bundle zsh-users/zsh-autosuggestions
+
+$a bundle kubectl
+
 antigen apply
+# ================================= End Antigen ================================
+
+# ====================== RBEBV to manage Ruby versions =========================
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# ====================== NVM to manage Node versions ===========================
+# export NVM_DIR="/Users/Kit/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# ============================= Source Aliases =================================
+if [ -f $HOME/dotfiles/aliases ]; then
+    source $HOME/dotfiles/aliases
+else
+    print "$HOME/dotfiles/aliases not found."
+fi
+
+# ============================= Source Custom Bins =============================
+export PATH="$HOME/dotfiles/bin:$PATH"
+
+# ================================ Load Go lang ================================
+export GOPATH=$HOME/Code/go
+export PATH=$PATH:$GOPATH/bin
+
+# ======================= Brew Cask to link location ===========================
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+source $HOME/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/kubectl/kubectl.plugin.zsh
+
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
+fi
+
+if [[ $TERM == xterm ]]; then export TERM=xterm-256color; fi
+

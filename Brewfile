@@ -27,11 +27,9 @@ brew 'exercism'
 
 HOMEBREW_CASK_OPTS="--appdir=/Applications"
 tap 'caskroom/cask'
-brew 'caskroom/cask/brew-cask'
 cask 'dropbox'
 cask '1password'
 cask 'adobe-creative-cloud'
-cask 'adobe-photoshop-lightroom600'
 cask 'alfred'
 cask 'atom'
 cask 'bartender'
