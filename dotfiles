@@ -12,35 +12,35 @@ fancy_echo() {
 }
 
 file_exsists() {
-  ls -al $HOME | grep "$1$" >/dev/null
+  ls -al "$HOME" | grep "$1$" >/dev/null
 }
 
 link_exsists() {
-  ls -al $HOME | grep -F "$1 ->" >/dev/null
+  ls -al "$HOME" | grep -F "$1 ->" >/dev/null
 }
 
 create_them_symlinks() {
   rcfile=${1##*/}
-  if file_exsists $rcfile; then
-    if link_exsists $rcfile; then
+  if file_exsists "$rcfile"; then
+    if link_exsists "$rcfile"; then
       fancy_echo "\e[1;31mSkipping...\e[0m A Link named \e[1;37m$HOME/.$rcfile\e[0m already exsists." "$1"
     else
       fancy_echo "\e[1;31mSkipping...\e[0m File or Dir. named \e[1;37m$HOME/.$rcfile\e[0m already exsists." "$1"
     fi
   else
     fancy_echo "\e[1;32mSym-linked created!\e[0m   \e[1;37m$1\e[0m is linked to \e[1;37m$HOME/.$rcfile\e[0m" "$1"
-    ln -s $1 $HOME/.$rcfile
+    ln -s "$1" "$HOME"/."$rcfile"
   fi
 }
 
 # ===== Symlink all files ending with "rc" in this repo
-find $(pwd) -maxdepth 2 -name "*rc" | while read line; do
-  create_them_symlinks $line
+find "$(pwd)" -maxdepth 2 -name "*rc" | while read line; do
+  create_them_symlinks "$line"
 done
 
 # ===== Symlink non-rc files
-create_them_symlinks $(pwd)/tmux/tmux.conf
-create_them_symlinks $(pwd)/gitconfig
+create_them_symlinks "$(pwd)"/tmux/tmux.conf
+create_them_symlinks "$(pwd)"/gitconfig
 
 
 # ===== Install Homebrew
@@ -56,7 +56,7 @@ brew bundle
 # ===== Set as shell default Brew installed ZSH
 update_shell() {
   local shell_path;
-  shell_path="$(which zsh)"
+  shell_path="$(command -v zsh)"
 
   fancy_echo "Changing your shell to zsh ..."
   if ! grep "$shell_path" /etc/shells > /dev/null 2>&1 ; then
@@ -68,7 +68,7 @@ update_shell() {
 
 case "$SHELL" in
   */zsh)
-    if [ "$(which zsh)" != '/bin/zsh' ] ; then
+    if [ "$(command -v zsh)" != '/bin/zsh' ] ; then
       update_shell
     fi
     ;;
@@ -79,20 +79,20 @@ esac
 
 # Download and link Vim configuration
 git clone https://github.com/kpearson/vimfiles ~/.vim
-ln -s $HOME/.vim/vimrc ~/.vimrc
+ln -s "$HOME"/.vim/vimrc ~/.vimrc
 
 # Set up Neovim as well...
-ln -s $HOME/.vim/vimrc .config/nvim/init.vim
-ln -s $HOME/.vim/ .config/nvim/.vim
-ln -s $HOME/.vim/autoload/plug.vim .config/nvim/autoload/plug.vim
+ln -s "$HOME"/.vim/vimrc .config/nvim/init.vim
+ln -s "$HOME"/.vim/ .config/nvim/.vim
+ln -s "$HOME"/.vim/autoload/plug.vim .config/nvim/autoload/plug.vim
 
 pip2 install --user neovim
 pip3 install --user neovim
 
 # Fix key map problem in Neovim
 # https://github.com/neovim/neovim/issues/2048#issuecomment-78045837
-infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
-tic $TERM.ti
+infocmp "$TERM" | sed 's/kbs=^[hH]/kbs=\\177/' > "$TERM".ti
+tic "$TERM".ti
 
 # Modify MacOS setting
 sh macos

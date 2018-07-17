@@ -1,0 +1,12 @@
+#!/bin/sh
+
+echo Connecting to staging
+eval `ssh -N doppler.staging.reverse` &>/dev/null &disown
+
+echo Scaling to zero
+echo `docker -H 0.0.0.0:2374 service scale acme_api=0 --detach=false`
+echo Scaling to four
+echo `docker -H 0.0.0.0:2374 service scale acme_api=4 --detach=false`
+
+echo Closing connection to staging
+eval `pkill -x ssh`

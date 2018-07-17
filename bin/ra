@@ -1,5 +1,5 @@
 #!/bin/sh
-if [ "$PWD" == "$HOME/Code/Acme/*" ]; then
+if [[ -f ./docker-compose.yml ]]; then
    docker-compose run app rails $1
 else
    rails $1
