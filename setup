@@ -77,6 +77,9 @@ case "$SHELL" in
     ;;
 esac
 
+# Link vs-code config
+ln -s "$HOME"/dotfiles/vs-code/* "$HOME"/Library/Application\ Support/Code/User/
+
 # Download and link Vim configuration
 git clone https://github.com/kpearson/vimfiles ~/.vim
 ln -s "$HOME"/.vim/vimrc ~/.vimrc
