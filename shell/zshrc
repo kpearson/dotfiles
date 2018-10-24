@@ -52,6 +52,7 @@ export KUBECONFIG="$HOME/.kube/config"
 
 # System
 export TERM=xterm-256color-italic
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
 
 # ___ None of this works. I wish it did.
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -80,3 +81,6 @@ export TERM=xterm-256color-italic
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi

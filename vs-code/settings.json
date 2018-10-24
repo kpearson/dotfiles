@@ -1,0 +1,9 @@
+{
+    "workbench.colorTheme": "Monokai",
+    "editor.rulers": [
+        80
+    ],
+    "workbench.statusBar.visible": true,
+    "workbench.activityBar.visible": true,
+    "workbench.sideBar.location": "left"
+}
