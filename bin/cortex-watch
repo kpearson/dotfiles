@@ -10,8 +10,14 @@ aws ecs list-tasks --cluster "$APP"-"$ENV" --service "$APP"-"$ENV"-cortex  --reg
 task-watch() {
 T=$(task-count)
 
+if [ "$APP" == acme ]; then
+  COUNT=4
+else
+  COUNT=3
+fi
+
 while true; do
-  if [ "$T" -gt 3 ]; then
+  if [ "$T" -gt "$COUNT" ]; then
     echo "Task count is $T"
     T=$(task-count)
     sleep 3

@@ -11,7 +11,7 @@ alias zshs="subl ~/.zshrc && reload"
 alias te="cd $HOME/code/my_projects/trial-and-error/ && vim"
 alias t="tmux"
 alias tl="tmux ls"
-alias git=hub
+# alias git=hub
 
 # Cyndx | Docker 4/28/17
 alias mrs="make rebuild_and_seed"

@@ -1,10 +1,12 @@
 zmodload zsh/zprof
 
-export ZSH="/Users/Kit/.oh-my-zsh"
-
-ZSH_THEME="cloud"
+export ZSH="$HOME/Kit/.oh-my-zsh"
+unsetopt complete_aliases
+# alias __git-checkout_main=_git_checkout
+# ZSH_THEME="mgutz"
+ZSH_THEME="miloshadzic"
 HYPHEN_INSENSITIVE="true"
-ZSH_CUSTOM="$HOME"/Dotfiles/shell/oh-my-zsh-custom
+ZSH_CUSTOM="$HOME/Dotfiles/shell/oh-my-zsh-custom"
 
 plugins=(
   aws
@@ -17,8 +19,7 @@ plugins=(
   # rails
   # rbenv
   terraform
-  thefuck
-  zsh-autosuggestions
+  # zsh-autosuggestions
   zsh-syntax-highlighting
 )
 
@@ -28,27 +29,33 @@ source $ZSH/oh-my-zsh.sh
 # END OH-MY-ZSH CONFIGURATION                                                 #
 ###############################################################################
 
-# RBEBV manage Ruby versions
+# RBEBV - Manage Ruby versions
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+# Python version manager
+eval "$(pyenv init -)"
+# if which pyenv > /dev/null; then eval "$(pyenv init -)" fi
+
 # Aliases
-if [ -f $HOME/Dotfiles/aliases ]; then
-    source $HOME/Dotfiles/aliases
+if [ -f "$HOME/Dotfiles/aliases" ]; then
+    source "$HOME/Dotfiles/aliases"
 else
     print "$HOME/Dotfiles/aliases not found."
 fi
 
-# GoLang
-export GOPATH=$HOME/Code/go
-
-# Binary Executables
+### Executables paths
 export PATH="$HOME/Dotfiles/bin:$PATH" # Custom
 export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
-export PATH=$PATH:$GOPATH/bin
+
+# GoLang
+export GOPATH="$HOME/Code/go"
+export PATH="$PATH:$GOPATH/bin"
 
 # Kubernetes
-export KUBECONFIG="$HOME/.kube/config"
+export KUBECONFIG="$HOME/.kube/config-playground"
+export PATH="$PATH:$HOME/Code/istio-0.8.0/bin"
+# export KUBECONFIG="$HOME/.kube/config"
 
 # System
 export TERM=xterm-256color-italic

@@ -45,3 +45,4 @@ Thumbs.db
 *TODO_LOCAL.md
 .sass-cache
 .gitconfig
+*.orig
