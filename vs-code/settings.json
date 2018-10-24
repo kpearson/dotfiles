@@ -7,6 +7,7 @@
     "workbench.activityBar.visible": true,
     "workbench.sideBar.location": "left",
     "vim.normalModeKeyBindingsNonRecursive": [
+
         {
             "before": [":"],
             "commands": [
