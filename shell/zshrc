@@ -2,7 +2,7 @@ zmodload zsh/zprof
 
 export ZSH="/Users/Kit/.oh-my-zsh"
 
-ZSH_THEME="cloud"
+ZSH_THEME="miloshadzic"
 HYPHEN_INSENSITIVE="true"
 ZSH_CUSTOM="$HOME"/Dotfiles/shell/oh-my-zsh-custom
 
