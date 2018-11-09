@@ -1,6 +1,7 @@
 # alias Gwho="git log --all --format='%cN %Cblue<%cE>%Creset' | sort -u"
 alias todo="vim ~/.todo.md"
 alias job="vim $HOME/.jobs.md"
+alias reset-dis="nvram -d gpu-policy"
 
 # global
 alias vi="nvim"
