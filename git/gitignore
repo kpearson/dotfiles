@@ -47,4 +47,5 @@ Thumbs.db
 .gitconfig
 *.orig
 .vscode
+vs-code
 *notes
