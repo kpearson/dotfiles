@@ -2,6 +2,7 @@
 alias todo="vim ~/.todo.md"
 alias job="vim $HOME/.jobs.md"
 alias reset-dis="nvram -d gpu-policy"
+alias spark-shell="spark-shell --conf spark.driver.extraJavaOptions="-Dscala.color""
 
 # global
 alias vi="nvim"
