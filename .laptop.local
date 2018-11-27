@@ -28,7 +28,7 @@ create_them_symlinks() {
 }
 
 fancy_echo "Downloading dotfiles"
-git clone git@github.com:kpearson/dotfiles.git "$HOME"/Dotfiles
+git clone https://github.com/kpearson/dotfiles.git "$HOME"/Dotfiles
 
 # ===== Symlink all files ending with "rc" in this repo
 find "$(pwd)" -maxdepth 2 -name "*rc" | while read line; do
