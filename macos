@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e
 
 # Set a blazingly fast keyboard repeat rate
@@ -8,18 +7,24 @@ defaults write NSGlobalDomain KeyRepeat -int 1
 # Enable full keyboard access for all controls (e.g. Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+sudo defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+sudo defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+sudo defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write com.apple.Dock orientation -string left
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide-delay -float 0
+defaults write com.apple.dock autohide-time-modifier -float 0
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+
+# Enable the expand save panel by default
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
 # Set menu bar and dock to dark
 defaults write NSGlobalDomain AppleInterfaceStyle Dark
 
-defaults write com.apple.Dock orientation -string left
-
-defaults write com.apple.dock autohide -bool true
-
-defaults write com.apple.dock autohide-delay -float 0
-
-defaults write com.apple.dock autohide-time-modifier -float 0
-
-defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+sudo defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme Dark
 
 killall Dock
 
@@ -44,32 +49,36 @@ defaults write com.apple.dashboard mcx-disabled -bool true
 # Don’t show Dashboard as a Space
 defaults write com.apple.dock dashboard-in-overlay -bool true
 
-# Configure iTerm2 to read preferences from Copy
-defaults write com.googlecode.iterm2 PrefsCustomFolder ~/Copy
-
-# Configure Alfred to read preferences from Copy
-defaults write com.runningwithcrayons.Alfred-Preferences syncfolder ~/Copy/Alfred_Settings
-
-# 1Password, View, Item List Layout
-# [x] Top
-defaults write com.agilebits.onepassword4 MainWindowLayout 'H'
-
-# 1Password, Preferences, Watchtower
-# [x] Enable 1Password Watchtower
-defaults write 2BUA8C4S2C.com.agilebits.onepassword4-helper watchtowerService -int 1
-
-# 1Password, Preferences, Browser
-# [ ] Automatically submit logins after filling
-defaults write 2BUA8C4S2C.com.agilebits.onepassword4-helper autosubmit -int 0
-
-# 1Password, Preferences, Advanced
-# [ ] Verify browser code signature
-defaults write 2BUA8C4S2C.com.agilebits.onepassword4-helper OPPrefBrowserCodesigningRequirementDisabled -int 1
-
 # experimental fix for the shutdown durring sleep issue.
-sudo pmset -a hibernatemode 0
-sudo nvram "use-nvramrc?"=false
+# sudo pmset -a hibernatemode 0
+# sudo nvram "use-nvramrc?"=false
 # When done, restart your computer. Now go delete the file
 # /private/var/vm/sleepimage to free up some hard drive space.
 
+################## App Settings ##################
+
+##### Alfred ######
+# =================
+# Read preferences from Copy
+defaults write com.runningwithcrayons.Alfred-Preferences-3 syncfolder "$HOME/Amazon Drive/AppSetting/Alfred"
+
+#### 1Password ####
+# =================
+# View, Item List Layout
+defaults write com.agilebits.onepassword4 MainWindowLayout 'H'
+# Preferences, Enable Watchtower
+defaults write 2BUA8C4S2C.com.agilebits.onepassword4-helper watchtowerService -int 1
+# Preferences, Browser Automatically submit logins after filling
+defaults write 2BUA8C4S2C.com.agilebits.onepassword4-helper autosubmit -int 0
+# Preferences, Verify browser code signature
+defaults write 2BUA8C4S2C.com.agilebits.onepassword4-helper OPPrefBrowserCodesigningRequirementDisabled -int 1
+
+###### iTerm ######
+# =================
+# Specify the preferences directory
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$HOME/Amazon Drive/AppSetting/iTerm"
+# Use the custom preferences in the directory
+defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+
 # vi:ft=sh
+
