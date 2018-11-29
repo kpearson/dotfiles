@@ -30,6 +30,10 @@ create_them_symlinks() {
 fancy_echo "Downloading dotfiles"
 git clone https://github.com/kpearson/dotfiles.git "$HOME"/Dotfiles
 
+# Brew install apps not in laptop script
+fancy_echo "Installing other apps"
+brew bundle --file="$HOME"/Dotfiles/Brewfile
+
 # ===== Symlink all files ending with "rc" in this repo
 fancy_echo "Symlinking rc files"
 find "$(pwd)" -maxdepth 2 -name "*rc" | while read line; do
@@ -46,38 +50,23 @@ ln -s "$HOME"/Dotfiles/shell/xterm-256color-italic.ti "$HOME"/
 git clone https://github.com/robbyrussell/oh-my-zsh.git "$HOME"/Dotfiles/shell/.oh-my-zsh
 
 # Link Visual Studio Code config
-fancy_echo "Setting up VS-Code"
-mkdir -p "$HOME"/Library/Application\ Support/Code/User/
-ln -s "$HOME"/dotfiles/vs-code/* "$HOME"/Library/Application\ Support/Code/User/
+# fancy_echo "Setting up VS-Code"
+# mkdir -p "$HOME"/Library/Application\ Support/Code/User/
+# ln -s "$HOME"/dotfiles/vs-code/* "$HOME"/Library/Application\ Support/Code/User/
 
-# Download and link Vim configuration
-fancy_echo "Downloading and setting up Vim"
-git clone https://github.com/kpearson/vimfiles ~/.vim
-ln -s "$HOME"/.vim/vimrc ~/.vimrc
-
-# Set up Neovim as well...
-fancy_echo "Setting up Neovim"
-ln -s "$HOME"/.vim/vimrc .config/nvim/init.vim
-ln -s "$HOME"/.vim/ .config/nvim/.vim
-ln -s "$HOME"/.vim/autoload/plug.vim .config/nvim/autoload/plug.vim
-
-pip2 install --user neovim
-pip3 install --user neovim
-
-# Fix key map problem in Neovim
-# https://github.com/neovim/neovim/issues/2048#issuecomment-78045837
-infocmp "$TERM" | sed 's/kbs=^[hH]/kbs=\\177/' > "$TERM".ti
-tic "$TERM".ti
-
-# Modify MacOS setting
 fancy_echo "Updating Mac settings"
 sh "$HOME"/Dotfiles/macos
 
-# Brew install things not in laptop script
-fancy_echo "Installing other apps"
-brew bundle --file="$HOME"/Dotfiles/Brewfile
+fancy_echo "iTerm2 shell integration. .zshrc executes this on logging if present"
+curl -L https://iterm2.com/misc/install_shell_integration.sh | bash
 
 fancy_echo "Cleaning up old Homebrew formulae ..."
 brew cleanup
-brew cask cleanup
 brew bundle cleanup
+
+# Download and link Vim configuration
+# TODO: Move this to kpearson/vimfiles
+fancy_echo "Vim/Neovim is installed to complete the setup download vimfiles"
+fancy_echo "git clone https://github.com/kpearson/vimfiles ~/.vim"
+fancy_echo "To bootstrap the set up run _chmod 755 ~/.vim/setup && ~/.vim/setup_"
+
