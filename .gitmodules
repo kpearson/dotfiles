@@ -4,3 +4,6 @@
 [submodule "shell/oh-my-zsh-custom/plugins/git-aliases"]
 	path = shell/oh-my-zsh-custom/plugins/git-aliases
 	url = git@github.com:peterhurford/git-aliases.zsh.git
+[submodule "shell/oh-my-zsh"]
+	path = shell/oh-my-zsh
+	url = git@github.com:robbyrussell/oh-my-zsh.git
