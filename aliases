@@ -15,6 +15,8 @@ alias t="tmux"
 alias tl="tmux ls"
 # alias git=hub
 
+# Standard setup
+alias getstarted="open -a Polymail && open -a Slack && open -a Google\ Chrome open -a messages"
 # Cyndx | Docker 4/28/17
 alias mrs="make rebuild_and_seed"
 alias docker_rollback="dcr -e RAILS_ENV=test app rails db:rollback && dcr app rails db:rollback"
@@ -22,3 +24,5 @@ alias docker_rollback="dcr -e RAILS_ENV=test app rails db:rollback && dcr app ra
 alias aliases="vim $HOME/dotfiles/aliases"
 
 alias tailc="tailcassandra"
+
+alias ld="zip -r image-fetcher . && aws lambda update-function-code --function-name logo-fetch-node --zip-file fileb://image-fetcher.zip --region us-east-1 --publish"
