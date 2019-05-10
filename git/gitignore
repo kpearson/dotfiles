@@ -51,3 +51,4 @@ vs-code
 *notes
 target/
 *.local*
+.vscode/*
