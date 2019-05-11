@@ -32,6 +32,7 @@ git clone --recursive https://github.com/kpearson/dotfiles.git "$HOME"/Dotfiles
 
 # Brew install apps not in laptop script
 fancy_echo "Installing other apps"
+brew analytics off
 brew bundle --file="$HOME"/Dotfiles/Brewfile
 
 # ===== Symlink all files ending with "rc" in this repo
