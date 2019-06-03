@@ -26,3 +26,4 @@ alias aliases="vim $HOME/dotfiles/aliases"
 alias tailc="tailcassandra"
 
 alias ld="zip -r image-fetcher . && aws lambda update-function-code --function-name logo-fetch-node --zip-file fileb://image-fetcher.zip --region us-east-1 --publish"
+alias hypo="cd ~/code/hypothalamus"
