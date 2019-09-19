@@ -20,6 +20,7 @@ plugins=(
   terraform
   zsh-autosuggestions
   react-native
+  yarn
   yarn-autocompletions
   zsh-syntax-highlighting
 )
@@ -70,9 +71,9 @@ fi
 # Fixes bug in git-aliases zsh plugin
 alias __git-checkout_main=_git_checkout
 
-# if [[ $TERM == xterm-256color ]] && [[ -n $SSH_CONNECTION ]]; then
-#     export TERM=xterm-256color-italic
-# fi
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
+  [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"
 
 ###############################################################################
 # NOT IN USE                                                                  #
@@ -83,9 +84,9 @@ alias __git-checkout_main=_git_checkout
 # Anaconda(Python)
 # export PATH=/usr/local/anaconda3/bin:"$PATH"
 
-# Node Version Manager (NVM)
-# export NVM_DIR="/Users/Kit/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# if [[ $TERM == xterm-256color ]] && [[ -n $SSH_CONNECTION ]]; then
+#     export TERM=xterm-256color-italic
+# fi
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
@@ -99,3 +100,4 @@ export PATH=~/Library/Android/sdk/platform-tools:$PATH
 export PATH="/usr/local/sbin:$PATH"
 
 # zprof
+KUBECONFIG=~/.kube/k8s.cy.vg

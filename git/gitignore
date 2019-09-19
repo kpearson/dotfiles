@@ -46,9 +46,16 @@ Thumbs.db
 .sass-cache
 .gitconfig
 *.orig
-.vscode
-vs-code
 *notes
 target/
 *.local*
+.python-version
+
+
+# VSCode #
+##########
+.vscode
 .vscode/*
+vs-code
+wallaby.js
+apollo.config.js
