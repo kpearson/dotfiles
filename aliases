@@ -23,4 +23,4 @@ alias aliases="vi $HOME/dotfiles/aliases"
 
 alias ld="zip -r image-fetcher . && aws lambda update-function-code --function-name logo-fetch-node --zip-file fileb://image-fetcher.zip --region us-east-1 --publish"
 alias restart-synapse="docker-compose restart app && docker attach $(docker ps -l -q)"
-alias jobhund="vi ~/Amazon\ Drive/Documents/Employment/Job\ Hunt/jobhunt-201909.md"
+alias jobhunt="vi ~/Amazon\ Drive/Documents/Employment/Job\ Hunt/jobhunt-201909.md"
