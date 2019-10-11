@@ -68,8 +68,16 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-# Fixes bug in git-aliases zsh plugin
-alias __git-checkout_main=_git_checkout
+# **git-aliases fix**
+# Homebrew doesn't have an option to install git *without completions*. These
+# conflict with the completions in the git-aliases plugin. To solve this simply
+# remove the `_git` symlink in the *zsh_site-functions*.
+#
+# Confirm the location of site_functions:
+# `brew info git`
+#
+# Remove the link:
+# `rm /usr/local/share/zsh/site-functions/_git`
 
 export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
