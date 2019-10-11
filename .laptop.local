@@ -47,6 +47,10 @@ create_them_symlinks "$(pwd)"/tmux/tmux.conf
 create_them_symlinks "$(pwd)"/gitconfig
 ln -s "$HOME"/Dotfiles/shell/xterm-256color-italic.ti "$HOME"/
 
+# ===== Remove link to git completions
+fancy_echo "Removing link to git completions in lue of git-aliases"
+rm $(brew info git | grep zsh | tail -n1)/_git
+
 # Link Visual Studio Code config
 # fancy_echo "Setting up VS-Code"
 # mkdir -p "$HOME"/Library/Application\ Support/Code/User/
