@@ -75,8 +75,6 @@ cask "visual-studio-code"
 cask "vlc"
 cask "zoomus"
 
-/* cask "dash" */
-
 mas "BetterSnapTool", id: 417375580
 mas "iA Writer", id: 775737590
 mas "Things", id: 407951449

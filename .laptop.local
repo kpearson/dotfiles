@@ -7,11 +7,8 @@
 
 DOTFILES_DIR_NAME=".dotfiles"
 DOTFILES_DIR="$HOME"/"$DOTFILES_DIR_NAME"
+MAC_CONFIG=$1
 
-echo "$MAC_CONFIG"
-echo "$DOTFILES_DIR"
-
-exit 1
 file_exsists() {
   ls -al "$HOME" | grep "$1$" >/dev/null
 }
@@ -24,54 +21,58 @@ create_them_symlinks() {
   rcfile=${1##*/}
   if file_exsists "$rcfile"; then
     if link_exsists "$rcfile"; then
-      fancy_echo "\e[1;31mSkipping...\e[0m A Link named \e[1;37m$HOME/.$rcfile\e[0m already exsists." "$1"
+      fancy_echo "\e[1;31mSkipping...\e[0m A Link named \e[1;37m$HOME/.$rcfile\e[0m already exists." "$1"
     else
-      fancy_echo "\e[1;31mSkipping...\e[0m File or Dir. named \e[1;37m$HOME/.$rcfile\e[0m already exsists." "$1"
+      fancy_echo "\e[1;31mSkipping...\e[0m File or Dir. named \e[1;37m$HOME/.$rcfile\e[0m already exists." "$1"
     fi
   else
-    fancy_echo "\e[1;32mSym-linked created!\e[0m   \e[1;37m$1\e[0m is linked to \e[1;37m$HOME/.$rcfile\e[0m" "$1"
+    fancy_echo "\e[1;32mSym-link created!\e[0m   \e[1;37m$1\e[0m is linked to \e[1;37m$HOME/.$rcfile\e[0m" "$1"
     ln -s "$1" "$HOME"/."$rcfile"
   fi
 }
 
-fancy_echo "Downloading dotfiles"
-git clone --recursive https://github.com/kpearson/dotfiles.git "$DOTFILES_DIR"
+fancy_echo "\e[1;37mDownloading dotfiles\e[0m"
+ls "$DOTFILES_DIR" &> /dev/null || \
+  git clone --recursive https://github.com/kpearson/dotfiles.git "$DOTFILES_DIR"
 
 # Brew install apps not in laptop script
-fancy_echo "Installing other apps"
+fancy_echo "\e[1;37mInstalling other apps\e[0m"
 set +e
 brew analytics off
-brew bundle --file="$DOTFILES_DIR"/Brewfile
+brew bundle install --file="$DOTFILES_DIR"/Brewfile
 set -e
 
 # ===== Symlink all files ending with "rc" in this repo
 # This can't work because it needs to be run from the project root, it caller is in the user root.
-fancy_echo "Symlinking rc files"
+fancy_echo "\e[1;37mSymlinking rc files\e[0m"
 find "$DOTFILES_DIR" -maxdepth 2 -name "*rc" | while read line; do
   create_them_symlinks "$line"
 done
 
-fancy_echo "Symlinking non-rc files"
+fancy_echo "\e[1;37mSymlinking non-rc files\e[0m"
 create_them_symlinks "$DOTFILES_DIR"/tmux/tmux.conf
 create_them_symlinks "$DOTFILES_DIR"/gitconfig
-ln -s "$DOTFILES_DIR"/shell/xterm-256color-italic.ti "$HOME"/
+create_them_symlinks "$DOTFILES_DIR"/shell/xterm-256color-italic.ti
 
-fancy_echo "Removing link to git completions in lue of git-aliases"
-rm $(brew info git | grep zsh | tail -n1)/_git
+fancy_echo "\e[1;37mRemoving link to git completions in lue of git-aliases\e[0m"
+$(brew info git | grep zsh | tail -n1)/_git && rm $(brew info git | grep zsh | tail -n1)/_git
 
 # Link Visual Studio Code config
 # fancy_echo "Setting up VS-Code"
 # mkdir -p "$HOME"/Library/Application\ Support/Code/User/
 # ln -s "$DOTFILES_DIR"/vs-code/* "$HOME"/Library/Application\ Support/Code/User/
+
 if [[ -z "${MAC_CONFIG}" ]]; then
-  fancy_echo "Updating Mac settings"
+  fancy_echo "\e[1;37mUpdating Mac settings\e[0m"
   sh "$DOTFILES_DIR"/macos
 fi
 
-fancy_echo "iTerm2 shell integration. .zshrc executes this on logging if present"
-curl -L https://iterm2.com/misc/install_shell_integration.sh | bash
+fancy_echo "\e[1;37miTerm2 shell integration. .zshrc executes this on logging if present\e[0m"
+curl --silent -L https://iterm2.com/misc/install_shell_integration.sh | bash
 
-fancy_echo "Cleaning up old Homebrew formulae ..."
+fancy_echo "\e[1;37mCleaning up old Homebrew formulae ...\e[0m"
 brew cleanup
-brew bundle cleanup
+brew bundle cleanup --file="$DOTFILES_DIR"/Brewfile
+
+fancy_echo "\e[1;37mSetup complete.!\e[0m\n"
 
