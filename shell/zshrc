@@ -111,3 +111,5 @@ export PATH="/usr/local/sbin:$PATH"
 
 # zprof
 KUBECONFIG=~/.kube/k8s.cy.vg
+
+export PATH="$HOME/.bin:$PATH"

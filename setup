@@ -3,5 +3,9 @@
 curl --remote-name https://raw.githubusercontent.com/thoughtbot/laptop/master/mac
 curl --remote-name https://raw.githubusercontent.com/kpearson/dotfiles/master/.laptop.local
 
+if [ "$1" = "--mac-config" ]; then
+  export MAC_CONFIG=true
+fi
+
 sh mac 2>&1 | tee ~/laptop.log
 
