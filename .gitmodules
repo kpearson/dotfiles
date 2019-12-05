@@ -7,3 +7,6 @@
 [submodule "shell/oh-my-zsh"]
 	path = shell/oh-my-zsh
 	url = https://@github.com:robbyrussell/oh-my-zsh.git
+[submodule "shell/ohmyzsh"]
+	path = shell/ohmyzsh
+	url = git@github.com:ohmyzsh/ohmyzsh.git
