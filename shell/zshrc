@@ -1,10 +1,12 @@
 # zmodload zsh/zprof
 
-export ZSH="$HOME/Dotfiles/shell/oh-my-zsh"
+export DOTFILES="$HOME/.dotfiles"
+export ZSH="$DOTFILES/shell/ohmyzsh"
+
 
 ZSH_THEME="miloshadzic"
 HYPHEN_INSENSITIVE="true"
-ZSH_CUSTOM="$HOME/Dotfiles/shell/oh-my-zsh-custom"
+ZSH_CUSTOM="$DOTFILES/shell/oh-my-zsh-custom"
 
 plugins=(
   aws
@@ -39,14 +41,14 @@ eval "$(pyenv init -)"
 # if which pyenv > /dev/null; then eval "$(pyenv init -)" fi
 
 # Aliases
-if [ -f "$HOME/Dotfiles/aliases" ]; then
-    source "$HOME/Dotfiles/aliases"
+if [ -f "$DOTFILES/aliases" ]; then
+    source "$DOTFILES/aliases"
 else
-    print "$HOME/Dotfiles/aliases not found."
+    print "$DOTFILES/aliases not found."
 fi
 
 ### Executables paths
-export PATH="$HOME/Dotfiles/bin:$PATH" # Custom
+export PATH="$DOTFILES/bin:$PATH" # Custom
 export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 

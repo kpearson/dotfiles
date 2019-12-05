@@ -5,6 +5,8 @@
 # user root directory.
 # Call this script form directory this file resides in. `sh install`
 
+DOTFILS_DIR=".dotfiles"
+
 file_exsists() {
   ls -al "$HOME" | grep "$1$" >/dev/null
 }
@@ -28,33 +30,32 @@ create_them_symlinks() {
 }
 
 fancy_echo "Downloading dotfiles"
-git clone --recursive https://github.com/kpearson/dotfiles.git "$HOME"/Dotfiles
+git clone --recursive https://github.com/kpearson/dotfiles.git "$HOME"/"$DOTFILES_DIR"
 
 # Brew install apps not in laptop script
 fancy_echo "Installing other apps"
-brew analytics off
-brew bundle --file="$HOME"/Dotfiles/Brewfile
+# brew analytics off
+# brew bundle --file="$HOME"/"$DOTFILES_DIR"/Brewfile
 
 # ===== Symlink all files ending with "rc" in this repo
+# This can't work because it needs to be run from the project root, it caller is in the user root.
 fancy_echo "Symlinking rc files"
-find "$(pwd)" -maxdepth 2 -name "*rc" | while read line; do
+find "$HOME"/"$DOTFILES_DIR" -maxdepth 2 -name "*rc" | while read line; do
   create_them_symlinks "$line"
 done
 
-# ===== Symlink non-rc files
 fancy_echo "Symlinking non-rc files"
 create_them_symlinks "$(pwd)"/tmux/tmux.conf
 create_them_symlinks "$(pwd)"/gitconfig
-ln -s "$HOME"/Dotfiles/shell/xterm-256color-italic.ti "$HOME"/
+ln -s "$HOME"/"$DOTFILES_DIR"/shell/xterm-256color-italic.ti "$HOME"/
 
-# ===== Remove link to git completions
 fancy_echo "Removing link to git completions in lue of git-aliases"
 rm $(brew info git | grep zsh | tail -n1)/_git
 
 # Link Visual Studio Code config
 # fancy_echo "Setting up VS-Code"
 # mkdir -p "$HOME"/Library/Application\ Support/Code/User/
-# ln -s "$HOME"/dotfiles/vs-code/* "$HOME"/Library/Application\ Support/Code/User/
+# ln -s "$HOME"/"$DOTFILES_DIR"/vs-code/* "$HOME"/Library/Application\ Support/Code/User/
 
 fancy_echo "Updating Mac settings"
 sh "$HOME"/Dotfiles/macos
@@ -71,4 +72,17 @@ brew bundle cleanup
 fancy_echo "Vim/Neovim is installed to complete the setup download vimfiles"
 fancy_echo "git clone https://github.com/kpearson/vimfiles ~/.vim"
 fancy_echo "To bootstrap the set up run _chmod 755 ~/.vim/setup && ~/.vim/setup_"
+
+# Vimfiles redme update
+
+Clone into .vim
+
+```sh
+git clone git@github.com:kpearson/vimfiles.git .vim
+```
+
+```sh
+chmod 755 ~/.vim/setup.sh && ~/.vim/setup.sh
+```
+
 
