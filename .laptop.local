@@ -50,6 +50,7 @@ find "$DOTFILES_DIR" -maxdepth 2 -name "*rc" | while read line; do
 done
 
 fancy_echo "\e[1;37mSymlinking non-rc files\e[0m"
+create_them_symlinks "$DOTFILES_DIR"/shell/zprofile
 create_them_symlinks "$DOTFILES_DIR"/tmux/tmux.conf
 create_them_symlinks "$DOTFILES_DIR"/gitconfig
 create_them_symlinks "$DOTFILES_DIR"/shell/xterm-256color-italic.ti
