@@ -7,3 +7,6 @@
 [submodule "shell/ohmyzsh"]
 	path = shell/ohmyzsh
 	url = git@github.com:ohmyzsh/ohmyzsh.git
+[submodule "shell/oh-my-zsh-custom/plugins/git-aliases.zsh"]
+	path = shell/oh-my-zsh-custom/plugins/git-aliases.zsh
+	url = git@github.com:peterhurford/git-aliases.zsh.git
