@@ -33,7 +33,7 @@ create_them_symlinks() {
 
 fancy_echo "\e[1;37mDownloading dotfiles\e[0m"
 ls "$DOTFILES_DIR" &> /dev/null || \
-  git clone --recursive https://github.com/kpearson/dotfiles.git "$DOTFILES_DIR"
+  git clone --recursive git@github.com:kpearson/dotfiles.git "$DOTFILES_DIR"
 
 # Brew install apps not in laptop script
 fancy_echo "\e[1;37mInstalling other apps\e[0m"
