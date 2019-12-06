@@ -13,7 +13,7 @@ plugins=(
   colored-man-pages
   docker
   docker-compose
-  git-aliases
+  git-aliases.zsh
   # helm
   # kubectl
   sbt

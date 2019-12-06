@@ -1,12 +1,9 @@
-[submodule "shell/oh-my-zsh-custom/plugins/git-aliases"]
-	path = shell/oh-my-zsh-custom/plugins/git-aliases
-	url = https://@github.com:peterhurford/git-aliases.zsh.git
-[submodule "shell/oh-my-zsh"]
-	path = shell/oh-my-zsh
-	url = https://@github.com:robbyrussell/oh-my-zsh.git
 [submodule "shell/ohmyzsh"]
 	path = shell/ohmyzsh
 	url = git@github.com:ohmyzsh/ohmyzsh.git
 [submodule "shell/oh-my-zsh-custom/plugins/git-aliases.zsh"]
 	path = shell/oh-my-zsh-custom/plugins/git-aliases.zsh
 	url = git@github.com:peterhurford/git-aliases.zsh.git
+[submodule "shell/oh-my-zsh-custom/zsh-autosuggestions"]
+	path = shell/oh-my-zsh-custom/zsh-autosuggestions
+	url = git@github.com:zsh-users/zsh-autosuggestions.git
