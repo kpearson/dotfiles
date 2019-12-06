@@ -7,7 +7,7 @@
 
 DOTFILES_DIR_NAME=".dotfiles"
 DOTFILES_DIR="$HOME"/"$DOTFILES_DIR_NAME"
-MAC_CONFIG=$1
+MACOS_CONFIG=$1
 
 file_exsists() {
   ls -al "$HOME" | grep "$1$" >/dev/null
@@ -32,7 +32,7 @@ create_them_symlinks() {
 }
 
 fancy_echo "\e[1;37mDownloading dotfiles\e[0m"
-ls "$DOTFILES_DIR" &> /dev/null || \
+test -e "$DOTFILES_DIR" &> /dev/null || \
   git clone --recursive git@github.com:kpearson/dotfiles.git "$DOTFILES_DIR"
 
 # Brew install apps not in laptop script
@@ -56,14 +56,15 @@ create_them_symlinks "$DOTFILES_DIR"/gitconfig
 create_them_symlinks "$DOTFILES_DIR"/shell/xterm-256color-italic.ti
 
 fancy_echo "\e[1;37mRemoving link to git completions in lue of git-aliases\e[0m"
-$(brew info git | grep zsh | tail -n1)/_git && rm $(brew info git | grep zsh | tail -n1)/_git
+SITE_FUNCTIONS_PATH=$(brew info git | grep zsh | tail -n1)
+"$SITE_FUNCTIONS_PATH/_git" && rm "$SITE_FUNCTIONS_PATH/_git"
 
 # Link Visual Studio Code config
 # fancy_echo "Setting up VS-Code"
 # mkdir -p "$HOME"/Library/Application\ Support/Code/User/
 # ln -s "$DOTFILES_DIR"/vs-code/* "$HOME"/Library/Application\ Support/Code/User/
 
-if [[ -z "${MAC_CONFIG}" ]]; then
+if [[ -z "${MACOS_CONFIG}" ]]; then
   fancy_echo "\e[1;37mUpdating Mac settings\e[0m"
   sh "$DOTFILES_DIR"/macos
 fi

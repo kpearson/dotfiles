@@ -77,5 +77,5 @@ cask "zoomus"
 
 mas "BetterSnapTool", id: 417375580
 mas "iA Writer", id: 775737590
-mas "Things", id: 407951449
+mas "Things 3", id: 904280696
 mas "Type Fu", id: 509818877
