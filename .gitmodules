@@ -1,6 +1,3 @@
-[submodule "antigen"]
-	path = antigen
-	url = https://github.com/zsh-users/antigen.git
 [submodule "shell/oh-my-zsh-custom/plugins/git-aliases"]
 	path = shell/oh-my-zsh-custom/plugins/git-aliases
 	url = https://@github.com:peterhurford/git-aliases.zsh.git
