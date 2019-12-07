@@ -5,8 +5,8 @@
 # user root directory.
 # Call this script form directory this file resides in. `sh install`
 
-DOTFILES_DIR_NAME=".dotfiles"
-DOTFILES_DIR="$HOME"/"$DOTFILES_DIR_NAME"
+DOTFILES_NAME=".dotfiles"
+DOTFILES="$HOME"/"$DOTFILES_NAME"
 MACOS_CONFIG=$1
 
 file_exsists() {
@@ -32,28 +32,28 @@ create_them_symlinks() {
 }
 
 fancy_echo "\e[1;37mDownloading dotfiles\e[0m"
-test -e "$DOTFILES_DIR" &> /dev/null || \
-  git clone --recursive git@github.com:kpearson/dotfiles.git "$DOTFILES_DIR"
+test -e "$DOTFILES" || git clone --recursive \
+  git@github.com:kpearson/dotfiles.git "$DOTFILES"
 
-# Brew install apps not in laptop script
+# Brew install apps not in the Thoughtbot laptop script
 fancy_echo "\e[1;37mInstalling other apps\e[0m"
 set +e
 brew analytics off
-brew bundle install --file="$DOTFILES_DIR"/Brewfile
+brew bundle install --file="$DOTFILES"/Brewfile
 set -e
 
 # ===== Symlink all files ending with "rc" in this repo
-# This can't work because it needs to be run from the project root, it caller is in the user root.
 fancy_echo "\e[1;37mSymlinking rc files\e[0m"
-find "$DOTFILES_DIR" -maxdepth 2 -name "*rc" | while read line; do
+test -e "$HOME/.zshrc" && mv "$HOME/.zshrc" "$HOME/.zshrc-back"
+find "$DOTFILES" -maxdepth 2 -name "*rc" | while read line; do
   create_them_symlinks "$line"
 done
 
 fancy_echo "\e[1;37mSymlinking non-rc files\e[0m"
-create_them_symlinks "$DOTFILES_DIR"/shell/zprofile
-create_them_symlinks "$DOTFILES_DIR"/tmux/tmux.conf
-create_them_symlinks "$DOTFILES_DIR"/gitconfig
-create_them_symlinks "$DOTFILES_DIR"/shell/xterm-256color-italic.ti
+create_them_symlinks "$DOTFILES"/shell/zprofile
+create_them_symlinks "$DOTFILES"/tmux/tmux.conf
+create_them_symlinks "$DOTFILES"/gitconfig
+create_them_symlinks "$DOTFILES"/shell/xterm-256color-italic.ti
 
 fancy_echo "\e[1;37mRemoving link to git completions in lue of git-aliases\e[0m"
 SITE_FUNCTIONS_PATH=$(brew info git | grep zsh | tail -n1)
@@ -62,11 +62,11 @@ SITE_FUNCTIONS_PATH=$(brew info git | grep zsh | tail -n1)
 # Link Visual Studio Code config
 # fancy_echo "Setting up VS-Code"
 # mkdir -p "$HOME"/Library/Application\ Support/Code/User/
-# ln -s "$DOTFILES_DIR"/vs-code/* "$HOME"/Library/Application\ Support/Code/User/
+# ln -s "$DOTFILES"/vs-code/* "$HOME"/Library/Application\ Support/Code/User/
 
 if [[ -z "${MACOS_CONFIG}" ]]; then
   fancy_echo "\e[1;37mUpdating Mac settings\e[0m"
-  sh "$DOTFILES_DIR"/macos
+  sh "$DOTFILES"/macos
 fi
 
 fancy_echo "\e[1;37miTerm2 shell integration. .zshrc executes this on logging if present\e[0m"
@@ -74,7 +74,7 @@ curl --silent -L https://iterm2.com/misc/install_shell_integration.sh | bash
 
 fancy_echo "\e[1;37mCleaning up old Homebrew formulae ...\e[0m"
 brew cleanup
-brew bundle cleanup --file="$DOTFILES_DIR"/Brewfile
+brew bundle cleanup --file="$DOTFILES"/Brewfile
 
 fancy_echo "\e[1;37mSetup complete.!\e[0m\n"
 

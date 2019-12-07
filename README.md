@@ -32,6 +32,29 @@ chmod 755 setup && \
 ./setup --mac-config
 ```
 
+## Gotchas
+
+
+### git-aliases fix
+
+Homebrew doesn't have an option to install git *without completions*. These
+completions conflict with the completions in the git-aliases plugin. To resolve
+this simply remove the `_git` symlink in the *zsh_site-functions*.
+
+Confirm the location of site_functions:
+
+```sh
+brew info git
+```
+
+Remove the file:
+
+```sh
+rm /usr/local/share/zsh/site-functions/_git
+```
+
+> The above is taken care of in the setup script(`.laptop.local`).
+
 [Thoughtbot's laptop]: https://github.com/thoughtbot/laptop
 [Homebrew]: https://brew.sh
 [mas]: https://formulae.brew.sh/formula/mas

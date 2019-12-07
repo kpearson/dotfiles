@@ -1,10 +1,8 @@
 #!/bin/sh
 
-ls "$HOME"/mac &> /dev/null || \
-  curl --silent --remote-name \
+test -e "$HOME"/mac || curl --silent --remote-name \
   https://raw.githubusercontent.com/thoughtbot/laptop/master/mac
-ls "$HOME"/.laptop.local &> /dev/null || \
-  curl --silent --remote-name \
+test -e "$HOME"/.laptop.local || curl --silent --remote-name \
   https://raw.githubusercontent.com/kpearson/dotfiles/master/.laptop.local
 
 if [ "$1" = "--macos-config" ]; then

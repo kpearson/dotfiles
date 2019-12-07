@@ -26,7 +26,7 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-source "$ZSH/oh-my-zsh.sh"
+test -e "$ZSH/oh-my-zsh.sh" && source "$ZSH/oh-my-zsh.sh"
 
 ###############################################################################
 # END OH-MY-ZSH CONFIGURATION                                                 #
@@ -67,17 +67,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-# **git-aliases fix**
-# Homebrew doesn't have an option to install git *without completions*. These
-# conflict with the completions in the git-aliases plugin. To solve this simply
-# remove the `_git` symlink in the *zsh_site-functions*.
-#
-# Confirm the location of site_functions:
-# `brew info git`
-#
-# Remove the link:
-# `rm /usr/local/share/zsh/site-functions/_git`
-
 export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
   [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"
@@ -98,13 +87,12 @@ export NVM_DIR="$HOME/.nvm"
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Android emulator - React Native
 export ANDROID_HOME=~/Library/Android/sdk
 export ANDROID_SDK=~/Library/Android/sdk
-export PATH=~/Library/Android/sdk/platform-tools:$PATH
+export PATH=~/Library/Android/sdk/platform-tools:"$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
 # zprof
