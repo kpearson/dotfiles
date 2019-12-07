@@ -31,9 +31,9 @@ create_them_symlinks() {
   fi
 }
 
-fancy_echo "\e[1;37mDownloading dotfiles\e[0m"
+fancy_echo "\e[1;37mDownloading Dotfiles\e[0m"
 test -e "$DOTFILES" || git clone --recursive \
-  git@github.com:kpearson/dotfiles.git "$DOTFILES"
+  https://github.com:kpearson/dotfiles.git "$DOTFILES"
 
 # Brew install apps not in the Thoughtbot laptop script
 fancy_echo "\e[1;37mInstalling other apps\e[0m"
