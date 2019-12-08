@@ -1,6 +1,7 @@
 # alias Gwho="git log --all --format='%cN %Cblue<%cE>%Creset' | sort -u"
 alias todo="vi ~/.todo.md"
 alias job="vi $HOME/.jobs.md"
+alias jobhunt="vi ~/Amazon\ Drive/Documents/Employment/Job\ Hunt/jobhunt-201909.md"
 
 # global
 alias vi="nvim"
@@ -11,16 +12,11 @@ alias zshs="subl ~/.zshrc && reload"
 alias te="cd $HOME/code/my_projects/trial-and-error/ && vim"
 alias t="tmux"
 alias tl="tmux ls"
-# alias git=hub
+alias aliases="vi $DOTFILES/aliases"
+alias git=hub
 
 # Standard setup
 alias getstarted="open -a Polymail && open -a Slack && open -a Google\ Chrome open -a messages"
-# Cyndx | Docker 4/28/17
-alias mrs="make rebuild_and_seed"
-alias docker_rollback="dcr -e RAILS_ENV=test app rails db:rollback && dcr app rails db:rollback"
 
-alias aliases="vi $HOME/dotfiles/aliases"
 
 alias ld="zip -r image-fetcher . && aws lambda update-function-code --function-name logo-fetch-node --zip-file fileb://image-fetcher.zip --region us-east-1 --publish"
-alias restart-synapse="docker-compose restart app && docker attach $(docker ps -l -q)"
-alias jobhunt="vi ~/Amazon\ Drive/Documents/Employment/Job\ Hunt/jobhunt-201909.md"
