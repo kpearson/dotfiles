@@ -18,5 +18,4 @@ alias git=hub
 # Standard setup
 alias getstarted="open -a Polymail && open -a Slack && open -a Google\ Chrome open -a messages"
 
-
 alias ld="zip -r image-fetcher . && aws lambda update-function-code --function-name logo-fetch-node --zip-file fileb://image-fetcher.zip --region us-east-1 --publish"

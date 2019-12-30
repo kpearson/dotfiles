@@ -26,28 +26,31 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-test -e "$ZSH/oh-my-zsh.sh" && source "$ZSH/oh-my-zsh.sh"
+[ -s "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
 ###############################################################################
 # END OH-MY-ZSH CONFIGURATION                                                 #
 ###############################################################################
 
-# RBEBV - Manage Ruby versions
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# Python version manager
-eval "$(pyenv init -)"
-# if which pyenv > /dev/null; then eval "$(pyenv init -)" fi
-
-# Aliases
-test -e "$DOTFILES/aliases" && source "$DOTFILES/aliases"
-test -e "$DOTFILES/aliases" || print "$DOTFILES/aliases not found."
-
 ### Executables paths
-export PATH="$DOTFILES/bin:$PATH" # Custom
+export PATH="$DOTFILES/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
+
+# Aliases
+[ -s "$DOTFILES/aliases" ] && . "$DOTFILES/aliases"
+[ -s "$DOTFILES/aliases" ] || print "$DOTFILES/aliases not found."
+
+# Dynamic git config
+git config --global core.excludesfile "$DOTFILES/git/gitignore"
+git config --global init.templatedir "$DOTFILES/git/.git-templates"
+
+# asdf-vm - Manage multiple runtime versions
+[ -s "$HOME/.asdf/asdf.sh" ] && . "$HOME/.asdf/asdf.sh"
+[ -s "$HOME/.asdf/completions/asdf.bash" ] && . "$HOME/.asdf/completions/asdf.bash"
 
 # GoLang
 export GOPATH="$HOME/Code/go"
@@ -57,37 +60,7 @@ export PATH="$PATH:$GOPATH/bin"
 export KUBECONFIG="$HOME/.kube/config-playground"
 export PATH="$PATH:$HOME/Code/istio-0.8.0/bin"
 # export KUBECONFIG="$HOME/.kube/config"
-
-# System
-# Comment for ssh connections
-# export TERM=xterm-256color-italic
-export CPPFLAGS="-I/usr/local/opt/zlib/include"
-
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
-  [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"
-
-###############################################################################
-# NOT IN USE                                                                  #
-###############################################################################
-
-# Python
-# export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-# Anaconda(Python)
-# export PATH=/usr/local/anaconda3/bin:"$PATH"
-
-# if [[ $TERM == xterm-256color ]] && [[ -n $SSH_CONNECTION ]]; then
-#     export TERM=xterm-256color-italic
-# fi
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# KUBECONFIG=~/.kube/k8s.cy.vg
 
 # Android emulator - React Native
 export ANDROID_HOME=~/Library/Android/sdk
@@ -95,9 +68,17 @@ export ANDROID_SDK=~/Library/Android/sdk
 export PATH=~/Library/Android/sdk/platform-tools:"$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
+# https://www.iterm2.com/documentation-shell-integration.html
+[ -s "${HOME}/.iterm2_shell_integration.zsh" ] && . "${HOME}/.iterm2_shell_integration.zsh"
+
+# tabtab source for packages (Currently serverless framework)
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+# Comment for ssh connections
+# if [[ $TERM == xterm-256color ]] && [[ -n $SSH_CONNECTION ]]; then
+#     export TERM=xterm-256color-italic
+# fi
+
 # zprof
-KUBECONFIG=~/.kube/k8s.cy.vg
-
-export PATH="$HOME/.bin:$PATH"
-
 # vi: ft=zsh
+

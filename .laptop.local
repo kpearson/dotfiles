@@ -55,8 +55,8 @@ create_them_symlinks "$DOTFILES"/gitconfig
 create_them_symlinks "$DOTFILES"/shell/xterm-256color-italic.ti
 
 fancy_echo "\e[1;37mRemoving link to git completions in lue of git-aliases\e[0m"
-SITE_FUNCTIONS_PATH=$(brew info git | grep zsh | tail -n1)
-"$SITE_FUNCTIONS_PATH/_git" && rm "$SITE_FUNCTIONS_PATH/_git"
+_GIT_PATH=$(whence -v _git | cut -d" " -f7)
+test -e "$_GIT_PATH" && rm "$_GIT_PATH"
 
 # Link Visual Studio Code config
 # fancy_echo "Setting up VS-Code"
@@ -75,5 +75,5 @@ fancy_echo "\e[1;37mCleaning up old Homebrew formulae ...\e[0m"
 brew cleanup
 brew bundle cleanup --file="$DOTFILES"/Brewfile
 
-fancy_echo "\e[1;37mSetup complete.!\e[0m\n"
+fancy_echo "\e[1;37mSetup complete!\e[0m\nRestart for settings to take effect.\n"
 

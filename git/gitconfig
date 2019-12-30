@@ -7,7 +7,7 @@
 
 [core]
 	editor = nvim
-	excludesfile = ~/Dotfiles/git/gitignore
+	excludesfile = /Users/kit/.dotfiles/git/gitignore
 
 [color]
 	ui = true
@@ -28,4 +28,5 @@
 	contributors = shortlog -s -n -e
 
 [init]
-	templatedir = ~/Dotfiles/git/.git-templates
+	templatedir = /Users/kit/.dotfiles/git/.git-templates
+

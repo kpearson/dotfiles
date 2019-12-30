@@ -29,7 +29,7 @@ sudo defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme 
 killall Dock
 
 #Set screen cap directory to ~/ScreenCaps
-mkdir ~/Screenshots
+mkdir -p ~/Screenshots
 defaults write com.apple.screencapture location ~/Screenshots
 
 killall SystemUIServer
