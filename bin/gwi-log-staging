@@ -1,0 +1,8 @@
+#!/bin/bash
+
+LOG_FILE=/opt/gowatchit/watchit/current/log/devserver.log
+STAGING_SERVER=dev1-server-4.internal.noovie.com
+USER=kpearson
+
+ssh -i ~/.ssh/id_rsa "$USER@$STAGING_SERVER" "tail -f -n 10 $LOG_FILE" | lnav -t
+

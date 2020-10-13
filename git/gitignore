@@ -50,6 +50,8 @@ Thumbs.db
 target/
 *.local*
 .python-version
+seed-data-local/
+*.pem
 
 
 # VSCode #

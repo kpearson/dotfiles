@@ -2,6 +2,7 @@
 
 export DOTFILES="$HOME/.dotfiles"
 export ZSH="$DOTFILES/shell/ohmyzsh"
+export EDITOR=nvim
 
 ZSH_THEME="miloshadzic"
 HYPHEN_INSENSITIVE="true"
@@ -38,7 +39,12 @@ export PATH="$HOME/.bin:$PATH"
 export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
-export CPPFLAGS="-I/usr/local/opt/zlib/include"
+# export CPATH="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
+
+# export CFLAGS="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
+# export CCFLAGS="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
+# export CXXFLAGS="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
+# export CPPFLAGS="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
 
 # Aliases
 [ -s "$DOTFILES/aliases" ] && . "$DOTFILES/aliases"
@@ -47,10 +53,6 @@ export CPPFLAGS="-I/usr/local/opt/zlib/include"
 # Dynamic git config
 git config --global core.excludesfile "$DOTFILES/git/gitignore"
 git config --global init.templatedir "$DOTFILES/git/.git-templates"
-
-# asdf-vm - Manage multiple runtime versions
-[ -s "$HOME/.asdf/asdf.sh" ] && . "$HOME/.asdf/asdf.sh"
-[ -s "$HOME/.asdf/completions/asdf.bash" ] && . "$HOME/.asdf/completions/asdf.bash"
 
 # GoLang
 export GOPATH="$HOME/Code/go"
@@ -81,4 +83,13 @@ export PATH="/usr/local/sbin:$PATH"
 
 # zprof
 # vi: ft=zsh
+
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
+export PATH="$(yarn global bin):$PATH"
+# export PATH="$HOME/Code/ncmcli:$PATH"
+
+# asdf-vm - Manage multiple runtime versions
+[ -s "$HOME/.asdf/asdf.sh" ] && . "$HOME/.asdf/asdf.sh"
+[ -s "$HOME/.asdf/completions/asdf.bash" ] && . "$HOME/.asdf/completions/asdf.bash"
 

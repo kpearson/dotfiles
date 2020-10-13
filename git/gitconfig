@@ -2,8 +2,8 @@
 	user = kpearson
 
 [user]
-	name = Kit Pearson
-	email = dev_kit@icloud.com
+	name = Kit
+	email = kitpearson@me.com
 
 [core]
 	editor = nvim
@@ -30,3 +30,10 @@
 [init]
 	templatedir = /Users/kit/.dotfiles/git/.git-templates
 
+[diff]
+    tool = default-difftool
+
+[difftool "default-difftool"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[mergetool]
+	keepBackup = false

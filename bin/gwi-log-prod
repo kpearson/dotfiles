@@ -1,0 +1,76 @@
+#!/bin/bash
+
+LOG_FILE=/opt/gowatchit/watchit/shared/log/production.log
+PRODUCTION_SERVER_2=production-watchit-2.internal.noovie.com
+PRODUCTION_SERVER_3=production-watchit-3.internal.noovie.com
+PRODUCTION_SERVER_4=production-watchit-4.internal.noovie.com
+USER=kpearson
+
+osascript -e 'tell application "Viscosity" to connect "ncm production"'
+osascript -e 'display notification "Connecting to NCM VPN with Viscosity \
+  Look for Duo Mobile auth request" with title "NCM CLI"'
+sleep 1
+
+# multitail -l "ssh $USER@${PRODUCTION_SERVER_2} tail -f ${LOG_FILE}" \
+#    -l "ssh $USER@${PRODUCTION_SERVER_3} tail -f ${LOG_FILE}" \
+#    -l "ssh $USER@${PRODUCTION_SERVER_4} tail -f ${LOG_FILE}"
+
+killcommand() {
+  for box in 2 3 4; do
+    ssh -f $USER@production-watchit-3.internal.noovie.com "killall tail"
+  done
+}
+
+for box in 2 3 4; do
+  ssh -f $USER@production-watchit-${box}.internal.noovie.com "tail -f ${LOG_FILE}" > /tmp/prod_log_$box.log
+  echo "$!" >> /tmp/pids
+done
+
+cat /tmp/pids
+
+trap "killcommand" SIGINT
+
+lnav -t /tmp/log
+
+# ssh -f kpearson@production-watchit-2.internal.noovie.com "tail -f /opt/gowatchit/watchit/shared/log/production.log & echo $! > /tmp/tail1_pid" > /tmp/log/prod_log_$box.log
+# trap  wait
+
+# PARAMS=""
+# while (( "$#" )); do
+#   case "$1" in
+#     -f|--flag-with-argument)
+#       FARG=$2
+#       shift 2
+#       ;;
+#     --)
+#       shift
+#       break
+#       ;;
+#     -*|--*=)
+#       echo "Error: Unsupported flag $1" >&2
+#       exit 1
+#       ;;
+#     *)
+#       PARAMS="$PARAMS $1"
+#       shift
+#       ;;
+#   esac
+# done
+# eval set -- "$PARAMS"
+#
+# if [ "$PARAMS" ]; then
+#   case "$1" in
+#     tail)
+#       manytail
+#       exit 0
+#       ;;
+#     lnav)
+#       lnav
+#       exit 0
+#       ;;
+#     *)
+#       echo "Error: command not found $1"
+#       exit 1
+#       ;;
+#   esac
+# fi
