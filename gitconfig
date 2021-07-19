@@ -1,3 +1,7 @@
 [user]
 	name = Kit Pearson
 	email = kit.pearson@ncm.com
+[core]
+	excludesfile = /Users/kit/.dotfiles/git/gitignore
+[init]
+	templatedir = /Users/kit/.dotfiles/git/.git-templates
