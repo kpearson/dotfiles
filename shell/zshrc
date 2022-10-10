@@ -52,23 +52,22 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 
 # Dynamic git config
 git config --global core.excludesfile "$DOTFILES/git/gitignore"
-git config --global init.templatedir "$DOTFILES/git/.git-templates"
 
 # GoLang
 export GOPATH="$HOME/Code/go"
 export PATH="$PATH:$GOPATH/bin"
 
 # Kubernetes
-export KUBECONFIG="$HOME/.kube/config-playground"
-export PATH="$PATH:$HOME/Code/istio-0.8.0/bin"
+# export KUBECONFIG="$HOME/.kube/config-playground"
+# export PATH="$PATH:$HOME/Code/istio-0.8.0/bin"
 # export KUBECONFIG="$HOME/.kube/config"
 # KUBECONFIG=~/.kube/k8s.cy.vg
 
 # Android emulator - React Native
-export ANDROID_HOME=~/Library/Android/sdk
-export ANDROID_SDK=~/Library/Android/sdk
-export PATH=~/Library/Android/sdk/platform-tools:"$PATH"
-export PATH="/usr/local/sbin:$PATH"
+# export ANDROID_HOME=~/Library/Android/sdk
+# export ANDROID_SDK=~/Library/Android/sdk
+# export PATH=~/Library/Android/sdk/platform-tools:"$PATH"
+# export PATH="/usr/local/sbin:$PATH"
 
 # https://www.iterm2.com/documentation-shell-integration.html
 [ -s "${HOME}/.iterm2_shell_integration.zsh" ] && . "${HOME}/.iterm2_shell_integration.zsh"
@@ -84,12 +83,17 @@ export PATH="/usr/local/sbin:$PATH"
 # zprof
 # vi: ft=zsh
 
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
-export PATH="$(yarn global bin):$PATH"
+# export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+# export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 # export PATH="$HOME/Code/ncmcli:$PATH"
 
 # asdf-vm - Manage multiple runtime versions
-[ -s "$HOME/.asdf/asdf.sh" ] && . "$HOME/.asdf/asdf.sh"
-[ -s "$HOME/.asdf/completions/asdf.bash" ] && . "$HOME/.asdf/completions/asdf.bash"
+ASDF_PATH=$(brew --prefix asdf)
+[ -s "${ASDF_PATH}/libexec/asdf.sh" ] && . "${ASDF_PATH}/libexec/asdf.sh"
+[ -s "${ASDF_PATH}/etc/bash_completion.d/asdf.bash" ] && . "${ASDF_PATH}/etc/bash_completion.d/asdf.bash"
 
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
+eval "$(direnv hook zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

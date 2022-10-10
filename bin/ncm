@@ -1,0 +1,56 @@
+#!/bin/bash
+
+source $(dirname "$0")/shell_modules/argparser/argparser.sh
+parse_args "$@"
+
+declare ARGPARSER_MAP
+ARGPARSER_MAP=(
+   [h]=help
+)
+
+echo "arg1: $argument1"
+
+echo "$help"
+echo "value: $helpvalue"
+echo "$help"
+echo "$opth"
+
+function show_help {
+    echo ""
+    echo "Usage:"
+    echo "  [command]"
+    echo ""
+    echo "Available Commands:"
+    echo "  notes: Open notes."
+    echo ""
+    echo "Flags:"
+    echo "  -h, --help           help for this command"
+}
+
+if "$opth"; then
+   show_help
+fi
+
+if [  "$argument1" == "notes" ]; then
+   DOCUMENTS="${HOME}/Library/Mobile Documents/27N4MQEA55~pro~writer/Documents/ncm-documents/"
+
+   echo $DOCUMENTS
+   nvim "$DOCUMENTS"/notes.md
+fi
+
+# while getopts ":h" opt; do
+#     case "$opt" in
+#     h )
+#         show_help
+#         exit 0
+#         ;;
+#     \? )
+#         printf '\nWARN: Unknown option: %s\n' "$1" >&2
+#         show_help >&2
+#         exit 1
+#         ;;
+#     esac
+# done
+# shift $((OPTIND-1))
+
+

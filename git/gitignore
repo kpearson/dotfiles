@@ -52,6 +52,7 @@ target/
 .python-version
 seed-data-local/
 *.pem
+.vim
 
 
 # VSCode #

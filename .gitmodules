@@ -10,3 +10,6 @@
 [submodule "shell/oh-my-zsh-custom/plugins/zsh-autosuggestions"]
 	path = shell/oh-my-zsh-custom/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "bin/shell_modules/argparser"]
+	path = bin/shell_modules/argparser
+	url = https://github.com/flyingangel/argparser.git

@@ -26,6 +26,8 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	conflicted = !nvim +Conflicted
 	contributors = shortlog -s -n -e
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 
 [init]
 	templatedir = /Users/kit/.dotfiles/git/.git-templates
@@ -35,5 +37,6 @@
 
 [difftool "default-difftool"]
     cmd = code --wait --diff $LOCAL $REMOTE
+
 [mergetool]
 	keepBackup = false

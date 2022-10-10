@@ -1,0 +1,4 @@
+./../resources/examples/minimal.sh --option value1 --print value0
+
+Positional arg value: 'value0'
+Optional arg '--option' value: 'value1'
