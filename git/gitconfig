@@ -11,6 +11,10 @@
 
 [color]
 	ui = true
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
 
 [push]
 	default = simple
@@ -22,12 +26,10 @@
   cmd = code --wait $MERGED
 
 [alias]
-  mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lol = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	conflicted = !nvim +Conflicted
 	contributors = shortlog -s -n -e
-	lol = log --graph --decorate --pretty=oneline --abbrev-commit
-	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 
 [init]
 	templatedir = /Users/kit/.dotfiles/git/.git-templates
