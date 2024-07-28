@@ -87,6 +87,9 @@ export PATH="$PATH:$GOPATH/bin"
 # export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 # export PATH="$HOME/Code/ncmcli:$PATH"
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+source $(brew --prefix asdf)/libexec/asdf.sh
+
 # asdf-vm - Manage multiple runtime versions
 ASDF_PATH=$(brew --prefix asdf)
 [ -s "${ASDF_PATH}/libexec/asdf.sh" ] && . "${ASDF_PATH}/libexec/asdf.sh"
@@ -97,3 +100,4 @@ export DOCKER_DEFAULT_PLATFORM=linux/amd64
 eval "$(direnv hook zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"

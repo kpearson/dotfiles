@@ -57,10 +57,11 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 
 ################## App Settings ##################
 
+export SETTINGS_DIR="$HOME/dotfiles/system/"
 ##### Alfred ######
 # =================
 # Read preferences from Copy
-defaults write com.runningwithcrayons.Alfred-Preferences-3 syncfolder "$HOME/Amazon Drive/AppSetting/Alfred"
+defaults write com.runningwithcrayons.Alfred-Preferences-3 syncfolder "$SETTINGS_DIR/Alfred"
 
 #### 1Password ####
 # =================
@@ -76,7 +77,7 @@ defaults write 2BUA8C4S2C.com.agilebits.onepassword4-helper OPPrefBrowserCodesig
 ###### iTerm ######
 # =================
 # Specify the preferences directory
-defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$HOME/Amazon Drive/AppSetting/iTerm"
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$SETTINGS_DIR/iterm"
 # Use the custom preferences in the directory
 defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 
