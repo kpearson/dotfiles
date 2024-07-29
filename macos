@@ -29,13 +29,14 @@ sudo defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme 
 killall Dock
 
 #Set screen cap directory to ~/ScreenCaps
-mkdir -p ~/Screenshots
-defaults write com.apple.screencapture location ~/Screenshots
+export SCREENSHOT_DIR="$HOME/Screenshots"
+mkdir -p "$SCREENSHOT_DIR"
+defaults write com.apple.screencapture location "$SCREENSHOT_DIR"
 
 killall SystemUIServer
 
 # Set finder to display list view
-defaults write com.apple.Finder FXPreferredViewStyle Nlsv
+defaults write com.apple.finder FXPreferredViewStyle Nlsv
 
 # Finder: show path bar
 defaults write com.apple.finder ShowPathbar -bool true
@@ -43,40 +44,19 @@ defaults write com.apple.finder ShowPathbar -bool true
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
-# Disable Dashboard
-defaults write com.apple.dashboard mcx-disabled -bool true
-
-# Don’t show Dashboard as a Space
-defaults write com.apple.dock dashboard-in-overlay -bool true
-
-# experimental fix for the shutdown durring sleep issue.
-# sudo pmset -a hibernatemode 0
-# sudo nvram "use-nvramrc?"=false
-# When done, restart your computer. Now go delete the file
-# /private/var/vm/sleepimage to free up some hard drive space.
-
 ################## App Settings ##################
+
+export SETTINGS_DIR="$HOME/Library/CloudStorage/ProtonDrive-kitpearson@proton.me/app-settings"
 
 ##### Alfred ######
 # =================
-# Read preferences from Copy
-defaults write com.runningwithcrayons.Alfred-Preferences-3 syncfolder "$HOME/Amazon Drive/AppSetting/Alfred"
-
-#### 1Password ####
-# =================
-# View, Item List Layout
-defaults write com.agilebits.onepassword4 MainWindowLayout 'H'
-# Preferences, Enable Watchtower
-defaults write 2BUA8C4S2C.com.agilebits.onepassword4-helper watchtowerService -int 1
-# Preferences, Browser Automatically submit logins after filling
-defaults write 2BUA8C4S2C.com.agilebits.onepassword4-helper autosubmit -int 0
-# Preferences, Verify browser code signature
-defaults write 2BUA8C4S2C.com.agilebits.onepassword4-helper OPPrefBrowserCodesigningRequirementDisabled -int 1
+# Read preferences from local cloud directory
+defaults write com.runningwithcrayons.Alfred-Preferences syncfolder "$SETTINGS_DIR/alfred"
 
 ###### iTerm ######
 # =================
 # Specify the preferences directory
-defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$HOME/Amazon Drive/AppSetting/iTerm"
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$SETTINGS_DIR/iterm"
 # Use the custom preferences in the directory
 defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 
