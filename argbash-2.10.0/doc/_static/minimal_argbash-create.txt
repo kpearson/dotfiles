@@ -1,2 +1,0 @@
-./../bin/argbash -o ../resources/examples/minimal.sh ../resources/examples/minimal.m4
-

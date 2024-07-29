@@ -1,3 +1,0 @@
-resources/examples/minimal.sh foo -o bar
-
-Not telling anything, print not requested
