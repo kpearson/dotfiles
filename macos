@@ -57,22 +57,15 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 
 ################## App Settings ##################
 
-export SETTINGS_DIR="$HOME/dotfiles/system/"
+if [ -z "${SETTINGS_DIR}" ]; then
+  echo "ERROR: No SETTINGS_DIR set. Create and export the location of SETTINGS_DIR"
+  exit 1;
+fi
+
 ##### Alfred ######
 # =================
 # Read preferences from Copy
 defaults write com.runningwithcrayons.Alfred-Preferences-3 syncfolder "$SETTINGS_DIR/Alfred"
-
-#### 1Password ####
-# =================
-# View, Item List Layout
-defaults write com.agilebits.onepassword4 MainWindowLayout 'H'
-# Preferences, Enable Watchtower
-defaults write 2BUA8C4S2C.com.agilebits.onepassword4-helper watchtowerService -int 1
-# Preferences, Browser Automatically submit logins after filling
-defaults write 2BUA8C4S2C.com.agilebits.onepassword4-helper autosubmit -int 0
-# Preferences, Verify browser code signature
-defaults write 2BUA8C4S2C.com.agilebits.onepassword4-helper OPPrefBrowserCodesigningRequirementDisabled -int 1
 
 ###### iTerm ######
 # =================
