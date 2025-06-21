@@ -1,86 +1,74 @@
+# Essential Development Tools - Curated Brewfile
+# Generated from actual installations on 2025-06-21, then pruned to essentials
+
+# Required taps
 tap "homebrew/bundle"
-tap "homebrew/cask-drivers"
-tap "homebrew/core"
 tap "homebrew/services"
-tap "neovim/neovim"
-tap "universal-ctags/universal-ctags"
-tap "wallix/awless"
 
-brew "awscli"
-brew "asdf"
-brew "circleci"
-brew "openssl"
-brew "readline"
-brew "xz"
-brew "bash-completion"
-brew "coreutils"
-brew "curl", link: true
-brew "direnv"
-brew "docker-completion"
-brew "exercism"
+# Core development tools
 brew "git"
-brew "go"
-brew "grafana"
-brew "grc"
-brew "heroku"
-brew "htop"
-brew "hub"
-brew "icdiff"
-brew "imagemagick"
-brew "iperf"
-brew "jenv"
-brew "jq"
-brew "kubernetes-cli"
-brew "kops"
-brew "kube-aws"
-brew "kubernetes-helm"
-brew "libgit2"
-brew "lnav"
-brew "macvim"
-brew "mas"
 brew "neovim"
-brew "nmap"
-brew "postgresql"
-brew "redis"
-brew "shellcheck"
-brew "speedtest-cli"
-brew "terraform"
-brew "the_silver_searcher"
-brew "tmux"
 brew "vim"
-brew "wget"
-brew "xhyve"
-brew "yarn", args: ["without-node"]
+brew "tmux"
+brew "asdf"                    # Version manager
+brew "direnv"                  # Environment management
+
+# Shell enhancements  
 brew "zsh"
-brew "universal-ctags", args: ["HEAD"]
-brew "wallix/awless/awless"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
+brew "starship"                # Fast prompt
+brew "bash-completion"         # General completions
+brew "docker-completion"       # Docker command completions
 
+# Search and file tools (vim-compatible)
+brew "the_silver_searcher"     # ag - required for vim ag.vim plugin
+brew "ripgrep"                 # rg - modern grep
+brew "fzf"                     # fuzzy finder - required for vim fzf plugins
+brew "fd"                      # modern find
+brew "bat"                     # modern cat with syntax highlighting
+brew "eza"                     # modern ls with icons and git integration
+
+# Core utilities
+brew "coreutils"               # GNU core utilities
+brew "curl", link: true
+brew "wget"
+brew "jq"                      # JSON processor
+brew "htop"                    # Better top
+brew "shellcheck"              # Shell script linting
+
+# Development languages & tools
+brew "go"
+brew "terraform"
+
+# Node.js package managers (Node itself managed by asdf)
+brew "yarn"
+brew "pnpm"
+
+# Python tools (Python itself managed by asdf)
+brew "uv"                      # Fast Python package/project manager
+
+# Cloud & DevOps essentials
+brew "awscli"
+brew "gh"                      # GitHub CLI (modern replacement for hub)
+brew "docker"                  # Actually installed
+brew "docker-compose"          # Actually installed
+
+# Essential apps
 cask "1password"
-cask "amazon-photos"
-cask "alfred"
-cask "anki"
-cask "bartender"
-cask "boxcryptor"
-cask "daisydisk"
-cask "docker"
-cask "dropbox"
-cask "fantastical"
-cask "firefox"
-cask "font-mononoki-nerd-font"
-cask "google-chrome"
 cask "iterm2"
-cask "ngrok"
-cask "polymail"
-cask "protonvpn"
-cask "qlmarkdown"
-cask "qlstephen"
-cask "slack"
 cask "visual-studio-code"
-cask "vlc"
-cask "zoomus"
-cask "viscosity"
+cask "cursor"                  # Your IDE of choice
+cask "docker"
+cask "slack"
+cask "google-chrome"
 
+# Essential Mac App Store apps
+mas "1Password for Safari", id: 1569813296
 mas "BetterSnapTool", id: 417375580
-mas "iA Writer", id: 775737590
-mas "Things 3", id: 904280696
-mas "Type Fu", id: 509818877
+mas "Things", id: 904280696
+
+# Optional but commonly used
+# cask "notion"
+# cask "spotify" 
+# cask "zoom"

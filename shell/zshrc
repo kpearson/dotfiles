@@ -4,7 +4,7 @@
 
 export LC_CTYPE=C
 export LANG=C
-export DOTFILES="$HOME/.dotfiles"
+export DOTFILES="$HOME/dotfiles"
 export EDITOR=nvim
 
 # Essential environment variables
@@ -82,13 +82,15 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
 
-# Key bindings
+# Key bindings - restore what oh-my-zsh provided
+bindkey -e                                   # Enable emacs mode (oh-my-zsh default)
 bindkey '^R' history-incremental-search-backward
 bindkey '^[[A' history-search-backward      # Up arrow
 bindkey '^[[B' history-search-forward       # Down arrow
+
 
 # Enable basic completions
 autoload -U +X bashcompinit && bashcompinit
 
 # Optional: uncomment to profile startup time
-# zprof 
+# zprof

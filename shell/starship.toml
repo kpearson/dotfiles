@@ -1,9 +1,13 @@
 # Starship config - replicates miloshadzic theme
 format = "$directory$git_branch$git_status$nodejs$ruby$golang$terraform$character"
 
+# Terminal compatibility
+add_newline = false
+
 [character]
-success_symbol = "[⇒](cyan) "
-error_symbol = "[⇒](red) "
+success_symbol = "[⇒](bold cyan) "
+error_symbol = "[⇒](bold red) "
+vimcmd_symbol = "[⇐](bold green) "
 
 [directory]
 style = "cyan"

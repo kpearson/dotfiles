@@ -2,12 +2,12 @@
 	user = kpearson
 
 [user]
-	name = Kit
-	email = kitpearson@me.com
+	name = Kit Pearson
+	email = 3293289+kpearson@users.noreply.github.com
 
 [core]
 	editor = nvim
-	excludesfile = /Users/kit/.dotfiles/git/gitignore
+	excludesfile = /Users/kit/dotfiles/git/gitignore
 
 [color]
 	ui = true
@@ -32,7 +32,7 @@
 	contributors = shortlog -s -n -e
 
 [init]
-	templatedir = /Users/kit/.dotfiles/git/.git-templates
+	templatedir = /Users/kit/dotfiles/git/.git-templates
 
 [diff]
     tool = default-difftool
