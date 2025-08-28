@@ -50,6 +50,7 @@
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     dir                       # current directory
     vcs                       # git status
+    git_worktree             # git worktree name
     prompt_char               # prompt symbol
   )
 
@@ -179,6 +180,28 @@
   # can slow down prompt by 1-2 milliseconds, so it's better to keep it turned off unless you
   # really need it.
   typeset -g POWERLEVEL9K_DISABLE_HOT_RELOAD=true
+
+  # Custom git worktree segment configuration.
+  typeset -g POWERLEVEL9K_GIT_WORKTREE_FOREGROUND=$yellow
+  typeset -g POWERLEVEL9K_GIT_WORKTREE_VISUAL_IDENTIFIER_EXPANSION=''
+  
+  # Custom function to show git worktree name
+  function prompt_git_worktree() {
+    local worktree_info
+    worktree_info=$(git rev-parse --show-superproject-working-tree 2>/dev/null)
+    if [[ -n "$worktree_info" ]]; then
+      # We're in a worktree, show the worktree name
+      local worktree_name=$(basename "$(git rev-parse --show-toplevel 2>/dev/null)")
+      p10k segment -f $POWERLEVEL9K_GIT_WORKTREE_FOREGROUND -t "$worktree_name"
+    elif git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+      # We're in a regular git repo, check if it has worktrees
+      local worktrees_count=$(git worktree list 2>/dev/null | wc -l | tr -d ' ')
+      if [[ $worktrees_count -gt 1 ]]; then
+        # Main repo with worktrees
+        p10k segment -f $POWERLEVEL9K_GIT_WORKTREE_FOREGROUND -t "main"
+      fi
+    fi
+  }
 
   # If p10k is already loaded, reload configuration.
   # This works even with POWERLEVEL9K_DISABLE_HOT_RELOAD=true.
