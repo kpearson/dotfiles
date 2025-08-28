@@ -8,6 +8,7 @@
 [core]
 	editor = nvim
 	excludesfile = /Users/kit/dotfiles/git/gitignore
+	hooksPath = /Users/kit/dotfiles/git/git-hooks
 
 [color]
 	ui = true
