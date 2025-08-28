@@ -30,6 +30,18 @@
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	conflicted = !nvim +Conflicted
 	contributors = shortlog -s -n -e
+	st = status
+	co = checkout
+	br = branch
+	ci = commit -m
+	ca = commit -am
+	ps = push
+	pl = pull
+	df = diff
+	lg = log --oneline --graph --decorate
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	show-patch = "!f() { git show $1:$2 | git apply; }; f"
 
 [init]
 	templatedir = /Users/kit/dotfiles/git/.git-templates
