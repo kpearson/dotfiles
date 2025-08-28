@@ -1,15 +1,23 @@
 Dotfiles
 ========
 
-Kit Pearson 2015 - 2020
+Kit Pearson 2015 - 2025
+
+Modern macOS development environment with vim-first workflow.
 
 ------
 
-Welcome to Kit Pearsons dotfiles. Theses dotfiles contain everything needed to
-set up a Mac from scratch. The install/setup is broken up into a few sections.
+## Quick Start
 
-- Initial set up and install of basic tools
-- Install a complete set of applications
+Modern shell setup with performance optimizations:
+- **powerlevel10k** - Ultra-fast async prompt with instant loading
+- **carapace** - Advanced completions for 1000+ commands  
+- **vim-first workflow** - Preserves existing vim integrations
+- **Modern CLI tools** - ripgrep, fd, bat alongside traditional tools
+
+## Installation
+
+These dotfiles contain everything needed to set up a Mac from scratch.
 
 Set up a new machine by running [Thoughtbot's laptop] script.
 

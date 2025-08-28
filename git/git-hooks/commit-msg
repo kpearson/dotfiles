@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# Global git hook to prevent Claude attribution in commit messages
+# This hook checks for any Claude/AI attribution and rejects the commit
+
+COMMIT_FILE=$1
+
+# Read the commit message
+COMMIT_MSG=$(cat "$COMMIT_FILE")
+
+# Define patterns to check for (case-insensitive)
+CLAUDE_PATTERNS=(
+    "generated with claude"
+    "co-authored-by.*claude"
+    "claude code"
+    "anthropic"
+    "generated with.*claude"
+    "assisted by.*claude"
+    "created with.*claude"
+    "with help from.*claude"
+    "using claude"
+    "claude ai"
+    "claude-"
+    "🤖.*claude"
+)
+
+# Check each pattern
+for pattern in "${CLAUDE_PATTERNS[@]}"; do
+    if echo "$COMMIT_MSG" | grep -qi "$pattern"; then
+        echo "❌ COMMIT REJECTED: Claude attribution detected in commit message"
+        echo ""
+        echo "Found pattern: '$pattern'"
+        echo ""
+        echo "Policy: Commit messages must not include any Claude, Anthropic, or AI attribution."
+        echo "Keep commit messages focused purely on technical changes."
+        echo ""
+        echo "Rejected commit message:"
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        echo "$COMMIT_MSG"
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        echo ""
+        exit 1
+    fi
+done
+
+# If we get here, no Claude patterns were found
+exit 0

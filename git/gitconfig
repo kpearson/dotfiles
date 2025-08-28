@@ -2,12 +2,14 @@
 	user = kpearson
 
 [user]
-	name = Kit
-	email = kitpearson@me.com
+	name = Kit Pearson
+	email = 3293289+kpearson@users.noreply.github.com
 
 [core]
 	editor = nvim
-	excludesfile = /Users/kit/.dotfiles/git/gitignore
+	excludesfile = /Users/kit/dotfiles/git/gitignore
+	hooksPath = /Users/kit/dotfiles/git/git-hooks
+	pager = less -r
 
 [color]
 	ui = true
@@ -30,9 +32,21 @@
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	conflicted = !nvim +Conflicted
 	contributors = shortlog -s -n -e
+	st = status
+	co = checkout
+	br = branch
+	ci = commit -m
+	ca = commit -am
+	ps = push
+	pl = pull
+	df = diff
+	lg = log --oneline --graph --decorate
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	show-patch = "!f() { git show $1:$2 | git apply; }; f"
 
 [init]
-	templatedir = /Users/kit/.dotfiles/git/.git-templates
+	templatedir = /Users/kit/dotfiles/git/.git-templates
 
 [diff]
     tool = default-difftool

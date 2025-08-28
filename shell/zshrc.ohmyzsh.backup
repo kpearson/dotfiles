@@ -1,0 +1,89 @@
+# zmodload zsh/zprof
+export LC_CTYPE=C
+export LANG=C
+export DOTFILES="$HOME/.dotfiles"
+export ZSH="$DOTFILES/shell/ohmyzsh"
+export EDITOR=nvim
+
+# Oh my zsh
+ZSH_THEME="miloshadzic"
+HYPHEN_INSENSITIVE="true"
+ZSH_CUSTOM="$DOTFILES/shell/oh-my-zsh-custom"
+
+plugins=(
+  aws
+  colored-man-pages
+  docker
+  docker-compose
+  git-aliases
+  gitfast
+  # helm
+  # kubectl
+  sbt
+  # rails
+  # rbenv
+  terraform
+  react-native
+  yarn
+  yarn-autocompletions
+  zsh-autosuggestions
+  zsh-syntax-highlighting  # Must be last!
+)
+
+[ -s "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
+
+###############################################################################
+# END OH-MY-ZSH CONFIGURATION                                                 #
+###############################################################################
+
+export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+
+### Executables paths
+export PATH="$DOTFILES/bin:$PATH"
+export PATH="$HOME/.bin:$PATH"
+export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+# Custom Aliases
+[ -s "$DOTFILES/aliases" ] && . "$DOTFILES/aliases"
+[ -s "$DOTFILES/aliases" ] || print "$DOTFILES/aliases not found."
+
+# Homebrew config - Must come before any refference to Homebrew managed apps
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Direnv zsh config
+eval "$(direnv hook zsh)"
+
+# Git config
+git config --global core.excludesfile "$DOTFILES/git/gitignore"
+
+# https://www.iterm2.com/documentation-shell-integration.html
+# Load iTerm2 integration after oh-my-zsh to avoid conflicts
+[ -s "${HOME}/.iterm2_shell_integration.zsh" ] && . "${HOME}/.iterm2_shell_integration.zsh"
+
+# Fix potential display issues with autosuggestions
+export ZSH_AUTOSUGGEST_CLEAR_WIDGETS="$ZSH_AUTOSUGGEST_CLEAR_WIDGETS reset-prompt"
+
+# tabtab source for packages (Currently serverless framework)
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+# Comment for ssh connections
+# if [[ $TERM == xterm-256color ]] && [[ -n $SSH_CONNECTION ]]; then
+#     export TERM=xterm-256color-italic
+# fi
+
+# export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+# export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
+# export PATH="$HOME/Code/ncmcli:$PATH"
+
+# 1Password plugin config
+[ -s "$HOME/.config/op/plugins.sh" ] && source "$HOME/.config/op/plugins.sh"
+
+# asdf-vm - Manage multiple runtime versions
+export ASDF_DATA_DIR="$HOME/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
+
+# Docker
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
+export COMPOSE_BAKE=true

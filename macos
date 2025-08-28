@@ -48,6 +48,11 @@ chflags nohidden ~/Library
 
 export SETTINGS_DIR="$HOME/Library/CloudStorage/ProtonDrive-kitpearson@proton.me/app-settings"
 
+if [ -z "${SETTINGS_DIR}" ]; then
+  echo "ERROR: No SETTINGS_DIR set. Create and export the location of SETTINGS_DIR"
+  exit 1;
+fi
+
 ##### Alfred ######
 # =================
 # Read preferences from local cloud directory

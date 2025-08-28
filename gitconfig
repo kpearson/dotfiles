@@ -1,9 +1,0 @@
-[user]
-	name = Kit Pearson
-	email = kitpearson@me.com
-[core]
-	excludesfile = /Users/kit/.dotfiles/git/gitignore
-[init]
-	templatedir = /Users/kit/.dotfiles/git/.git-templates
-[url "git@gitlab.com:"]
-	insteadOf = https://gitlab.com/

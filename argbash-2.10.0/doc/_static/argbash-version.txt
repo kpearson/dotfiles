@@ -1,3 +1,0 @@
-argbash 2.10.0
-
-Argbash is an argument parser generator for Bash.
