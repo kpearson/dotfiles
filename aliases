@@ -3,6 +3,13 @@ alias todo="vi ~/.todo.md"
 alias job="vi $HOME/.jobs.md"
 alias jobhunt="vi ~/Amazon\ Drive/Documents/Employment/Job\ Hunt/jobhunt-201909.md"
 
+# ls shortcuts (modern eza-powered)
+alias l="eza -la --icons --git"
+alias la="eza -lA --icons --git"
+alias ll="eza -l --icons"
+alias ls="eza --icons"
+alias tree="eza --tree --icons"
+
 # global
 alias vi="nvim"
 alias reload=". ~/.zshrc && echo 'ZSH reloaded!'"
@@ -13,7 +20,12 @@ alias te="cd $HOME/code/my_projects/trial-and-error/ && vim"
 alias t="tmux"
 alias tl="tmux ls"
 alias aliases="vi $DOTFILES/aliases"
-alias git=hub
+# Modern CLI tools aliases
+alias cat="bat"
+alias find="fd"
+alias grep="rg"
+
+# Git stays as git, but gh is available for GitHub-specific operations
 
 # Standard setup
 alias getstarted="open -a Polymail && open -a Slack && open -a Google\ Chrome open -a messages"

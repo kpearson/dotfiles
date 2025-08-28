@@ -1,37 +1,21 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Minimal zshrc with Starship
+# Optimized for performance while maintaining functionality
 # zmodload zsh/zprof
 
-export DOTFILES="$HOME/.dotfiles"
-export ZSH="$DOTFILES/shell/ohmyzsh"
+export LC_CTYPE=C
+export LANG=C
+export DOTFILES="$HOME/dotfiles"
 export EDITOR=nvim
 
-ZSH_THEME="miloshadzic"
-HYPHEN_INSENSITIVE="true"
-ZSH_CUSTOM="$DOTFILES/shell/oh-my-zsh-custom"
-
-plugins=(
-  aws
-  colored-man-pages
-  docker
-  docker-compose
-  git-aliases
-  # helm
-  # kubectl
-  sbt
-  # rails
-  # rbenv
-  terraform
-  zsh-autosuggestions
-  react-native
-  yarn
-  yarn-autocompletions
-  zsh-syntax-highlighting
-)
-
-[ -s "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
-
-###############################################################################
-# END OH-MY-ZSH CONFIGURATION                                                 #
-###############################################################################
+# Essential environment variables
+export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
 ### Executables paths
 export PATH="$DOTFILES/bin:$PATH"
@@ -39,65 +23,90 @@ export PATH="$HOME/.bin:$PATH"
 export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
-# export CPATH="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
-
-# export CFLAGS="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
-# export CCFLAGS="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
-# export CXXFLAGS="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
-# export CPPFLAGS="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
-
-# Aliases
+# Custom Aliases
 [ -s "$DOTFILES/aliases" ] && . "$DOTFILES/aliases"
 [ -s "$DOTFILES/aliases" ] || print "$DOTFILES/aliases not found."
 
-# Dynamic git config
+# Homebrew config - Must come before any reference to Homebrew managed apps
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Direnv zsh config
+eval "$(direnv hook zsh)"
+
+# Git config
 git config --global core.excludesfile "$DOTFILES/git/gitignore"
 
-# GoLang
-export GOPATH="$HOME/Code/go"
-export PATH="$PATH:$GOPATH/bin"
+# Powerlevel10k theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
-# Kubernetes
-# export KUBECONFIG="$HOME/.kube/config-playground"
-# export PATH="$PATH:$HOME/Code/istio-0.8.0/bin"
-# export KUBECONFIG="$HOME/.kube/config"
-# KUBECONFIG=~/.kube/k8s.cy.vg
+# Essential zsh plugins via Homebrew (much faster than oh-my-zsh)
+[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Android emulator - React Native
-# export ANDROID_HOME=~/Library/Android/sdk
-# export ANDROID_SDK=~/Library/Android/sdk
-# export PATH=~/Library/Android/sdk/platform-tools:"$PATH"
-# export PATH="/usr/local/sbin:$PATH"
-
-# https://www.iterm2.com/documentation-shell-integration.html
-[ -s "${HOME}/.iterm2_shell_integration.zsh" ] && . "${HOME}/.iterm2_shell_integration.zsh"
+# iTerm2 integration - temporarily disabled to test cursor desync
+# [ -s "${HOME}/.iterm2_shell_integration.zsh" ] && . "${HOME}/.iterm2_shell_integration.zsh"
 
 # tabtab source for packages (Currently serverless framework)
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
 
-# Comment for ssh connections
-# if [[ $TERM == xterm-256color ]] && [[ -n $SSH_CONNECTION ]]; then
-#     export TERM=xterm-256color-italic
-# fi
-
-# zprof
-# vi: ft=zsh
-
-# export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-# export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
-# export PATH="$HOME/Code/ncmcli:$PATH"
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
-source $(brew --prefix asdf)/libexec/asdf.sh
+# 1Password plugin config
+# [ -s "$HOME/.config/op/plugins.sh" ] && source "$HOME/.config/op/plugins.sh"
 
 # asdf-vm - Manage multiple runtime versions
-ASDF_PATH=$(brew --prefix asdf)
-[ -s "${ASDF_PATH}/libexec/asdf.sh" ] && . "${ASDF_PATH}/libexec/asdf.sh"
-[ -s "${ASDF_PATH}/etc/bash_completion.d/asdf.bash" ] && . "${ASDF_PATH}/etc/bash_completion.d/asdf.bash"
+export ASDF_DATA_DIR="$HOME/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
+# Docker
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
-eval "$(direnv hook zsh)"
+export COMPOSE_BAKE=true
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+# Zsh configuration for better UX
+autoload -Uz compinit && compinit -C  # -C flag skips security check for faster startup
+setopt AUTO_CD                    # cd without typing cd
+setopt CORRECT                    # spell correction for commands
+setopt EXTENDED_GLOB              # extended globbing
+
+# History configuration (much better than oh-my-zsh defaults)
+HISTSIZE=50000
+SAVEHIST=50000
+HISTFILE=~/.zsh_history
+setopt EXTENDED_HISTORY           # Write the history file in the ':start:elapsed;command' format
+setopt INC_APPEND_HISTORY         # Write to the history file immediately, not when the shell exits
+setopt SHARE_HISTORY              # Share history between all sessions
+setopt HIST_EXPIRE_DUPS_FIRST     # Expire duplicate entries first when trimming history
+setopt HIST_IGNORE_DUPS           # Don't record an entry that was just recorded again
+setopt HIST_IGNORE_ALL_DUPS       # Delete old recorded entry if new entry is a duplicate
+setopt HIST_FIND_NO_DUPS          # Do not display a line previously found
+setopt HIST_IGNORE_SPACE          # Don't record an entry starting with a space
+setopt HIST_SAVE_NO_DUPS          # Don't write duplicate entries in the history file
+setopt HIST_REDUCE_BLANKS         # Remove superfluous blanks before recording entry
+
+# Better completion system with cycling
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors ''
+
+# Enable tab cycling through completions
+unsetopt NO_AUTO_MENU
+unsetopt NO_MENU_COMPLETE
+setopt AUTO_LIST
+
+# Key bindings - restore what oh-my-zsh provided
+bindkey -e                                   # Enable emacs mode (oh-my-zsh default)
+bindkey '^R' history-incremental-search-backward
+bindkey '^[[A' history-search-backward      # Up arrow
+bindkey '^[[B' history-search-forward       # Down arrow
+
+
+# Enable basic completions
+autoload -U +X bashcompinit && bashcompinit
+
+# Carapace completions
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
+
+# Optional: uncomment to profile startup time
+# zprof
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -1,0 +1,162 @@
+# Starship config - replicates miloshadzic theme
+format = "$directory$git_branch$git_status$nodejs$ruby$golang$terraform$character"
+
+# Terminal compatibility
+add_newline = false
+
+[character]
+success_symbol = "[⇒](bold cyan) "
+error_symbol = "[⇒](bold red) "
+vimcmd_symbol = "[⇐](bold green) "
+
+[directory]
+style = "cyan"
+truncation_length = 1
+format = "[$path]($style)"
+
+[git_branch]
+format = "[|](red)[$symbol$branch]($style)"
+style = "green"
+symbol = ""
+
+[git_status]
+format = "[$all_status$ahead_behind]($style)"
+style = "yellow"
+conflicted = "⚡"
+untracked = "?"
+modified = "!"
+staged = "+"
+deleted = "✘"
+
+[terraform]
+format = "[$symbol$workspace]($style) "
+style = "yellow"
+symbol = ""
+
+# Disable unused modules for performance (keep: golang, ruby, nodejs, docker_context)
+[azure]
+disabled = true
+[battery]
+disabled = true
+[buf]
+disabled = true
+[bun]
+disabled = true
+[c]
+disabled = true
+[cmake]
+disabled = true
+[cobol]
+disabled = true
+[conda]
+disabled = true
+[cpp]
+disabled = true
+[crystal]
+disabled = true
+[daml]
+disabled = true
+[dart]
+disabled = true
+[deno]
+disabled = true
+[dotnet]
+disabled = true
+[elixir]
+disabled = true
+[elm]
+disabled = true
+[erlang]
+disabled = true
+[fennel]
+disabled = true
+[gcloud]
+disabled = true
+[gleam]
+disabled = true
+[gradle]
+disabled = true
+[guix_shell]
+disabled = true
+[haskell]
+disabled = true
+[haxe]
+disabled = true
+[helm]
+disabled = true
+[java]
+disabled = true
+[julia]
+disabled = true
+[kotlin]
+disabled = true
+[kubernetes]
+disabled = true
+[lua]
+disabled = true
+[meson]
+disabled = true
+[mise]
+disabled = true
+[mojo]
+disabled = true
+[nats]
+disabled = true
+[netns]
+disabled = true
+[nim]
+disabled = true
+[nix_shell]
+disabled = true
+[ocaml]
+disabled = true
+[odin]
+disabled = true
+[opa]
+disabled = true
+[openstack]
+disabled = true
+[package]
+disabled = true
+[perl]
+disabled = true
+[php]
+disabled = true
+[pijul_channel]
+disabled = true
+[pixi]
+disabled = true
+[pulumi]
+disabled = true
+[purescript]
+disabled = true
+[quarto]
+disabled = true
+[raku]
+disabled = true
+[red]
+disabled = true
+[rlang]
+disabled = true
+[rust]
+disabled = true
+[scala]
+disabled = true
+[singularity]
+disabled = true
+[solidity]
+disabled = true
+[spack]
+disabled = true
+[swift]
+disabled = true
+[typst]
+disabled = true
+[vagrant]
+disabled = true
+[vcsh]
+disabled = true
+[vlang]
+disabled = true
+[zig]
+disabled = true
