@@ -34,6 +34,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(direnv hook zsh)"
 
 # Git config
+git config --global include.path "$DOTFILES/git/gitconfig"
 git config --global core.excludesfile "$DOTFILES/git/gitignore"
 
 # Powerlevel10k theme
