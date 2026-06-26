@@ -62,3 +62,7 @@ seed-data-local/
 vs-code
 wallaby.js
 apollo.config.js
+
+# Claude Code #
+###############
+.claude/primer.md

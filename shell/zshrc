@@ -1,9 +1,19 @@
+# Homebrew config - Must come before any reference to Homebrew managed apps
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Suppress p10k instant prompt warnings for direnv
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+# Direnv zsh config
+# NOTE: Must come after p10k-instant-prompt initialization
+eval "$(direnv hook zsh)"
 
 # Minimal zshrc with Starship
 # Optimized for performance while maintaining functionality
@@ -27,12 +37,6 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 # Custom Aliases
 [ -s "$DOTFILES/aliases" ] && . "$DOTFILES/aliases"
 [ -s "$DOTFILES/aliases" ] || print "$DOTFILES/aliases not found."
-
-# Homebrew config - Must come before any reference to Homebrew managed apps
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# Direnv zsh config
-eval "$(direnv hook zsh)"
 
 # Git config
 git config --global core.excludesfile "$DOTFILES/git/gitignore"

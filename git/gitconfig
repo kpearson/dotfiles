@@ -1862,3 +1862,11 @@
   svn-m = merge --squash
   svn-c = svn dcommit
   svn-cp = !GIT_EDITOR='sed -i /^git-svn-id:/d' git cherry-pick --edit
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[url "git@github.com-cdbaby:CD-Baby/"]
+	insteadOf = git@github.com:CD-Baby/
