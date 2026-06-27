@@ -1,5 +1,5 @@
 [include]
-	path = /Users/kit/dotfiles/git/gitalias.txt
+	path = ~/dotfiles/git/gitalias.txt
 
 [github]
 	user = kpearson
@@ -10,8 +10,8 @@
 
 [core]
 	editor = nvim
-	excludesfile = /Users/kit/dotfiles/git/gitignore
-	hooksPath = /Users/kit/dotfiles/git/git-hooks
+	excludesfile = ~/dotfiles/git/gitignore
+	hooksPath = ~/dotfiles/git/git-hooks
 	pager = less -r
 
 [color]
@@ -49,7 +49,7 @@
 	show-patch = "!f() { git show $1:$2 | git apply; }; f"
 
 [init]
-	templatedir = /Users/kit/dotfiles/git/.git-templates
+	templatedir = ~/dotfiles/git/.git-templates
 
 [diff]
     tool = default-difftool

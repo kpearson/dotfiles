@@ -127,7 +127,7 @@ source <(carapace _carapace)
 . "$HOME/.local/bin/env"
 
 # bun completions
-[ -s "/Users/kit/.bun/_bun" ] && source "/Users/kit/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
