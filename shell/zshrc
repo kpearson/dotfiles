@@ -38,9 +38,6 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 [ -s "$DOTFILES/aliases" ] && . "$DOTFILES/aliases"
 [ -s "$DOTFILES/aliases" ] || print "$DOTFILES/aliases not found."
 
-# Git config
-git config --global core.excludesfile "$DOTFILES/git/gitignore"
-
 # Powerlevel10k theme
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
@@ -56,10 +53,7 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 # 1Password plugin config
 # [ -s "$HOME/.config/op/plugins.sh" ] && source "$HOME/.config/op/plugins.sh"
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-source $(brew --prefix asdf)/libexec/asdf.sh
-
-# asdf-vm - Manage multiple runtime versions
+# asdf-vm - Manage multiple runtime versions (asdf 0.16+ is a Go binary; no script to source)
 export ASDF_DATA_DIR="$HOME/.asdf"
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
@@ -124,7 +118,7 @@ source <(carapace _carapace)
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-. "$HOME/.local/bin/env"
+[ -s "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"

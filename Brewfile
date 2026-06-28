@@ -2,8 +2,7 @@
 # Generated from actual installations on 2025-06-21, then pruned to essentials
 
 # Required taps
-tap "homebrew/bundle"
-tap "homebrew/services"
+tap "romkatv/powerlevel10k"
 
 # Core development tools
 brew "git"
@@ -13,11 +12,13 @@ brew "tmux"
 brew "asdf"                    # Version manager
 brew "direnv"                  # Environment management
 
-# Shell enhancements  
+# Shell enhancements
 brew "zsh"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
-brew "starship"                # Fast prompt
+brew "romkatv/powerlevel10k/powerlevel10k"  # Prompt (sourced in zshrc)
+brew "carapace"                # Multi-shell completions (sourced in zshrc)
+brew "starship"                # Fast prompt (alternative; not currently sourced)
 brew "bash-completion"         # General completions
 brew "docker-completion"       # Docker command completions
 
@@ -65,7 +66,6 @@ cask "amazon-photos"
 cask "alfred"
 cask "anki"
 cask "bartender"
-cask "boxcryptor"
 cask "daisydisk"
 cask "docker"
 cask "dropbox"
